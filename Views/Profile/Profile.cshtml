@@ -1,0 +1,17 @@
+﻿@using System.Reflection;
+@model User
+
+<h2>Welcome to your profile page @Model.FirstName @Model.LastName</h2>
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        @{
+            foreach (PropertyInfo property in Model.GetType().GetProperties())
+            {
+                <tr>
+                    <td>@property.Name :</td>
+                    <td>@property.GetValue(Model)</td>
+                </tr>
+            }
+        }
+    </table>
+</div>

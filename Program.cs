@@ -1,7 +1,15 @@
+using OfferVerse.DAL;
+using OfferVerse.DAL.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+string connectionString = builder.Configuration.GetConnectionString("default");
+
+builder.Services.AddControllersWithViews();
+builder.Services.AddTransient<IUserDAL>(ud => new UserDAL(connectionString));
 
 var app = builder.Build();
 
