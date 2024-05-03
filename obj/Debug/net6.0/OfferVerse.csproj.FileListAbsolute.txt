@@ -29,3 +29,11 @@ I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse\obj
 I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse\obj\Debug\net6.0\OfferVerse.pdb
 I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse\obj\Debug\net6.0\OfferVerse.genruntimeconfig.cache
 I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse\obj\Debug\net6.0\ref\OfferVerse.dll
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse\bin\Debug\net6.0\System.Data.SqlClient.dll
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse\bin\Debug\net6.0\runtimes\win-arm64\native\sni.dll
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse\bin\Debug\net6.0\runtimes\win-x64\native\sni.dll
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse\obj\Debug\net6.0\OfferVerse.csproj.AssemblyReference.cache
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse\obj\Debug\net6.0\OfferVerse.csproj.Up2Date
