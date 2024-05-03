@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< HEAD
+  "dgSpecHash": "msNV6JXi3GNjuuXkY9v4JjLUtXQYvgtrPQurZwsLU2Wmaw7wG0X9E2izyQjRHUxdgziDSPnE1keN8Q2qqq23Hg==",
+=======
   "dgSpecHash": "B/aO4mD41xUvvl8suM6YGm6fD04oBfemjwnw+mNGj2p7k2V8cmJOg+5bk79NW18Yc3rtA1EDaXLlkct+wTnKpA==",
+>>>>>>> 1806eaccc515a8dba0bd4d9b4537233131ffc188
   "success": true,
   "projectFilePath": "D:\\OfferVerse\\OfferVerse.csproj",
   "expectedPackageFiles": [
@@ -19,7 +23,11 @@
       "code": "Undefined",
       "level": "Warning",
       "warningLevel": 1,
+<<<<<<< HEAD
+      "message": "Problème de lecture du fichier cache I:\\BAC_2_développement_d_application\\Q2\\Projet_fin_annee\\dossier\\OfferVerse\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+=======
       "message": "Problem reading the cache file D:\\OfferVerse\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+>>>>>>> 1806eaccc515a8dba0bd4d9b4537233131ffc188
     }
   ]
 }
