@@ -41,17 +41,17 @@ namespace OfferVerse.Models
 
         }
 
-        public User(int memberId, 
-                    string email, 
-                    string password, 
-                    string firstName, 
-                    string lastName, 
-                    string phoneNumber, 
-                    string postCode, 
-                    string streetNumber, 
-                    string streetName, 
+        public User(int memberId,
+                    string email,
+                    string password,
+                    string firstName,
+                    string lastName,
+                    string phoneNumber,
+                    string postCode,
+                    string streetNumber,
+                    string streetName,
                     string city)
-            :base(memberId, email, password, firstName, lastName)
+            : base(memberId, email, password, firstName, lastName)
         {
             PhoneNumber = phoneNumber;
             PostCode = postCode;
@@ -65,6 +65,11 @@ namespace OfferVerse.Models
         public static User GetUserInfo(IUserDAL dal, int memberId)
         {
             return dal.GetUserInfo(memberId);
+        }
+
+        public static List<ServiceProvided> GetAllServicesProvided(IUserDAL dal, int memberId)
+        {
+            return dal.GetAllServicesProvided(memberId);
         }
     }
 }

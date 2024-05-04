@@ -1,0 +1,27 @@
+﻿@model List<ServiceProvided>
+
+<h1>List of provided services</h1>
+<table>
+    <tr>
+        <th>Titre</th>
+    
+        <th>Description</th>
+   
+        <th>Priority</th>
+    
+        <th>Date of Priority</th>
+    </tr>
+    @{
+        foreach(ServiceProvided sp in Model){
+            <tr>
+                <td>@sp.Title</td>
+            
+                <td>@sp.Description</td>
+                        
+                <td>@sp.Priority</td>
+                        
+                <td>@sp.DatePriority</td>
+            </tr>
+        }
+    }
+</table>
