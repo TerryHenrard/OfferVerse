@@ -65,5 +65,49 @@ namespace OfferVerse.DAL
 
             return user;
         }
+
+        public List<ServiceProvided> GetAllServicesProvided(int memberId)
+        {
+            List<ServiceProvided> sp = new List<ServiceProvided>();
+
+            try
+            {
+                using(SqlConnection connection = new(connectionString))
+                {
+                    SqlCommand cmd = new(
+                        "SELECT * FROM OfferVerse.dbo.ServicesProvided WHERE userId = @memberId",
+                        connection
+                        );
+
+                    cmd.Parameters.AddWithValue("@memberId", memberId);
+                    connection.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while(reader.Read())
+                        {
+                            int servicePId = reader.GetInt32("servicePId");
+                            string title = reader.GetString("title");
+                            string description = reader.GetString("description");
+                            bool priority = reader.GetBoolean("priority");
+                            DateTime datePriority = reader.GetDateTime("datePriority");
+
+                            ServiceProvided s = new ServiceProvided(servicePId, title, description, priority, datePriority);
+                            sp.Add(s);
+                        }
+                    }
+                }
+            }
+            catch(SqlException e)
+            {
+                throw new Exception("An SQL error occured : " + e.Message);
+            }
+            catch(Exception e)
+            {
+                throw new Exception("Error while getting the list of provided services : " + e.Message);
+            }
+
+            return sp;
+        }
     }
 }
