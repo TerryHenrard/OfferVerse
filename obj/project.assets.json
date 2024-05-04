@@ -470,40 +470,24 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
-    "C:\\Users\\henra\\.nuget\\packages\\": {}
-=======
     "C:\\Users\\gigiu\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
->>>>>>> 1806eaccc515a8dba0bd4d9b4537233131ffc188
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "I:\\BAC_2_développement_d_application\\Q2\\Projet_fin_annee\\dossier\\OfferVerse\\OfferVerse.csproj",
-      "projectName": "OfferVerse",
-      "projectPath": "I:\\BAC_2_développement_d_application\\Q2\\Projet_fin_annee\\dossier\\OfferVerse\\OfferVerse.csproj",
-      "packagesPath": "C:\\Users\\henra\\.nuget\\packages\\",
-      "outputPath": "I:\\BAC_2_développement_d_application\\Q2\\Projet_fin_annee\\dossier\\OfferVerse\\obj\\",
-=======
       "projectUniqueName": "D:\\OfferVerse\\OfferVerse.csproj",
       "projectName": "OfferVerse",
       "projectPath": "D:\\OfferVerse\\OfferVerse.csproj",
       "packagesPath": "C:\\Users\\gigiu\\.nuget\\packages\\",
       "outputPath": "D:\\OfferVerse\\obj\\",
->>>>>>> 1806eaccc515a8dba0bd4d9b4537233131ffc188
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-<<<<<<< HEAD
-        "C:\\Users\\henra\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
         "C:\\Users\\gigiu\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
->>>>>>> 1806eaccc515a8dba0bd4d9b4537233131ffc188
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -523,11 +507,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -558,24 +537,8 @@
             "privateAssets": "all"
           }
         },
-<<<<<<< HEAD
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
-=======
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
->>>>>>> 1806eaccc515a8dba0bd4d9b4537233131ffc188
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-<<<<<<< HEAD
-      "message": "Problème de lecture du fichier cache I:\\BAC_2_développement_d_application\\Q2\\Projet_fin_annee\\dossier\\OfferVerse\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-=======
-      "message": "Problem reading the cache file D:\\OfferVerse\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
->>>>>>> 1806eaccc515a8dba0bd4d9b4537233131ffc188
-    }
-  ]
+  }
 }
