@@ -87,6 +87,11 @@ namespace OfferVerse.Models
             City = city;
         }
 
+        public bool ApplyProfileChanges(IUserDAL dal)
+        {
+            return dal.ApplyProfileChanges(this);
+        }
+
         /******statics methods******/
 
         public static User GetUserInfo(IUserDAL dal, int memberId)

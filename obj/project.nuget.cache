@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "msNV6JXi3GNjuuXkY9v4JjLUtXQYvgtrPQurZwsLU2Wmaw7wG0X9E2izyQjRHUxdgziDSPnE1keN8Q2qqq23Hg==",
+  "dgSpecHash": "umBnYvAGqd3Zi4G8ICPgKQqAPMN6ljNAwQ4tN+7EHeF2d8AKuzBJxqo8Jbd1uNpiyHJ3jzEqcXNcJTts9kDHyA==",
   "success": true,
   "projectFilePath": "I:\\BAC_2_développement_d_application\\Q2\\Projet_fin_annee\\dossier\\OfferVerse\\OfferVerse.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\henra\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\henra\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\henra\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\henra\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
@@ -14,12 +15,5 @@
     "C:\\Users\\henra\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
     "C:\\Users\\henra\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problème de lecture du fichier cache I:\\BAC_2_développement_d_application\\Q2\\Projet_fin_annee\\dossier\\OfferVerse\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }

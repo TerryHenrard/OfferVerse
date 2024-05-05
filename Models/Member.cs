@@ -29,8 +29,9 @@ namespace OfferVerse.Models
 
         [Display(Name = "New password")]
         [MinLength(8, ErrorMessage = "8 characters minimum")]
-        [DataType(DataType.Text)]
-        [RegularExpression(@"^(?=.* [0 - 9])(?=.* [a - z])(?=.* [A - Z])(?=.*\W)(?!.* ).{8,}$", ErrorMessage = "Must contains at least 1 uppercase and 1 lowercase letter and a number")]
+        [DataType(DataType.Password)]
+        [RegularExpression(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$", ErrorMessage = "Must contains at least 1 uppercase and 1 lowercase letter and a number")]
+        [Required(ErrorMessage = "Password field required")]
         public string Password
         {
             get { return password; }
@@ -41,7 +42,7 @@ namespace OfferVerse.Models
         [MaxLength(50, ErrorMessage = "50 characters maximum")]
         [MinLength(2, ErrorMessage = "2 characters minimum")]
         [DataType(DataType.Text)]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "First name ield required")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "First name field required")]
         public string FirstName
         {
             get { return firstName; }
@@ -62,8 +63,11 @@ namespace OfferVerse.Models
         [Display(Name = "Confirm Password")]
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match")]
+        [Required(ErrorMessage = "Confirm password field required")]
         public string ConfirmPassword { get; set; } //only for the validation of the password
 
+        [Display(Name = "I change my password")]
+        public bool EditPassword {  get; set; }
 
         public Member()
         {

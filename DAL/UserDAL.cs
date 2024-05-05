@@ -1,4 +1,5 @@
-﻿using OfferVerse.DAL.Interfaces;
+﻿using Microsoft.AspNetCore.Identity;
+using OfferVerse.DAL.Interfaces;
 using OfferVerse.Models;
 using System.Data;
 using System.Data.SqlClient;
@@ -32,7 +33,7 @@ namespace OfferVerse.DAL
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.Read())
-                        {
+                        {                            
                             int memberId = reader.GetInt32("userId");
                             string email = reader.GetString("email");
                             string password = reader.GetString("password");
@@ -109,5 +110,55 @@ namespace OfferVerse.DAL
 
             return sp;
         }
+
+        public bool ApplyProfileChanges(User userProfil)
+        {
+            bool success = false;
+            bool editPassword = userProfil.EditPassword;
+            string query =
+                "UPDATE OfferVerse.dbo.Users " +
+                "SET phoneNumber = @phoneNumber, postCode = @postCode, streetName = @streetName, " +
+                "streetNumber = @streetNumber, city = @city, email = @email, firstName = @firstName, lastName = @lastName";
+
+            if (editPassword) 
+                query += ", password = @password";
+
+            query += " WHERE userId = @userId";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand cmd = new SqlCommand(query, connection);
+                    cmd.Parameters.AddWithValue("@phoneNumber", userProfil.PhoneNumber);
+                    cmd.Parameters.AddWithValue("@postCode", userProfil.PostCode);
+                    cmd.Parameters.AddWithValue("@streetName", userProfil.StreetName);
+                    cmd.Parameters.AddWithValue("@streetNumber", userProfil.StreetNumber);
+                    cmd.Parameters.AddWithValue("@city", userProfil.City);
+                    cmd.Parameters.AddWithValue("@email", userProfil.Email);
+                    cmd.Parameters.AddWithValue("@firstName", userProfil.FirstName);
+                    cmd.Parameters.AddWithValue("@lastName", userProfil.LastName);
+                    cmd.Parameters.AddWithValue("@userId", 1); //TODO: replace 1 with the id of the authenticated user in the session
+                    if (editPassword)
+                        cmd.Parameters.AddWithValue(
+                            "@password", 
+                            BCrypt.Net.BCrypt.EnhancedHashPassword(userProfil.Password, 13));
+
+                    connection.Open();
+                    success = cmd.ExecuteNonQuery() > 0;
+                }
+            }
+            catch (SqlException e)
+            {
+                throw new Exception("An SQL error occured : " + e.Message);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error while getting the list of provided services : " + e.Message);
+            }
+
+            return success;
+        }
+
     }
 }

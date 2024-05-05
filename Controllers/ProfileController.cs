@@ -15,28 +15,31 @@ namespace OfferVerse.Controllers
 
         public IActionResult ShowProfile()
         {
-            return View(AppUser.GetUserInfo(_userDAL, 1)); //TODO: replace 1 with the id of the authenticated user
+            return View(AppUser.GetUserInfo(_userDAL, 1)); //TODO: replace 1 with the id of the authenticated user in the session
         }
 
         public IActionResult EditProfile()
         {
             //I get the information of the current user to pre-fill the fields
-            return View(AppUser.GetUserInfo(_userDAL, 1)); //TODO: replace 1 with the id of the authenticated user
+            return View(AppUser.GetUserInfo(_userDAL, 1)); //TODO: replace 1 with the id of the authenticated user in the session
         }
 
         [HttpPost]
         public IActionResult EditProfile(AppUser user) 
         {
-            if (ModelState.IsValid /* && methode static d'ajout en db */)
+            int test = user.MemberId;
+            if (!user.EditPassword)
+            {
+                ModelState.Remove("Password");
+                ModelState.Remove("ConfirmPassword");
+            }
+            if (ModelState.IsValid && user.ApplyProfileChanges(_userDAL))
             {
                 TempData["message"] = "Profil edited with success";
                 return RedirectToAction(nameof(ShowProfile));
             }
-            else
-            {
-                TempData["message"] = "Error while editing profile please try again and if the problem persist contact an administrator";
-            }
-            return View(AppUser.GetUserInfo(_userDAL, 1)); //TODO: replace 1 with the id of the authenticated user
+            
+            return View(AppUser.GetUserInfo(_userDAL, 1)); //TODO: replace 1 with the id of the authenticated user in the session
         }
     }
 }
