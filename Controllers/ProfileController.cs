@@ -13,9 +13,33 @@ namespace OfferVerse.Controllers
             _userDAL = userDAL;
         }
 
-        public IActionResult Profile()
+        public IActionResult ShowProfile()
         {
-            return View(AppUser.GetUserInfo(_userDAL, 1));
+            return View(AppUser.GetUserInfo(_userDAL, 1)); //TODO: replace 1 with the id of the authenticated user in the session
+        }
+
+        public IActionResult EditProfile()
+        {
+            //I get the information of the current user to pre-fill the fields
+            return View(AppUser.GetUserInfo(_userDAL, 1)); //TODO: replace 1 with the id of the authenticated user in the session
+        }
+
+        [HttpPost]
+        public IActionResult EditProfile(AppUser user) 
+        {
+            int test = user.MemberId;
+            if (!user.EditPassword)
+            {
+                ModelState.Remove("Password");
+                ModelState.Remove("ConfirmPassword");
+            }
+            if (ModelState.IsValid && user.ApplyProfileChanges(_userDAL))
+            {
+                TempData["message"] = "Profil edited with success";
+                return RedirectToAction(nameof(ShowProfile));
+            }
+            
+            return View(AppUser.GetUserInfo(_userDAL, 1)); //TODO: replace 1 with the id of the authenticated user in the session
         }
     }
 }

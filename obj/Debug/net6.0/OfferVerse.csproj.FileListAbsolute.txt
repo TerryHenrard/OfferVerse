@@ -75,3 +75,4 @@ D:\OfferVerse\obj\Debug\net6.0\refint\OfferVerse.dll
 D:\OfferVerse\obj\Debug\net6.0\OfferVerse.pdb
 D:\OfferVerse\obj\Debug\net6.0\OfferVerse.genruntimeconfig.cache
 D:\OfferVerse\obj\Debug\net6.0\ref\OfferVerse.dll
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse\bin\Debug\net6.0\BCrypt.Net-Next.dll
