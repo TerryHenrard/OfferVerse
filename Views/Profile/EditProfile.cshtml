@@ -1,0 +1,142 @@
+﻿@model User;
+
+
+@{
+    if (ViewData["message"] != null)
+    {
+        <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    @ViewData["message"]
+                </div>
+            </div>
+        </div>        
+    }
+}
+
+<!--
+//TODO: faire une td pour chaque span 
+//TODO: comprendre pq mdp prb
+//TODO: ajouter boolean pour savoir si check mdp ou pas
+//TODO: méthode pour UPDATE info user en db
+-->
+<h2><span class="text-uppercase">@Model.FirstName @Model.LastName</span>, You can now edit your profile</h2>
+<form method="post" asp-action="EditProfile">
+    <table class="table table-striped table-bordered table-hover">
+        <tr>
+            <th>
+                <label asp-for="FirstName"></label>
+            </th>
+            <td>
+                <input asp-for="FirstName"/>
+                <span asp-validation-for="FirstName" class="text-danger px-2"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                <label asp-for="LastName"></label>
+            </th>
+            <td>
+                <input asp-for="LastName" />
+                <span asp-validation-for="LastName" class="text-danger px-2"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                <label asp-for="PhoneNumber"></label>
+            </th>
+            <td>
+                <input asp-for="PhoneNumber" />
+                <span asp-validation-for="PhoneNumber" class="text-danger px-2"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                <label asp-for="PhoneNumber"></label>
+            </th>
+            <td>
+                <input asp-for="PhoneNumber" />
+                <span asp-validation-for="PhoneNumber" class="text-danger px-2"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                <label asp-for="StreetNumber"></label>
+            </th>
+            <td>
+                <input asp-for="StreetNumber" />
+                <span asp-validation-for="StreetNumber" class="text-danger px-2"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                <label asp-for="StreetName"></label>
+            </th>
+            <td>
+                <input asp-for="StreetName" />
+                <span asp-validation-for="StreetName" class="text-danger px-2"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                <label asp-for="PostCode"></label>
+            </th>
+            <td>
+                <input asp-for="PostCode" />
+                <span asp-validation-for="PostCode" class="text-danger px-2"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                <label asp-for="City"></label>
+            </th>
+            <td>
+                <input asp-for="City" />
+                <span asp-validation-for="City" class="text-danger px-2"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                <label asp-for="Email"></label>
+            </th>
+            <td>
+                <input asp-for="Email" />
+                <span asp-validation-for="Email" class="text-danger px-2"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                <label asp-for="Password"></label>
+                </th>
+            <td>
+                <input asp-for="Password"/>
+                <span asp-validation-for="Password" class="text-danger px-2"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                <label asp-for="ConfirmPassword"></label>
+            </th>
+            <td>
+                <input asp-for="ConfirmPassword" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger px-2"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Validate" class="btn btn-success"/>
+            </td>
+        </tr>
+    </table>
+</form>

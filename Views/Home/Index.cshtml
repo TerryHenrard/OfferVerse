@@ -3,7 +3,9 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome to <span>OfferVerse</span></h1>
-    <a asp-controller="Profile" asp-action="Profile">Profil</a>
-    <a asp-controller="MyServices" asp-action="MyServices">Mes Services</a>
+    <h1 class="display-4 my-5">Welcome to <span>OfferVerse</span></h1>
+    <div class="d-flex align-items-center justify-content-center flex-column gap-lg-3">
+        <a asp-controller="Profile" asp-action="ShowProfile" class="fs-4">Profile</a>
+        <a asp-controller="MyServices" asp-action="MyServices" class="fs-4">My services</a>
+    </div>
 </div>

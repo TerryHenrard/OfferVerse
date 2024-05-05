@@ -44,7 +44,7 @@ namespace OfferVerse.DAL
                             string streetNumber = reader.GetString("streetNumber");
                             string city = reader.GetString("city");
 
-                            user = new(memberId, email, password, firstName, lastName, phoneNumber, postCode, streetName, streetNumber, city);
+                            user = new(memberId, email, password, firstName, lastName, phoneNumber, postCode, streetNumber, streetName, city);
                         }
                         else
                         {
