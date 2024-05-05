@@ -10,6 +10,7 @@ namespace OfferVerse.Models
         private string streetNumber;
         private string streetName;
         private string city;
+        private int timeCredits;
 
         [Display(Name = "Phone number")]
         [MaxLength(50, ErrorMessage = "50 characters maximum")]
@@ -63,6 +64,12 @@ namespace OfferVerse.Models
             set { city = value; }
         }
 
+        public int TimeCredits
+        {
+            get { return timeCredits; }
+            set { timeCredits = value; }
+        }
+
         public User()
         {
 
@@ -77,7 +84,8 @@ namespace OfferVerse.Models
                     string postCode,
                     string streetNumber,
                     string streetName,
-                    string city)
+                    string city,
+                    int timeCredits)
             : base(memberId, email, password, firstName, lastName)
         {
             PhoneNumber = phoneNumber;
@@ -85,6 +93,7 @@ namespace OfferVerse.Models
             StreetNumber = streetNumber;
             StreetName = streetName;
             City = city;
+            TimeCredits = timeCredits;
         }
 
         public bool ApplyProfileChanges(IUserDAL dal)

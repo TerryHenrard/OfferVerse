@@ -25,6 +25,7 @@ namespace OfferVerse.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult EditProfile(AppUser user) 
         {
             int test = user.MemberId;
@@ -40,6 +41,11 @@ namespace OfferVerse.Controllers
             }
             
             return View(AppUser.GetUserInfo(_userDAL, 1)); //TODO: replace 1 with the id of the authenticated user in the session
+        }
+
+        public IActionResult ShowCreditsTransactions()
+        {
+            return View();
         }
     }
 }

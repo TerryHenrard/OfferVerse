@@ -11,6 +11,8 @@ string connectionString = builder.Configuration.GetConnectionString("default");
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IUserDAL>(ud => new UserDAL(connectionString));
 
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -20,6 +22,11 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+/*
+services.AddSession();
+services.AddMvc().AddSessionStateTempDataProvider(); // Pour utiliser le fournisseur de TempData basé sur la session
+*/
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

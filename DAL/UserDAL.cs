@@ -44,8 +44,9 @@ namespace OfferVerse.DAL
                             string streetName = reader.GetString("streetName");
                             string streetNumber = reader.GetString("streetNumber");
                             string city = reader.GetString("city");
+                            int timeCredits = reader.GetInt32("timeCredits");
 
-                            user = new(memberId, email, password, firstName, lastName, phoneNumber, postCode, streetNumber, streetName, city);
+                            user = new(memberId, email, password, firstName, lastName, phoneNumber, postCode, streetNumber, streetName, city, timeCredits);
                         }
                         else
                         {
@@ -139,10 +140,13 @@ namespace OfferVerse.DAL
                     cmd.Parameters.AddWithValue("@firstName", userProfil.FirstName);
                     cmd.Parameters.AddWithValue("@lastName", userProfil.LastName);
                     cmd.Parameters.AddWithValue("@userId", 1); //TODO: replace 1 with the id of the authenticated user in the session
+
                     if (editPassword)
+                    {
                         cmd.Parameters.AddWithValue(
                             "@password", 
                             BCrypt.Net.BCrypt.EnhancedHashPassword(userProfil.Password, 13));
+                    }
 
                     connection.Open();
                     success = cmd.ExecuteNonQuery() > 0;
