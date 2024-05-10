@@ -153,9 +153,9 @@ namespace OfferVerse.Models
         {
             return dal.GetAllServicesProvided(memberId);
         }
-        public static List<ServiceDemanded> GetTransactions(IUserDAL dal, int memberId)
+        public static List<ServiceDemanded> GetTransactions(IUserDAL dal, int memberId, bool inProgess = false)
         {
-            return dal.GetTransactions(memberId);
+            return dal.GetTransactions(memberId, inProgess);
         }
 
         /******Existant methods overrided*******/
