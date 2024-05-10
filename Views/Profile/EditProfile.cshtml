@@ -1,12 +1,7 @@
 ﻿@model User;
 
-<!--
-//TODO: faire une td pour chaque span 
-//TODO: comprendre pq mdp prb
-//TODO: ajouter boolean pour savoir si check mdp ou pas
-//TODO: méthode pour UPDATE info user en db
--->
-<h2 class="my-5"><span class="text-uppercase">@Model.FirstName @Model.LastName</span>, You can now edit your profile</h2>
+<h2 class="my-5">@Model.LastName.ToUpper() @Model.FirstName[0].ToString().ToUpper()@Model.FirstName.Substring(1), You can now edit your profile</h2> <!--Add name in TempData["***"] to have it everywhere-->
+
 <form method="post" asp-action="EditProfile">
     <table class="table table-striped table-bordered table-hover">
         <tr>

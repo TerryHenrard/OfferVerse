@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OfferVerse.DAL.Interfaces;
+using OfferVerse.Models;
+using OfferVerse.ViewModels;
 using AppUser = OfferVerse.Models.User;
 
 namespace OfferVerse.Controllers
@@ -28,7 +30,6 @@ namespace OfferVerse.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult EditProfile(AppUser user) 
         {
-            int test = user.MemberId;
             if (!user.EditPassword)
             {
                 ModelState.Remove("Password");
@@ -45,7 +46,14 @@ namespace OfferVerse.Controllers
 
         public IActionResult ShowCreditsTransactions()
         {
-            return View();
+            AppUser user = AppUser.GetUserInfo(_userDAL, 4); //TODO: replace 4 with the id of the authenticated user in the session
+            List<ServiceDemanded> servicesDemanded = AppUser.GetTransactions(_userDAL, 4); //TODO: replace 4 with the id of the authenticated user in the session
+
+            UserTransactionsViewModel viewModel = new UserTransactionsViewModel();
+            viewModel.ServicesDemanded = servicesDemanded;
+            viewModel.User = new(user.MemberId, user.FirstName, user.LastName);
+    
+            return View(viewModel);
         }
     }
 }

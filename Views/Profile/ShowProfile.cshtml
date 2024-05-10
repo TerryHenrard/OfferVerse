@@ -1,8 +1,8 @@
 ﻿@model User
-<h2 class="my-5">Welcome to your profile page <span class="text-uppercase">@Model.FirstName @Model.LastName</span></h2>
+<h2 class="my-5">@Model.LastName.ToUpper() @Model.FirstName[0].ToString().ToUpper()@Model.FirstName.Substring(1), Welcome to your profile page</h2> <!--Add name in TempData["***"] to have it everywhere-->
 
 @{
-    if (TempData["message"] != null)
+    if (TempData["message"] != null && Convert.ToString(TempData["message"]) == "Profil edited with success")
     {
         <div class="alert alert-success" role="alert">
             <h4 class="alert-heading">Well done!</h4>
