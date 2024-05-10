@@ -49,10 +49,26 @@ namespace OfferVerse.Controllers
             AppUser user = AppUser.GetUserInfo(_userDAL, 4); //TODO: replace 4 with the id of the authenticated user in the session
             List<ServiceDemanded> servicesDemanded = AppUser.GetTransactions(_userDAL, 4); //TODO: replace 4 with the id of the authenticated user in the session
 
-            UserTransactionsViewModel viewModel = new UserTransactionsViewModel();
-            viewModel.ServicesDemanded = servicesDemanded;
-            viewModel.User = new(user.MemberId, user.FirstName, user.LastName);
-    
+            UserTransactionsViewModel viewModel = new()
+            {
+                ServicesDemanded = servicesDemanded,
+                User = new(user.MemberId, user.FirstName, user.LastName)
+            };
+
+            return View(viewModel);
+        }
+        
+        public IActionResult ShowInProgressServices()
+        {
+            AppUser user = AppUser.GetUserInfo(_userDAL, 4); //TODO: replace 4 with the id of the authenticated user in the session
+            List<ServiceDemanded> servicesDemanded = AppUser.GetTransactions(_userDAL, 4, true); //TODO: replace 4 with the id of the authenticated user in the session
+
+            UserTransactionsViewModel viewModel = new()
+            {
+                ServicesDemanded = servicesDemanded,
+                User = new(user.MemberId, user.FirstName, user.LastName)
+            };
+
             return View(viewModel);
         }
     }

@@ -3,6 +3,7 @@ using OfferVerse.DAL.Interfaces;
 using OfferVerse.Models;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 
 namespace OfferVerse.DAL
 {
@@ -164,35 +165,41 @@ namespace OfferVerse.DAL
             return success;
         }
 
-        public List<ServiceDemanded> GetTransactions(int memberId)
+        public List<ServiceDemanded> GetTransactions(int memberId, bool inProgress)
         {
             List<ServiceDemanded> ServicesD = new List<ServiceDemanded>();
 
             using (SqlConnection connection = new(connectionString))
             {
-                SqlCommand cmd = new SqlCommand(
-                    @"SELECT
-                        sd.serviceDId [ServiceDId],
-                        sd.startService [Start date],
-                        sd.endService [End date],
-                        UDemander.userId [Demander Id],
-                        UDemander.firstName [Demander first name],
-                        UDemander.lastName [Demander last name],
-                        UProvider.userId [Provider Id],
-                        UProvider.firstName [Provider first name],
-                        UProvider.lastName [Provider last name],
-                        sp.servicePId [Service provided Id],
-                        sp.title [Title],
-                        sp.description [Description],
-                        sd.nbHours [Amount of the transaction]
-                    FROM Users u
-                    INNER JOIN ServicesDemanded sd ON u.userId = sd.serviceProvider_userId OR u.userId = sd.serviceDemander_userId  
-                    INNER JOIN ServicesProvided sp ON sd.serviceProvidedId = sp.servicePId
-                    INNER JOIN Users UDemander ON UDemander.userId = sd.serviceDemander_userId 
-                    INNER JOIN Users UProvider ON UProvider.userId = sd.serviceProvider_userId 
-                    WHERE u.userId = @userId AND sd.endService IS NOT NULL
-                    ORDER BY sd.endService DESC", connection);
-                cmd.Parameters.AddWithValue("@userId", 4); //TODO: replace 1 with the id of the authenticated user in the session
+                string query = @"SELECT
+                                    sd.serviceDId [ServiceDId],
+                                    sd.startService [Start date],
+                                    sd.endService [End date],
+                                    UDemander.userId [Demander Id],
+                                    UDemander.firstName [Demander first name],
+                                    UDemander.lastName [Demander last name],
+                                    UProvider.userId [Provider Id],
+                                    UProvider.firstName [Provider first name],
+                                    UProvider.lastName [Provider last name],
+                                    sp.servicePId [Service provided Id],
+                                    sp.title [Title],
+                                    sp.description [Description],
+                                    sd.nbHours [Amount of the transaction]
+                                FROM Users u
+                                INNER JOIN ServicesDemanded sd ON u.userId = sd.serviceProvider_userId OR u.userId = sd.serviceDemander_userId  
+                                INNER JOIN ServicesProvided sp ON sd.serviceProvidedId = sp.servicePId
+                                INNER JOIN Users UDemander ON UDemander.userId = sd.serviceDemander_userId 
+                                INNER JOIN Users UProvider ON UProvider.userId = sd.serviceProvider_userId 
+                                WHERE u.userId = @userId AND sd.endService";
+                if (inProgress)
+                    query += " IS NULL";
+                else
+                    query += " IS NOT NULL";
+
+                query += " ORDER BY sd.startService DESC";
+
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@userId", memberId);
                 connection.Open();
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -200,8 +207,14 @@ namespace OfferVerse.DAL
                     while (reader.Read())
                     {
                         int serviceDId = reader.GetInt32("ServiceDId");
-                        DateTime startService = reader.GetDateTime("Start date"); //We have to proceed like this because in ssms dates are in format "yyyy-dd-MM"
-                        DateTime endService = reader.GetDateTime("End date");
+                        DateTime startService = reader.GetDateTime("Start date");
+
+                        DateTime? endService = null;
+                        if (!reader.IsDBNull("End date"))
+                        {
+                            endService = reader.GetDateTime("End date");
+                        }
+
                         int DId = reader.GetInt32("Demander Id");
                         string DFirstName = reader.GetString("Demander first name");
                         string DLastName = reader.GetString("Demander last name");
@@ -211,23 +224,27 @@ namespace OfferVerse.DAL
                         int SPId = reader.GetInt32("Service provided Id");
                         string title = reader.GetString("Title");
                         string description = reader.GetString("Description");
-                        int hours = reader.GetInt32("Amount of the transaction");
 
-                        ServicesD.Add(new(serviceDId,
-                                          startService,
-                                          endService,
-                                          hours,
-                                          PId,
-                                          PFirstName,
-                                          PLastName,
-                                          DId,
-                                          DFirstName,
-                                          DLastName,
-                                          SPId,
-                                          title,
+                        int? hours = null;
+                        if (!reader.IsDBNull("Amount of the transaction"))
+                        {
+                            hours = reader.GetInt32("Amount of the transaction");
+                        }
+
+                        ServicesD.Add(new(serviceDId, 
+                                          startService, 
+                                          endService, 
+                                          hours, 
+                                          PId, 
+                                          PFirstName, 
+                                          PLastName, 
+                                          DId, 
+                                          DFirstName, 
+                                          DLastName, 
+                                          SPId, 
+                                          title, 
                                           description));
                     }
-
                 }
             }
             return ServicesD;

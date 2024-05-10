@@ -4,10 +4,10 @@ namespace OfferVerse.Models
 {
     public class ServiceDemanded
     {
-        private int serviceId;
+        private readonly int serviceId;
         private DateTime startService;
-        private DateTime endService;
-        private int nbHours;
+        private DateTime? endService;
+        private int? nbHours;
 
         /******References******/
         private User serviceProvider;
@@ -25,12 +25,12 @@ namespace OfferVerse.Models
             set { startService = value; }
         }
 
-        public DateTime EndService
+        public DateTime? EndService
         {
             get { return endService; }
             set 
             {
-                if (value >= StartService)
+                if (value >= StartService || value == null)
                 {
                     endService = value;
                 }
@@ -40,7 +40,7 @@ namespace OfferVerse.Models
                 }
             }
         }
-        public int NbHours
+        public int? NbHours
         {
             get { return nbHours; }
             set { nbHours = value; }
@@ -64,7 +64,7 @@ namespace OfferVerse.Models
             set { serviceProvided = value; }
         }
 
-        public ServiceDemanded(int serviceId, DateTime startService, DateTime endService, int nbHours)
+        public ServiceDemanded(int serviceId, DateTime startService, DateTime? endService, int? nbHours)
         {
             this.serviceId = serviceId;
             StartService = startService;
@@ -74,8 +74,8 @@ namespace OfferVerse.Models
 
         public ServiceDemanded(int serviceId, 
                                DateTime startService, 
-                               DateTime endService, 
-                               int nbHours, 
+                               DateTime? endService, 
+                               int? nbHours, 
                                int PId, 
                                string PFirstName, 
                                string PLastName,
