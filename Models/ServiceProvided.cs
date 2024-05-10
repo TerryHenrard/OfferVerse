@@ -11,7 +11,6 @@
         public int ServiceProvidedId 
         {  
             get { return serviceProvidedId; } 
-            set { serviceProvidedId = value; }
         }
         public string Title 
         { 
@@ -36,11 +35,18 @@
 
         public ServiceProvided(int serviceProvidedId, string title, string description, bool priority, DateTime datePriority)
         {
-            ServiceProvidedId = serviceProvidedId;
+            this.serviceProvidedId = serviceProvidedId;
             Title = title;
             Description = description;
             Priority = priority;
             DatePriority = datePriority;
+        }
+
+        public ServiceProvided(int serviceProvidedId, string title, string description)
+        {
+            this.serviceProvidedId = serviceProvidedId;
+            Title = title;
+            Description = description;
         }
 
         public override string ToString()

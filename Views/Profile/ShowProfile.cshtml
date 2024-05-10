@@ -1,19 +1,20 @@
 ﻿@model User
-<h2 class="my-5">Welcome to your profile page <span class="text-uppercase">@Model.FirstName @Model.LastName</span></h2>
+<h2 class="my-5">@Model.LastName.ToUpper() @Model.FirstName[0].ToString().ToUpper()@Model.FirstName.Substring(1), Welcome to your profile page</h2> <!--Add name in TempData["***"] to have it everywhere-->
 
 @{
-    if (TempData["message"] != null)
+    if (TempData["message"] != null && Convert.ToString(TempData["message"]) == "Profil edited with success")
     {
         <div class="alert alert-success" role="alert">
             <h4 class="alert-heading">Well done!</h4>
-            <p>You have just edited your profile successfully, you can now see your changes below.</p>
+            <p>Your profile has been successfully edited. You can now see the changes below.</p>
             <hr />
-            <p class="mb-0">If the changes didn't appear, please report it at <a href="mailto:administrators@offerverse.com">administrators@offerverse.com</a>.</p>
+            <p class="mb-0">If the changes do not appear, please report this to <a href="mailto:administrators@offerverse.com">administrators@offerverse.com</a>.</p>
         </div>
     }
 }
 
 <table class="table table-striped table-bordered table-hover">
+    <tr></tr>
     <tr>
         <th>First name</th>
         <td>@Model.FirstName</td>
@@ -38,12 +39,11 @@
         <th>Password</th>
         <td>●●●●●●●</td>
     </tr>
-    <tr>
-        <td>
-            <a asp-controller="Home" asp-action="Index" class="btn btn-dark my-2 p-2 px-4">Back</a>
-        </td>
-        <td>
-            <a asp-action="EditProfile" class="btn btn-warning my-2 p-2 px-4">Edit profile</a>
-        </td>
-    </tr>
 </table>
+
+<div class="d-flex gap-xl-5 justify-content-between">
+    <a asp-controller="Home" asp-action="Index" class="btn btn-dark my-2 p-2 px-4 col-3">Back</a>
+    <a asp-action="EditProfile" class="btn btn-warning my-2 p-2 px-4 col-3">Edit profile</a>
+    <a asp-action="ShowCreditsTransactions" class="btn btn-info my-2 p-2 col-3">Check credits transactions</a>   
+</div>
+        

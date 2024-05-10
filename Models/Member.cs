@@ -69,11 +69,6 @@ namespace OfferVerse.Models
         [Display(Name = "I change my password")]
         public bool EditPassword {  get; set; }
 
-        public Member()
-        {
-
-        }
-
         public Member(int memberId, string email, string password, string firstName, string lastName)
         {
             this.memberId = memberId;
@@ -81,6 +76,38 @@ namespace OfferVerse.Models
             Password = password;
             FirstName = firstName;
             LastName = lastName;
+        }
+
+        public Member(int memberId, string firstName, string lastName)
+        {
+            this.memberId = memberId;
+            FirstName = firstName;
+            LastName = lastName;
+        }
+
+        public Member()
+        {
+
+        }
+
+        /******Existant methods overrided*******/
+        public override string ToString()
+        {
+            return $"{memberId}, {email}, {password}, {firstName}, {lastName}";
+        }
+
+        public override int GetHashCode()
+        {
+            return ToString().GetHashCode();
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            return ToString() == obj.ToString();
         }
     }
 }

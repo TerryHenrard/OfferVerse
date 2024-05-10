@@ -5,12 +5,20 @@ namespace OfferVerse.Models
 {
     public class User : Member
     {
+        /******Attributs******/
         private string phoneNumber;
         private string postCode;
         private string streetNumber;
         private string streetName;
         private string city;
+        private int timeCredits;
 
+        /******References******/
+        List<ServiceDemanded>? servicesDemanded;
+        List<ServiceProvided>? servicesProvided;
+
+
+        /******Properties******/
         [Display(Name = "Phone number")]
         [MaxLength(50, ErrorMessage = "50 characters maximum")]
         [MinLength(2, ErrorMessage = "8 characters minimum")]
@@ -63,6 +71,25 @@ namespace OfferVerse.Models
             set { city = value; }
         }
 
+        public int TimeCredits
+        {
+            get { return timeCredits; }
+            set { timeCredits = value; }
+        }
+
+        public List<ServiceDemanded>? ServicesDemanded
+        {
+            get { return  servicesDemanded; }
+            set { servicesDemanded = value; }
+        }
+
+        public List<ServiceProvided>? ServicesProvided
+        {
+            get { return servicesProvided; }
+            set { servicesProvided = value; }
+        }
+
+        /******Constructors******/
         public User()
         {
 
@@ -77,7 +104,8 @@ namespace OfferVerse.Models
                     string postCode,
                     string streetNumber,
                     string streetName,
-                    string city)
+                    string city,
+                    int timeCredits)
             : base(memberId, email, password, firstName, lastName)
         {
             PhoneNumber = phoneNumber;
@@ -85,6 +113,29 @@ namespace OfferVerse.Models
             StreetNumber = streetNumber;
             StreetName = streetName;
             City = city;
+            TimeCredits = timeCredits;
+            ServicesDemanded = null;
+            ServicesProvided = null;
+        }
+
+        public User(int id, string firstName, string lastName)
+            :base(id, firstName, lastName)
+        {
+            
+        }
+
+        /******Traditionnals methods******/
+        public bool AddServiceDemanded(ServiceDemanded sd)
+        {
+            bool result = false;
+            if (sd != null && 
+                ServicesDemanded != null && 
+                !ServicesDemanded.Contains(sd))
+            {
+                ServicesDemanded.Add(sd);
+                result = true;
+            }
+            return result;
         }
 
         public bool ApplyProfileChanges(IUserDAL dal)
@@ -93,7 +144,6 @@ namespace OfferVerse.Models
         }
 
         /******statics methods******/
-
         public static User GetUserInfo(IUserDAL dal, int memberId)
         {
             return dal.GetUserInfo(memberId);
@@ -102,6 +152,31 @@ namespace OfferVerse.Models
         public static List<ServiceProvided> GetAllServicesProvided(IUserDAL dal, int memberId)
         {
             return dal.GetAllServicesProvided(memberId);
+        }
+        public static List<ServiceDemanded> GetTransactions(IUserDAL dal, int memberId)
+        {
+            return dal.GetTransactions(memberId);
+        }
+
+        /******Existant methods overrided*******/
+        public override string ToString()
+        {
+            return base.ToString() +  $", {PhoneNumber}, {PostCode}, {StreetNumber}, " +
+                $"{StreetName}, {City}, {TimeCredits}, {ServicesDemanded}, {ServicesProvided}";
+        }
+
+        public override int GetHashCode()
+        {
+            return ToString().GetHashCode();
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            return ToString() == obj.ToString();
         }
     }
 }
