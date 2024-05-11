@@ -85,6 +85,11 @@ namespace OfferVerse.Models
             LastName = lastName;
         }
 
+        public Member(int memberId)
+        {
+            this.memberId= memberId;
+        }
+
         public Member()
         {
 

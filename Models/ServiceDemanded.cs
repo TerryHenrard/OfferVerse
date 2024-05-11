@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 
 namespace OfferVerse.Models
 {
@@ -40,10 +41,24 @@ namespace OfferVerse.Models
                 }
             }
         }
+
+        [Display(Name = "Number of hours spent")]
+        [Range(1, 200, ErrorMessage = "The number of hours spent cannot be less of 1 or greater than 200")]
+        [Required(ErrorMessage = "A number of hours is required")]
         public int? NbHours
         {
             get { return nbHours; }
-            set { nbHours = value; }
+            set 
+            {
+                if ((value >= 1 && value <= 200) || value == null)
+                {
+                    nbHours = value;
+                }
+                else
+                {
+                    throw new Exception("The number of hours cannot be less than 0 or greater than 200");
+                }
+            }
         }
 
         public User ServiceProvider
@@ -70,6 +85,14 @@ namespace OfferVerse.Models
             StartService = startService;
             EndService = endService;
             NbHours = nbHours;
+        }
+
+        public ServiceDemanded(int serviceId, DateTime startService, int PId, string PFirstName, string PLastName, int SPId, string title, string descrption)
+        {
+            this.serviceId= serviceId;
+            StartService = startService;
+            ServiceProvider = new User(PId, PFirstName, PLastName);
+            ServiceProvided = new ServiceProvided(SPId, title, descrption);
         }
 
         public ServiceDemanded(int serviceId, 

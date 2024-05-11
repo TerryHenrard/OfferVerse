@@ -7,7 +7,7 @@ const ckbEditPassword = document.getElementById("EditPassword");
 document.addEventListener("DOMContentLoaded", () => {
     hideOrDisplayPasswords();
 
-    ckbEditPassword.addEventListener("click", (e) => hideOrDisplayPasswords());
+    ckbEditPassword.addEventListener("click", () => hideOrDisplayPasswords());
 });
 
 const hideOrDisplayPasswords = () => {

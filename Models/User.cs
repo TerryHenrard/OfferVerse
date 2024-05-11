@@ -94,6 +94,12 @@ namespace OfferVerse.Models
         {
 
         }
+        
+        public User(int userId)
+            :base(userId)
+        {
+       
+        }
 
         public User(int memberId,
                     string email,
@@ -143,7 +149,7 @@ namespace OfferVerse.Models
             return dal.ApplyProfileChanges(this);
         }
 
-        /******statics methods******/
+        /******static methods******/
         public static User GetUserInfo(IUserDAL dal, int memberId)
         {
             return dal.GetUserInfo(memberId);
@@ -156,6 +162,10 @@ namespace OfferVerse.Models
         public static List<ServiceDemanded> GetTransactions(IUserDAL dal, int memberId, bool inProgess = false)
         {
             return dal.GetTransactions(memberId, inProgess);
+        }
+        public static ServiceDemanded GetInProgressTransaction(IUserDAL dal, int serviceDId)
+        {
+            return dal.GetInProgressTransaction(serviceDId);
         }
 
         /******Existant methods overrided*******/

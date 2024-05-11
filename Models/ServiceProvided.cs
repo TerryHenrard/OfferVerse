@@ -48,6 +48,11 @@
             Title = title;
             Description = description;
         }
+        
+        public ServiceProvided(int serviceProvidedId)
+        {
+            this.serviceProvidedId = serviceProvidedId;
+        }
 
         public override string ToString()
         {

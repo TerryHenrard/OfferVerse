@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3s2Wb3QZjxvpG+eojsjwRBXpitH1ZIkRrni7g7445bc=",
+  "Hash": "PGcVur5OAGaZXw+hSqJ8kHzivivAOUYolpT+HdcSnmg=",
   "Source": "OfferVerse",
   "BasePath": "_content/OfferVerse",
   "Mode": "Default",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "I:\\BAC_2_développement_d_application\\Q2\\Projet_fin_annee\\dossier\\OfferVerse\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\OfferVerse.bundle.scp.css"
+    },
+    {
+      "Identity": "I:\\BAC_2_développement_d_application\\Q2\\Projet_fin_annee\\dossier\\OfferVerse\\wwwroot\\css\\FinalizeService.css",
+      "SourceId": "OfferVerse",
+      "SourceType": "Discovered",
+      "ContentRoot": "I:\\BAC_2_développement_d_application\\Q2\\Projet_fin_annee\\dossier\\OfferVerse\\wwwroot\\",
+      "BasePath": "_content/OfferVerse",
+      "RelativePath": "css/FinalizeService.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\FinalizeService.css"
     },
     {
       "Identity": "I:\\BAC_2_développement_d_application\\Q2\\Projet_fin_annee\\dossier\\OfferVerse\\wwwroot\\css\\site.css",
@@ -110,6 +129,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\EditProfile.js"
+    },
+    {
+      "Identity": "I:\\BAC_2_développement_d_application\\Q2\\Projet_fin_annee\\dossier\\OfferVerse\\wwwroot\\js\\FinalizeService.js",
+      "SourceId": "OfferVerse",
+      "SourceType": "Discovered",
+      "ContentRoot": "I:\\BAC_2_développement_d_application\\Q2\\Projet_fin_annee\\dossier\\OfferVerse\\wwwroot\\",
+      "BasePath": "_content/OfferVerse",
+      "RelativePath": "js/FinalizeService.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\FinalizeService.js"
     },
     {
       "Identity": "I:\\BAC_2_développement_d_application\\Q2\\Projet_fin_annee\\dossier\\OfferVerse\\wwwroot\\js\\site.js",

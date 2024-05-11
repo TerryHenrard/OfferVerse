@@ -9,10 +9,12 @@ namespace OfferVerse.Controllers
     public class ProfileController : Controller
     {
         private readonly IUserDAL _userDAL;
+        private readonly ICommentaryDAL _commentaryDAL;
 
-        public ProfileController(IUserDAL userDAL)
+        public ProfileController(IUserDAL userDAL, ICommentaryDAL commentaryDAL)
         {
             _userDAL = userDAL;
+            _commentaryDAL = commentaryDAL;
         }
 
         public IActionResult ShowProfile()
@@ -70,6 +72,61 @@ namespace OfferVerse.Controllers
             };
 
             return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ActionName("FinalizeService")]
+        public IActionResult FinalizeService(string serviceId)
+        {
+            return View(new FinalizeServiceViewModel()
+            {
+                ServiceDemanded = AppUser.GetInProgressTransaction(_userDAL, Convert.ToInt32(serviceId)),
+                Commentary = new(),
+                Report = new()
+            });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ActionName("FinalizeService-Commentary")]
+        public IActionResult FinalizeService(Commentary commentary, int nbHours, string serviceId)
+        {
+            //TODO: terminer l'insertion en db du commentaire et compléter avec le bon nombre d'heure et la date de fin de service !!!
+            if (ModelState.IsValid && Commentary.InsertCommentary(_commentaryDAL, commentary))
+            {
+                return RedirectToAction(nameof(ShowInProgressServices));
+            }
+            else
+            {
+                return View("FinalizeService", new FinalizeServiceViewModel()
+                {
+                    ServiceDemanded = AppUser.GetInProgressTransaction(_userDAL, Convert.ToInt32(serviceId)),
+                    Commentary = new(),
+                    Report = new()
+                });
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ActionName("FinalizeService-Report")]
+        public IActionResult FinalizeService(Report report, string serviceId)
+        {
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction(nameof(ShowInProgressServices));
+            }
+            else
+            {
+                ViewData["ReportFormSubmittedWithErrors"] = true;
+                return View("FinalizeService", new FinalizeServiceViewModel()
+                {
+                    ServiceDemanded = AppUser.GetInProgressTransaction(_userDAL, Convert.ToInt32(serviceId)),
+                    Commentary = new(),
+                    Report = new()
+                });
+            }
         }
     }
 }

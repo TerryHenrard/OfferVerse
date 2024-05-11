@@ -1,19 +1,21 @@
 ﻿@using OfferVerse.ViewModels
 @model UserTransactionsViewModel
 
-<h2 class="my-5"><span>@Model.User.LastName.ToUpper() @Model.User.FirstName[0].ToString().ToUpper()@Model.User.FirstName.Substring(1)</span>, Here are all your in progress services</h2>
+<h2 class="my-5"><span>@Model.User.LastName.ToUpper() @Model.User.FirstName[0].ToString().ToUpper()@Model.User.FirstName.Substring(1)</span>, 
+    Here are all your in progress services.
+</h2> 
+<p class="fs-5 my-3">You can click on <span class="btn btn-primary">Go</span> to finalize the service demanded when the work is done.</p>
+
 
 <table class="table  table-bordered table-hover">
     <thead>
         <tr>
             <th scope="col">#</th>
             <th scope="col">Date start service</th>
-            <th scope="col">Date end service</th>
-            <th scope="col">Demander</th>
             <th scope="col">Provider</th>
             <th scope="col">Title</th>
             <th scope="col">Description</th>
-            <th scope="col">Amount of the transaction</th>
+            <th scope="col">Finalize</th>
         </tr>
     </thead>
     <tbody>
@@ -21,33 +23,17 @@
             int index = 1;
             foreach (ServiceDemanded s in Model.ServicesDemanded)
             {
-                if (Model.User.Equals(s.ServiceProvider))
-                {
-                    <tr class="alert-success">
+                <form asp-action ="FinalizeService" method="post">
+                    <tr>
                         <th scope="row">@(index++)</th>
                         <td>@s.StartService.ToString("dd/MM/yyyy")</td>
-                        <td>@(s.EndService.HasValue ? s.EndService.Value.ToString("dd/MM/yyyy") : "N/A")</td>
-                        <td>@s.ServiceDemander.LastName.ToUpper() @s.ServiceDemander.FirstName[0].ToString().ToUpper()@s.ServiceDemander.FirstName.Substring(1)</td>
-                        <td>You</td>
-                        <td>@s.ServiceProvided.Title</td>
-                        <td>@s.ServiceProvided.Description</td>
-                        <td>+ @s.NbHours</td>
-                    </tr>
-                }
-                else
-                {
-                    <tr class="alert-danger">
-                        <th scope="row">@(index++)</th>
-                        <td>@s.StartService.ToString("dd/MM/yyyy")</td>
-                        <td>@(s.EndService.HasValue ? s.EndService.Value.ToString("dd/MM/yyyy") : "N/A")</td>
-                        <td>You</td>
                         <td>@s.ServiceProvider.LastName.ToUpper() @s.ServiceProvider.FirstName[0].ToString().ToUpper()@s.ServiceProvider.FirstName.Substring(1)</td>
                         <td>@s.ServiceProvided.Title</td>
                         <td>@s.ServiceProvided.Description</td>
-                        <td>- @s.NbHours</td>
+                        <td class="d-none"><input type="hidden" name="serviceId" value="@s.ServiceId" /></td>
+                        <td><input type="submit" value="Go" class="btn btn-primary w-100"></td>
                     </tr>
-                }
-
+                </form>
             }
         }
     </tbody>

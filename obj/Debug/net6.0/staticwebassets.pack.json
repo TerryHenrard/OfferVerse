@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\OfferVerse.bundle.scp.css"
     },
     {
+      "Id": "I:\\BAC_2_développement_d_application\\Q2\\Projet_fin_annee\\dossier\\OfferVerse\\wwwroot\\css\\FinalizeService.css",
+      "PackagePath": "staticwebassets\\css\\FinalizeService.css"
+    },
+    {
       "Id": "I:\\BAC_2_développement_d_application\\Q2\\Projet_fin_annee\\dossier\\OfferVerse\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -15,6 +19,10 @@
     {
       "Id": "I:\\BAC_2_développement_d_application\\Q2\\Projet_fin_annee\\dossier\\OfferVerse\\wwwroot\\js\\EditProfile.js",
       "PackagePath": "staticwebassets\\js\\EditProfile.js"
+    },
+    {
+      "Id": "I:\\BAC_2_développement_d_application\\Q2\\Projet_fin_annee\\dossier\\OfferVerse\\wwwroot\\js\\FinalizeService.js",
+      "PackagePath": "staticwebassets\\js\\FinalizeService.js"
     },
     {
       "Id": "I:\\BAC_2_développement_d_application\\Q2\\Projet_fin_annee\\dossier\\OfferVerse\\wwwroot\\js\\site.js",
