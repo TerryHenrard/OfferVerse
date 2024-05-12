@@ -1,4 +1,4 @@
-﻿@model User;
+﻿@model User
 
 <h2 class="my-5">@Model.LastName.ToUpper() @Model.FirstName[0].ToString().ToUpper()@Model.FirstName.Substring(1), You can now edit your profile</h2> <!--Add name in TempData["***"] to have it everywhere-->
 
@@ -132,16 +132,13 @@
                 <span asp-validation-for="ConfirmPassword" class="text-danger px-2"></span>
             </td>
         </tr>
-
-        <tr>
-            <td>
-                <a asp-action="ShowProfile" class="btn btn-dark my-2 p-2 px-4">Back</a>
-            </td>
-            <td colspan="2">
-                <input type="submit" value="Validate" class="btn btn-success my-2 p-2 px-4" />
-            </td>
-        </tr>
     </table>
+
+    <div class="d-flex gap-xl-5 justify-content-start">
+        <a asp-action="ShowProfile" class="btn btn-dark my-2 p-2 px-4 w-25">Back</a>
+        <input type="submit" value="Validate" class="btn btn-success my-2 p-2 px-4 w-25" />
+    </div>
 </form>
+
 
 <script src="~/js/EditProfile.js" defer></script>

@@ -34,6 +34,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxFZGl0UHJvZmlsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/Profile/ReportProvider.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxSZXBvcnRQcm92aWRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/Profile/ReviewService.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxSZXZpZXdTZXJ2aWNlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/Profile/ShowCreditsTransactions.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxTaG93Q3JlZGl0c1RyYW5zYWN0aW9ucy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

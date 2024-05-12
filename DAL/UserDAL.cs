@@ -4,6 +4,7 @@ using OfferVerse.Models;
 using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
+using System.Reflection.PortableExecutable;
 
 namespace OfferVerse.DAL
 {
@@ -200,6 +201,10 @@ namespace OfferVerse.DAL
 
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@userId", memberId);
+
+                if (inProgress)
+                    cmd.Parameters.AddWithValue("@sd_uid", memberId);
+
                 connection.Open();
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -248,6 +253,67 @@ namespace OfferVerse.DAL
                 }
             }
             return ServicesD;
+        }
+
+        public ServiceDemanded GetInProgressTransaction(int serviceId)
+        {
+            ServiceDemanded serviceDemanded;
+
+            try
+            {
+                using (SqlConnection connection = new(connectionString))
+                {
+                    SqlCommand cmd = new SqlCommand(
+                        @"SELECT
+                        sd.serviceDId [ServiceDId],
+                        sd.startService [Start date],
+                        UProvider.userId [Provider Id],
+                        UProvider.firstName [Provider first name],
+                        UProvider.lastName [Provider last name],
+                        sp.servicePId [Service provided Id],
+                        sp.title [Title],
+                        sp.description [Description]
+                    FROM ServicesDemanded sd 
+                    INNER JOIN ServicesProvided sp ON sd.serviceProvidedId = sp.servicePId
+                    INNER JOIN Users UProvider ON UProvider.userId = sd.serviceProvider_userId 
+                    WHERE serviceDId = @serviceDId;"
+                        , connection);
+                    cmd.Parameters.AddWithValue("@serviceDId", serviceId);
+                    connection.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            int serviceDId = reader.GetInt32("ServiceDId");
+                            DateTime startService = reader.GetDateTime("Start date");
+                            int PId = reader.GetInt32("Provider Id");
+                            string PFirstName = reader.GetString("Provider first name");
+                            string PLastName = reader.GetString("Provider last name");
+                            int SPId = reader.GetInt32("Service provided Id");
+                            string title = reader.GetString("Title");
+                            string description = reader.GetString("Description");
+
+                            serviceDemanded = new(serviceDId, startService, PId, PFirstName, PLastName, SPId, title, description);
+                        }
+                        else
+                        {
+                            serviceDemanded = new();
+                        }
+
+                    }
+                }
+            }
+            catch (SqlException ex) 
+            {
+                throw new Exception(ex.Message);
+            }
+            catch (Exception ex) 
+            {
+                throw new Exception (ex.Message);   
+            }
+            
+            return serviceDemanded;
         }
     }
 }

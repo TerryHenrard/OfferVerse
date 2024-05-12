@@ -6,6 +6,5 @@ namespace OfferVerse.ViewModels
     {
         public User User { get; set; }
         public List<ServiceDemanded> ServicesDemanded { get; set; }
-
     }
 }

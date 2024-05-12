@@ -8,5 +8,6 @@ namespace OfferVerse.DAL.Interfaces
         public bool ApplyProfileChanges(User userProfil);
         public List<ServiceProvided> GetAllServicesProvided(int memberId);
         public List<ServiceDemanded> GetTransactions(int memberId, bool inProgress);
+        public ServiceDemanded GetInProgressTransaction(int serviceDId);
     }
 }
