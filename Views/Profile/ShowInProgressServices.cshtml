@@ -4,36 +4,92 @@
 <h2 class="my-5"><span>@Model.User.LastName.ToUpper() @Model.User.FirstName[0].ToString().ToUpper()@Model.User.FirstName.Substring(1)</span>, 
     Here are all your in progress services.
 </h2> 
-<p class="fs-5 my-3">You can click on <span class="btn btn-primary">Go</span> to finalize the service demanded when the work is done.</p>
+<p class="fs-5 my-3">You can either click on <span class="btn btn-primary">Finalize</span> to finalize the service demanded when the work is done</p>
+<p class="fs-5 my-3">or click on <span class="btn btn-danger">Report</span> if there was a problem during the work.</p>
+
+@{
+    if (TempData["message"] != null && Convert.ToString(TempData["message"]) == "Service well finalized")
+    {
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">Well done!</h4>
+            <p>You have successfully finalized this service. Your time credits have been exchanged with the service provider</p>
+            <hr />
+            <p class="mb-0">If the changes do not appear, please report it to <a href="mailto:administrators@offerverse.com">administrators@offerverse.com</a>.</p>
+        </div>
+    }
+}
 
 
-<table class="table  table-bordered table-hover">
+<h3 class="mt-5">Services demanded</h3>
+<table class="table table-bordered table-hover" style="table-layout: fixed; width: 100%;">
     <thead>
         <tr>
-            <th scope="col">#</th>
+            <th style="width: 2.5%">#</th>
             <th scope="col">Date start service</th>
             <th scope="col">Provider</th>
             <th scope="col">Title</th>
             <th scope="col">Description</th>
-            <th scope="col">Finalize</th>
+            <th scope="col">Actions</th>
         </tr>
     </thead>
     <tbody>
         @{
-            int index = 1;
+            int index = 0;
             foreach (ServiceDemanded s in Model.ServicesDemanded)
             {
-                <form asp-action ="FinalizeService" method="post">
+                if (Model.User.Equals(s.ServiceDemander))
+                {
                     <tr>
-                        <th scope="row">@(index++)</th>
+                        <th>@(++index)</th>
                         <td>@s.StartService.ToString("dd/MM/yyyy")</td>
-                        <td>@s.ServiceProvider.LastName.ToUpper() @s.ServiceProvider.FirstName[0].ToString().ToUpper()@s.ServiceProvider.FirstName.Substring(1)</td>
+                        <td>@s.ServiceProvider.LastName.ToUpper() 
+                        @s.ServiceProvider.FirstName[0].ToString().ToUpper()@s.ServiceProvider.FirstName.Substring(1)</td>
                         <td>@s.ServiceProvided.Title</td>
                         <td>@s.ServiceProvided.Description</td>
-                        <td class="d-none"><input type="hidden" name="serviceId" value="@s.ServiceId" /></td>
-                        <td><input type="submit" value="Go" class="btn btn-primary w-100"></td>
+                        <td class="d-flex gap-2">
+                            <a asp-action="ReviewService" asp-route-ServiceDId="@s.ServiceId" class="btn btn-primary w-100">Finalize</a>
+                            <a asp-action="ReportProvider" class="btn btn-danger w-100">Report</a>
+                        </td>
                     </tr>
-                </form>
+                }
+            }
+        }
+    </tbody>
+</table>
+
+<h3 class="mt-5">Services Provided</h3>
+<table class="table table-bordered table-hover" style="table-layout: fixed; width: 100%;">
+    <thead>
+        <tr>
+            <th style="width: 2.5%">#</th>
+            <th scope="col">Date start service</th>
+            <th scope="col">Demander</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            index = 0;
+            foreach (ServiceDemanded s in Model.ServicesDemanded)
+            {
+                if (!Model.User.Equals(s.ServiceDemander))
+                {
+                    <tr>
+                        <th scope="row">@(++index)</th>
+                        <td>@s.StartService.ToString("dd/MM/yyyy")</td>
+                        <td>
+                            @s.ServiceDemander.LastName.ToUpper()
+                            @s.ServiceDemander.FirstName[0].ToString().ToUpper()@s.ServiceDemander.FirstName.Substring(1)
+                        </td>
+                        <td>@s.ServiceProvided.Title</td>
+                        <td>@s.ServiceProvided.Description</td>
+                        <td class="d-flex gap-2">
+                            <a asp-action="ReportProvider" class="btn btn-danger w-100">Report</a>
+                        </td>
+                    </tr>
+                }
             }
         }
     </tbody>

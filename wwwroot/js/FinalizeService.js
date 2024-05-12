@@ -33,12 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 reviewContainer.style.display = "block";
             }
 
-            setTimeout(() => { isButtonDisabled = false }, 100); 
+            setTimeout(() => isButtonDisabled = false, 100); 
         }
     });
-
-    if (showReportFormByDefault == true) {
-        toggleBtn.click()
-    }
 });
 

@@ -8,7 +8,7 @@ namespace OfferVerse.Models
     {
         private readonly int commentaryId;
         private string content;
-        private float rating;
+        private int rating;
         private DateTime commentaryDate;
 
         /*References*/
@@ -34,7 +34,7 @@ namespace OfferVerse.Models
         [Display(Name = "Rating out of 5")]
         [Range(0, 5, ErrorMessage = "The rating cannot be less of 0 or greater than 5")]
         [Required(ErrorMessage = "A rating is required")]
-        public float Rating
+        public int Rating
         {
             get { return rating; }
             set 
@@ -68,7 +68,7 @@ namespace OfferVerse.Models
             set { serviceProvided = value; }
         }
 
-        public Commentary(int commentaryId, string content, float rating, DateTime commentaryDate, int userId, int servicePId)
+        public Commentary(int commentaryId, string content, int rating, DateTime commentaryDate, int userId, int servicePId)
         {
             this.commentaryId = commentaryId;
             Content = content;
@@ -78,7 +78,7 @@ namespace OfferVerse.Models
             ServiceProvided = new(servicePId);
         }
 
-        public Commentary(int commentaryId, string content, float rating, DateTime commentaryDate)
+        public Commentary(int commentaryId, string content, int rating, DateTime commentaryDate)
         {
             this.commentaryId = commentaryId;
             Content = content;
@@ -92,9 +92,9 @@ namespace OfferVerse.Models
         }
 
         /******static methods******/
-        public static bool InsertCommentary(ICommentaryDAL dal, Commentary commentary)
+        public static bool InsertCommentary(ICommentaryDAL dal, string content, int rating, int servicePId)
         {
-            return dal.InsertCommentary(commentary);
+            return dal.InsertCommentary(content, rating, servicePId);
         }
     }
 }

@@ -4,6 +4,6 @@ namespace OfferVerse.DAL.Interfaces
 {
     public interface ICommentaryDAL
     {
-        public bool InsertCommentary(Commentary commentary);
+        public bool InsertCommentary(string content, int rating, int servicePId);
     }
 }

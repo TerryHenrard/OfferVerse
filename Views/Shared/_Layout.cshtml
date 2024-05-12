@@ -28,6 +28,7 @@
                     </ul>
                     @if (TempData["timeCredits"] != null)
                     {
+                        //TODO: Update after a transaction
                         int timeCredits = Convert.ToInt32(TempData["timeCredits"]);
                         TempData["timeCredits"] = timeCredits; // Reassigns the previous value, because it's destroyed after reading.
 

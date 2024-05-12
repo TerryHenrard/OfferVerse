@@ -11,6 +11,7 @@ string connectionString = builder.Configuration.GetConnectionString("default");
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IUserDAL>(ud => new UserDAL(connectionString));
 builder.Services.AddTransient<ICommentaryDAL>(cd => new CommentaryDAL(connectionString));
+builder.Services.AddTransient<IServiceDemandedDAL>(sd => new ServiceDemandedDAL(connectionString));
 
 var app = builder.Build();
 

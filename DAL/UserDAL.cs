@@ -193,7 +193,7 @@ namespace OfferVerse.DAL
                                 INNER JOIN Users UProvider ON UProvider.userId = sd.serviceProvider_userId 
                                 WHERE u.userId = @userId AND sd.endService";
                 if (inProgress)
-                    query += " IS NULL AND sd.serviceDemander_userId = @sd_uid";
+                    query += " IS NULL";
                 else
                     query += " IS NOT NULL";
 

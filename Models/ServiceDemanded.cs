@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using OfferVerse.DAL.Interfaces;
+using System;
+using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 
 namespace OfferVerse.Models
@@ -56,7 +58,7 @@ namespace OfferVerse.Models
                 }
                 else
                 {
-                    throw new Exception("The number of hours cannot be less than 0 or greater than 200");
+                    throw new Exception("The number of hours spent cannot be less of 1 or greater than 200");
                 }
             }
         }
@@ -121,6 +123,22 @@ namespace OfferVerse.Models
         public ServiceDemanded()
         {
 
+        }
+
+        /******static methods******/
+        public static bool FinalizeService(IServiceDemandedDAL dal, int serviceDId, int? nbHours)
+        {
+            return dal.FinalizeService(serviceDId, nbHours);
+        }
+
+        public static bool DebitDemander(IServiceDemandedDAL dal, int serviceDId, int? nbHours)
+        {
+            return dal.DebitDemander(serviceDId, nbHours);
+        }
+        
+        public static bool CreditProvider(IServiceDemandedDAL dal, int servicePId, int? nbHours)
+        {
+            return dal.CreditProvider(servicePId, nbHours);
         }
     }
 }
