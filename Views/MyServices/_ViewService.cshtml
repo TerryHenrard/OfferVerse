@@ -1,0 +1,15 @@
+﻿@model ServiceProvided
+
+<tr>
+    <td>@Model.Title</td>
+
+    <td>@Model.Description</td>
+
+    <td>@Model.Priority</td>
+
+    <td>@Model.DatePriority</td>
+
+    <td>
+        <a asp-action="Confirm" asp-route-sId="@Model.ServiceProvidedId">Delete</a>
+    </td>
+</tr>

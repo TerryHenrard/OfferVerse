@@ -76,7 +76,7 @@ namespace OfferVerse.DAL
 
             try
             {
-                using(SqlConnection connection = new(connectionString))
+                using (SqlConnection connection = new(connectionString))
                 {
                     SqlCommand cmd = new(
                         "SELECT * FROM OfferVerse.dbo.ServicesProvided WHERE userId = @memberId",
@@ -88,25 +88,28 @@ namespace OfferVerse.DAL
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        while(reader.Read())
+                        while (reader.Read())
                         {
                             int servicePId = reader.GetInt32("servicePId");
                             string title = reader.GetString("title");
                             string description = reader.GetString("description");
                             bool priority = reader.GetBoolean("priority");
                             DateTime datePriority = reader.GetDateTime("datePriority");
+                            int userId = reader.GetInt32("userId");
 
-                            ServiceProvided s = new ServiceProvided(servicePId, title, description, priority, datePriority);
+                            ServiceProvided s = new ServiceProvided
+                                (servicePId, title, description, priority, datePriority, userId);
+
                             sp.Add(s);
                         }
                     }
                 }
             }
-            catch(SqlException e)
+            catch (SqlException e)
             {
                 throw new Exception("An SQL error occured : " + e.Message);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw new Exception("Error while getting the list of provided services : " + e.Message);
             }
@@ -314,6 +317,75 @@ namespace OfferVerse.DAL
             }
             
             return serviceDemanded;
+        }
+
+        public bool DeleteServiceProvided(int sId)
+        {
+            bool success = false;
+            try
+            {
+                using (SqlConnection connection = new(connectionString))
+                {
+                    SqlCommand cmd = new(
+                        "DELETE FROM Images WHERE servicePId = @sId " +
+                        "DELETE FROM Commentaries WHERE servicePId = @sId " +
+                        "DELETE FROM ServicesDemanded WHERE serviceProvidedId = @sId " +
+                        "DELETE FROM Favorites WHERE servicePId = @sId " +
+                        "DELETE FROM ServicesProvided WHERE servicePId = @sId"
+                        ,
+                        connection
+                        );
+
+                    cmd.Parameters.AddWithValue("@sId", sId);
+                    connection.Open();
+                    success = cmd.ExecuteNonQuery() > 0;
+                }
+            }
+            catch (SqlException e)
+            {
+                throw new Exception("An SQL error occured : " + e.Message);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error while deleting a service : " + e.Message);
+            }
+
+            return success;
+        }
+        public bool AddServiceProvided(ServiceProvided service, int uId)
+        {
+            bool success = false;
+
+            try
+            {
+                using (SqlConnection connection = new(connectionString))
+                {
+                    SqlCommand cmd = new(
+                        "INSERT INTO ServicesProvided (title, description, userId, priority, datePriority, categoryId)" +
+                        "VALUES(@title, @description, @userId, @priority, @datePriority, @categoryId)", connection
+                        );
+
+                    cmd.Parameters.AddWithValue("@title", service.Title);
+                    cmd.Parameters.AddWithValue("@description", service.Description);
+                    cmd.Parameters.AddWithValue("@userId", uId);
+                    cmd.Parameters.AddWithValue("@priority", service.Priority);
+                    cmd.Parameters.AddWithValue("@datePriority", "01-01-2001");
+                    cmd.Parameters.AddWithValue("@categoryId", 0);
+
+                    connection.Open();
+                    success = cmd.ExecuteNonQuery() > 0;
+                }
+            }
+            catch (SqlException e)
+            {
+                throw new Exception("An SQL error occured : " + e.Message);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error while creating a service : " + e.Message);
+            }
+
+            return success;
         }
     }
 }

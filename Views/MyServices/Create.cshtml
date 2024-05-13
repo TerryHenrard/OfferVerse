@@ -1,0 +1,38 @@
+﻿@model ServiceProvided
+
+<h1>Create your service provided</h1>
+
+<form method="post" asp-action="Create">
+    <table>
+        <tr>
+            <td>
+                <label asp-for="Title"></label>
+            </td>
+            <td>
+                <input type="text" asp-for="Title" />
+            </td>
+            <td>
+                <span asp-validation-for="Title" class="text-danger px-2"></span>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                <label asp-for="Description"></label>
+            </td>
+            <td>
+                <input asp-for="Description" />
+            </td>
+            <td>
+                <span asp-validation-for="Description" class="text-danger px-2"></span>
+            </td>
+        </tr>
+        <input type="hidden" asp-for="UserId" value="4" />
+        <tr>
+            <td>
+                <input type="submit" value="envoyer" />
+            </td>
+        </tr>
+    </table>
+</form>

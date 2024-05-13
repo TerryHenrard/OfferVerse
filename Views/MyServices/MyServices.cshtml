@@ -1,27 +1,35 @@
 ﻿@model List<ServiceProvided>
 
+@if (!String.IsNullOrEmpty((string)TempData["Deletion"]))
+{
+    <div class="alert alert-success">@TempData["Deletion"]</div>
+}
+
+@if (!String.IsNullOrEmpty((string)TempData["success"]))
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+
 <h1>List of provided services</h1>
 <table>
     <tr>
         <th>Titre</th>
-    
+
         <th>Description</th>
-   
+
         <th>Priority</th>
-    
+
         <th>Date of Priority</th>
     </tr>
     @{
-        foreach(ServiceProvided sp in Model){
-            <tr>
-                <td>@sp.Title</td>
-            
-                <td>@sp.Description</td>
-                        
-                <td>@sp.Priority</td>
-                        
-                <td>@sp.DatePriority</td>
-            </tr>
+        foreach (ServiceProvided sp in Model)
+        {
+            <partial name="_ViewService" for="@sp" />
         }
     }
+    <tr>
+        <td>
+            <a asp-action="Create">Créer un service</a>
+        </td>
+    </tr>
 </table>
