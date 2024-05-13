@@ -1,0 +1,8 @@
+﻿<h1>Are you sure you want to delete this service ?</h1>
+
+<form asp-action="Confirm" asp-controller="MyServices" method="post">
+    <input type="hidden" value="@ViewData["sId"]" name="sId" />
+    <input type="submit" value="Oui" />
+</form>
+
+<a href="MyServices">No</a>

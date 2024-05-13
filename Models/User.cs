@@ -167,6 +167,15 @@ namespace OfferVerse.Models
         {
             return dal.GetInProgressTransaction(serviceDId);
         }
+        public bool DeleteServiceProvided(IUserDAL dal, int sId)
+        {
+            return dal.DeleteServiceProvided(sId);//Change the userId and use the session
+        }
+
+        public static bool AddServiceProvided(IUserDAL dal, ServiceProvided service, int uId)
+        {
+            return dal.AddServiceProvided(service, uId);
+        }
 
         /******Existant methods overrided*******/
         public override string ToString()
