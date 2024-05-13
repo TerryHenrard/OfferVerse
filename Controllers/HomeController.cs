@@ -19,8 +19,12 @@ namespace OfferVerse.Controllers
 
         public IActionResult Index()
         {
-            TempData["timeCredits"] = AppUser.GetUserInfo(_userDAL, 1).TimeCredits;
-            return View(); //TODO: replace 1 with the id of the authenticated user in the session
+            AppUser user = AppUser.GetUserInfo(_userDAL, 1); //TODO: replace 1 with the id of the authenticated user in the session
+
+            HttpContext.Session.SetInt32("userId", user.MemberId); //TODO: remplacer par l'id de l'utilisateur connecté
+            TempData["timeCredits"] = user.TimeCredits;
+
+            return View(); 
         }
 
         public IActionResult Privacy()

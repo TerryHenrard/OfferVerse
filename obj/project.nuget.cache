@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< HEAD
+  "dgSpecHash": "oWSzXmOs+0kT9aMIs8OxbIwH7CLPupD16VD/E4545jrnBmx2Ltg/9ys/L5Yw8E/8zs5OBd3v27guH9e1ZusbSA==",
+=======
   "dgSpecHash": "OJBvANYuhmyyuSgcJFhkfCuYXGd7kuAmt8nYu0BNFwhV11pTWNFACZ4z01aFs6DXyTodZWb+/FUbKGbeNzb12g==",
+>>>>>>> 72eca2a582faa82f4317afdd8edf3dd39381add3
   "success": true,
   "projectFilePath": "D:\\OfferVerse\\OfferVerse.csproj",
   "expectedPackageFiles": [
