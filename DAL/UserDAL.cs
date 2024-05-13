@@ -361,16 +361,17 @@ namespace OfferVerse.DAL
                 using (SqlConnection connection = new(connectionString))
                 {
                     SqlCommand cmd = new(
-                        "INSERT INTO ServicesProvided (title, description, userId, priority, datePriority, categoryId)" +
-                        "VALUES(@title, @description, @userId, @priority, @datePriority, @categoryId)", connection
+                        "INSERT INTO ServicesProvided (title, description, userId, priority, categoryId, datePriority)" +
+                        "VALUES(@title, @description, @userId, @priority, @categoryId, @datePriority)", connection
                         );
 
                     cmd.Parameters.AddWithValue("@title", service.Title);
                     cmd.Parameters.AddWithValue("@description", service.Description);
                     cmd.Parameters.AddWithValue("@userId", uId);
                     cmd.Parameters.AddWithValue("@priority", service.Priority);
-                    cmd.Parameters.AddWithValue("@datePriority", "01-01-2001");
-                    cmd.Parameters.AddWithValue("@categoryId", 0);
+                    cmd.Parameters.AddWithValue("@categoryId", 2);
+                    cmd.Parameters.AddWithValue("@datePriority", service.DatePriority);
+                    //TODO : add images to a service
 
                     connection.Open();
                     success = cmd.ExecuteNonQuery() > 0;

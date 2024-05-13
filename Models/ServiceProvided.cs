@@ -10,6 +10,7 @@ namespace OfferVerse.Models
         private bool priority;
         private DateTime datePriority;
         private int userId;
+        private int categoryId;
 
         public int ServiceProvidedId 
         {  
@@ -50,6 +51,16 @@ namespace OfferVerse.Models
             set { userId = value; }
         }
 
+        public int CategoryId
+        {
+            get { return  categoryId; }
+            set { categoryId = value; }
+        }
+        public ServiceProvided()
+        {
+
+        }
+
         public ServiceProvided(int serviceProvidedId, string title, 
             string description, bool priority, DateTime datePriority, int userId)
         {
@@ -58,15 +69,17 @@ namespace OfferVerse.Models
             Description = description;
             Priority = priority;
             DatePriority = datePriority;
+            DatePriority = new DateTime(2002, 1, 1);
             UserId = userId;
         }
-        public ServiceProvided(string title, string description, int userId)
+        public ServiceProvided(string title, string description, int userId, int categoryId)
         {
             Title = title;
             Description = description;
             UserId = userId;
             Priority = false;
-            DatePriority = new(2001, 01, 01);
+            DatePriority = new DateTime(2002, 2, 3);
+            CategoryId = categoryId;
         }
 
         public ServiceProvided(int serviceProvidedId, string title, string description)
@@ -74,8 +87,9 @@ namespace OfferVerse.Models
             this.serviceProvidedId = serviceProvidedId;
             Title = title;
             Description = description;
+            new DateTime(2002, 2, 3);
         }
-        
+
         public ServiceProvided(int serviceProvidedId)
         {
             this.serviceProvidedId = serviceProvidedId;
