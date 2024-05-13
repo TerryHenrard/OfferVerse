@@ -27,12 +27,13 @@ namespace OfferVerse.Controllers
 
         public IActionResult ShowProfile()
         {
-            if (GetUserIdFromSession() == 0)
+            int userId = GetUserIdFromSession();
+            if (userId == 0)
             {
                 return RedirectToAction("login");
             }
 
-            return View(AppUser.GetUserInfo(_userDAL, GetUserIdFromSession()));
+            return View(AppUser.GetUserInfo(_userDAL, userId));
         }
 
 
