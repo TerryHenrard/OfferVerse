@@ -9,5 +9,7 @@ namespace OfferVerse.DAL.Interfaces
         public List<ServiceProvided> GetAllServicesProvided(int memberId);
         public List<ServiceDemanded> GetTransactions(int memberId, bool inProgress);
         public ServiceDemanded GetInProgressTransaction(int serviceDId);
+        public bool DeleteServiceProvided(int sId);
+        public bool AddServiceProvided(ServiceProvided service, int uId);
     }
 }

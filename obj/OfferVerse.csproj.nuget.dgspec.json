@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "I:\\BAC_2_développement_d_application\\Q2\\Projet_fin_annee\\dossier\\OfferVerse\\OfferVerse.csproj": {}
+    "D:\\OfferVerse\\OfferVerse.csproj": {}
   },
   "projects": {
-    "I:\\BAC_2_développement_d_application\\Q2\\Projet_fin_annee\\dossier\\OfferVerse\\OfferVerse.csproj": {
+    "D:\\OfferVerse\\OfferVerse.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "I:\\BAC_2_développement_d_application\\Q2\\Projet_fin_annee\\dossier\\OfferVerse\\OfferVerse.csproj",
+        "projectUniqueName": "D:\\OfferVerse\\OfferVerse.csproj",
         "projectName": "OfferVerse",
-        "projectPath": "I:\\BAC_2_développement_d_application\\Q2\\Projet_fin_annee\\dossier\\OfferVerse\\OfferVerse.csproj",
-        "packagesPath": "C:\\Users\\henra\\.nuget\\packages\\",
-        "outputPath": "I:\\BAC_2_développement_d_application\\Q2\\Projet_fin_annee\\dossier\\OfferVerse\\obj\\",
+        "projectPath": "D:\\OfferVerse\\OfferVerse.csproj",
+        "packagesPath": "C:\\Users\\gigiu\\.nuget\\packages\\",
+        "outputPath": "D:\\OfferVerse\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\henra\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\gigiu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,11 +38,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -73,7 +72,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }
