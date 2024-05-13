@@ -3,14 +3,13 @@ using OfferVerse.DAL.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDistributedMemoryCache();
 
 builder.Services.AddSession(options =>
 {
-    options.IdleTimeout = TimeSpan.FromSeconds(10);
+    options.IdleTimeout = TimeSpan.FromSeconds(int.MaxValue); //TODO: modofy after made all ajustements
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
