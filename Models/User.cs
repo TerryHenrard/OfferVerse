@@ -177,6 +177,11 @@ namespace OfferVerse.Models
             return dal.AddServiceProvided(service, uId);
         }
 
+        public static bool PromoteServiceProvided(IUserDAL dal, int sId)
+        {
+            return dal.PromoteServiceProvided(sId);
+        }
+
         /******Existant methods overrided*******/
         public override string ToString()
         {

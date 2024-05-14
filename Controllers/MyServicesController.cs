@@ -8,14 +8,16 @@ namespace OfferVerse.Controllers
 {
     public class MyServicesController : Controller
     {
-        private readonly IUserDAL dal;
-        public MyServicesController(IUserDAL dal)
+        private readonly IUserDAL _UserDal;
+        private readonly ICategoryDAL _CategoryDal;
+        public MyServicesController(IUserDAL userDal, ICategoryDAL catDal)
         {
-            this.dal = dal;
+            _UserDal = userDal;
+            _CategoryDal = catDal;
         }
         public IActionResult MyServices()
         {
-            return View(AppUser.GetAllServicesProvided(dal, 4));
+            return View(AppUser.GetAllServicesProvided(_UserDal, 4));
         }
 
         public IActionResult Confirm()
@@ -29,7 +31,7 @@ namespace OfferVerse.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Confirm(AppUser user, int sId)
         {
-            if (user.DeleteServiceProvided(dal, sId))
+            if (user.DeleteServiceProvided(_UserDal, sId))
             {
                 TempData["Deletion"] = "Service deleted";
             }
@@ -39,6 +41,7 @@ namespace OfferVerse.Controllers
 
         public IActionResult Create()
         {
+            ViewBag.categories = _CategoryDal.GetCategories();
             return View();
         }
 
@@ -46,7 +49,8 @@ namespace OfferVerse.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(ServiceProvided service)
         {
-            bool test = AppUser.AddServiceProvided(dal, service, 4);
+            service.DatePriority = new DateTime(2000, 1, 1);
+            bool test = AppUser.AddServiceProvided(_UserDal, service, 4);
             if (ModelState.IsValid)
             {
                 TempData["success"] = "Service created successfully";
@@ -57,6 +61,22 @@ namespace OfferVerse.Controllers
                 TempData["success"] = "Service not created successfully";
             }
 
+            return RedirectToAction(nameof(MyServices));
+        }
+
+        public IActionResult Promote()
+        {
+            int sId = Convert.ToInt32(Request.Query["sId"].ToString());
+
+            if(sId != 1 && AppUser.PromoteServiceProvided(_UserDal, sId))
+            {
+                TempData["success"] = "Service promoted successfully";
+            }
+            else
+            {
+                TempData["success"] = "Service not promoted";
+            }
+            
             return RedirectToAction(nameof(MyServices));
         }
     }

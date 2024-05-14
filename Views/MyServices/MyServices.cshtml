@@ -11,7 +11,7 @@
 }
 
 <h1>List of provided services</h1>
-<table>
+<table class="table table-bordered table-hover">
     <tr>
         <th>Titre</th>
 
@@ -21,12 +21,10 @@
 
         <th>Date of Priority</th>
     </tr>
-    @{
-        foreach (ServiceProvided sp in Model)
+        @foreach (ServiceProvided sp in Model)
         {
             <partial name="_ViewService" for="@sp" />
         }
-    }
     <tr>
         <td>
             <a asp-action="Create">Créer un service</a>

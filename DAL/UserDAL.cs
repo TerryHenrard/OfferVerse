@@ -321,7 +321,7 @@ namespace OfferVerse.DAL
 
         public bool DeleteServiceProvided(int sId)
         {
-            bool success = false;
+            bool success = true;
             try
             {
                 using (SqlConnection connection = new(connectionString))
@@ -344,33 +344,36 @@ namespace OfferVerse.DAL
             catch (SqlException e)
             {
                 throw new Exception("An SQL error occured : " + e.Message);
+                success = false;
             }
             catch (Exception e)
             {
                 throw new Exception("Error while deleting a service : " + e.Message);
+                success = false;
             }
 
             return success;
         }
         public bool AddServiceProvided(ServiceProvided service, int uId)
         {
-            bool success = false;
+            bool success = true;
 
             try
             {
                 using (SqlConnection connection = new(connectionString))
                 {
                     SqlCommand cmd = new(
-                        "INSERT INTO ServicesProvided (title, description, userId, priority, datePriority, categoryId)" +
-                        "VALUES(@title, @description, @userId, @priority, @datePriority, @categoryId)", connection
+                        "INSERT INTO ServicesProvided (title, description, userId, priority, categoryId, datePriority)" +
+                        "VALUES(@title, @description, @userId, @priority, @categoryId, @datePriority)", connection
                         );
 
                     cmd.Parameters.AddWithValue("@title", service.Title);
                     cmd.Parameters.AddWithValue("@description", service.Description);
                     cmd.Parameters.AddWithValue("@userId", uId);
                     cmd.Parameters.AddWithValue("@priority", service.Priority);
-                    cmd.Parameters.AddWithValue("@datePriority", "01-01-2001");
-                    cmd.Parameters.AddWithValue("@categoryId", 0);
+                    cmd.Parameters.AddWithValue("@categoryId", 2);
+                    cmd.Parameters.AddWithValue("@datePriority", service.DatePriority);
+                    //TODO : add images to a service
 
                     connection.Open();
                     success = cmd.ExecuteNonQuery() > 0;
@@ -378,11 +381,48 @@ namespace OfferVerse.DAL
             }
             catch (SqlException e)
             {
-                throw new Exception("An SQL error occured : " + e.Message);
+                success = false;
+                throw new Exception("An SQL error occurred : " + e.Message);
             }
             catch (Exception e)
             {
+                success = false;
                 throw new Exception("Error while creating a service : " + e.Message);
+            }
+
+            return success;
+        }
+
+        public bool PromoteServiceProvided(int sId)
+        {
+            bool success = true;
+
+            try
+            {
+                using (SqlConnection connection = new(connectionString))
+                {
+                    SqlCommand cmd = new(
+                        "UPDATE ServicesProvided " +
+                        " SET priority = 1, datePriority = @datePriority WHERE servicePId = @sId",
+                        connection
+                        );
+
+                    cmd.Parameters.AddWithValue("@datePriority", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@sId", sId);
+
+                    connection.Open();
+                    success = cmd.ExecuteNonQuery() > 0;
+                }
+            }
+            catch (SqlException e)
+            {
+                success = false;
+                throw new Exception("An SQL error occurred : " + e.Message);
+            }
+            catch(Exception e)
+            {
+                success = false; 
+                throw new Exception("Error while promoting a service : " + e.Message);
             }
 
             return success;
