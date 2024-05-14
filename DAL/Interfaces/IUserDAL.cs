@@ -11,5 +11,7 @@ namespace OfferVerse.DAL.Interfaces
         public ServiceDemanded GetInProgressTransaction(int serviceDId);
         public bool DeleteServiceProvided(int sId);
         public bool AddServiceProvided(ServiceProvided service, int uId);
+
+        public bool PromoteServiceProvided(int sId);
     }
 }

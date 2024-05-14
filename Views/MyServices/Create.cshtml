@@ -1,5 +1,4 @@
 ﻿@model ServiceProvided
-
 <h1>Create your service provided</h1>
 
 <form method="post" asp-action="Create">
@@ -29,6 +28,16 @@
             </td>
         </tr>
         <input type="hidden" asp-for="UserId" value="4" />
+        <tr>
+            <td>
+                <select id="category" asp-for="CategoryId">
+                    @foreach (var cat in ViewBag.categories)
+                    {
+                        <option value="@cat.CategoryId">@cat.Name</option>
+                    }
+                </select>
+            </td>
+        </tr>
         <tr>
             <td>
                 <input type="submit" value="envoyer" />
