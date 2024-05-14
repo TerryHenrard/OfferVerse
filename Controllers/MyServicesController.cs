@@ -63,5 +63,21 @@ namespace OfferVerse.Controllers
 
             return RedirectToAction(nameof(MyServices));
         }
+
+        public IActionResult Promote()
+        {
+            int sId = Convert.ToInt32(Request.Query["sId"].ToString());
+
+            if(sId != 1 && AppUser.PromoteServiceProvided(_UserDal, sId))
+            {
+                TempData["success"] = "Service promoted successfully";
+            }
+            else
+            {
+                TempData["success"] = "Service not promoted";
+            }
+            
+            return RedirectToAction(nameof(MyServices));
+        }
     }
 }

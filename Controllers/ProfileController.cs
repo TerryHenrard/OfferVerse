@@ -20,10 +20,22 @@ namespace OfferVerse.Controllers
             _serviceDemandedDAL = serviceDemandedDAL;
         }
 
+        private int GetUserIdFromSession()
+        {
+            return HttpContext.Session.GetInt32("userId") ?? 0;
+        }
+
         public IActionResult ShowProfile()
         {
-            return View(AppUser.GetUserInfo(_userDAL, 1)); //TODO: replace 1 with the id of the authenticated user in the session
+            int userId = GetUserIdFromSession();
+            if (userId == 0)
+            {
+                return RedirectToAction("login");
+            }
+
+            return View(AppUser.GetUserInfo(_userDAL, userId));
         }
+
 
         public IActionResult EditProfile()
         {
@@ -91,10 +103,10 @@ namespace OfferVerse.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult ReviewService(ReviewServiceViewModel viewModel, int servicePId, int serviceDId)
         {
-            if (!String.IsNullOrEmpty(viewModel.Commentary.Content) &&
+            if (!string.IsNullOrEmpty(viewModel.Commentary.Content) &&
                 viewModel.Commentary.Content.Length >= 15 && 
                 viewModel.Commentary.Content.Length <= 200 && 
-                viewModel.Commentary.Rating >= 1 &&
+                viewModel.Commentary.Rating >= 0 &&
                 viewModel.Commentary.Rating <= 5 &&
                 viewModel.ServiceDemanded.NbHours >= 1 &&
                 viewModel.ServiceDemanded.NbHours <= 200 &&
@@ -102,9 +114,10 @@ namespace OfferVerse.Controllers
                 servicePId > 0 &&
                 Commentary.InsertCommentary(_commentaryDAL, viewModel.Commentary.Content, viewModel.Commentary.Rating, servicePId) &&
                 ServiceDemanded.FinalizeService(_serviceDemandedDAL, serviceDId, viewModel.ServiceDemanded.NbHours) &&
-                ServiceDemanded.DebitDemander(_serviceDemandedDAL, 4, viewModel.ServiceDemanded.NbHours) &&
+                ServiceDemanded.DebitDemander(_serviceDemandedDAL, 4, viewModel.ServiceDemanded.NbHours) && //TODO: remplacer 4 par l'utilisateur connecté
                 ServiceDemanded.CreditProvider(_serviceDemandedDAL, servicePId, viewModel.ServiceDemanded.NbHours))
             {
+                TempData["timeCredits"] = AppUser.GetUserInfo(_userDAL, 1).TimeCredits;
                 TempData["message"] = "Service well finalized";
 
                 AppUser user = AppUser.GetUserInfo(_userDAL, 4); //TODO: replace 4 with the id of the authenticated user in the session

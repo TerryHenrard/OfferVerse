@@ -39,7 +39,7 @@ namespace OfferVerse.Models
             get { return rating; }
             set 
             {
-                if (value >= 0 && value <=5)
+                if (value >= 0 && value <= 5)
                 {
                     rating = value;
                 }

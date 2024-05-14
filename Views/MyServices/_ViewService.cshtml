@@ -12,4 +12,12 @@
     <td>
         <a asp-action="Confirm" asp-route-sId="@Model.ServiceProvidedId">Delete</a>
     </td>
+
+    <td>
+        @if(Model.Priority != true)
+        {
+            <a asp-action="Promote" asp-route-sId="@Model.ServiceProvidedId">Promote</a>
+        }
+        
+    </td>
 </tr>

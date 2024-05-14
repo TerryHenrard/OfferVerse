@@ -69,7 +69,6 @@ namespace OfferVerse.Models
             Description = description;
             Priority = priority;
             DatePriority = datePriority;
-            DatePriority = new DateTime(2002, 1, 1);
             UserId = userId;
         }
         public ServiceProvided(string title, string description, int userId, int categoryId)
