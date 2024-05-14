@@ -139,5 +139,10 @@ namespace OfferVerse.Controllers
             };
             return View(viewModel3);
         }
+
+        public IActionResult ReportUser(int userId)
+        {
+            return View();
+        }
     }
 }

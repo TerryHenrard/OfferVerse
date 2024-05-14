@@ -48,7 +48,7 @@
                         <td>@s.ServiceProvided.Description</td>
                         <td class="d-flex gap-2">
                             <a asp-action="ReviewService" asp-route-ServiceDId="@s.ServiceId" class="btn btn-primary w-100">Finalize</a>
-                            <a asp-action="ReportProvider" class="btn btn-danger w-100">Report</a>
+                            <a asp-action="ReportUser" asp-route-userId="@s.ServiceProvider.MemberId" class="btn btn-danger w-100">Report</a>
                         </td>
                     </tr>
                 }
@@ -57,7 +57,7 @@
     </tbody>
 </table>
 
-<h3 class="mt-5">Services Provided</h3>
+<h3 class="mt-5">Services provided</h3>
 <table class="table table-bordered table-hover" style="table-layout: fixed; width: 100%;">
     <thead>
         <tr>
@@ -86,7 +86,7 @@
                         <td>@s.ServiceProvided.Title</td>
                         <td>@s.ServiceProvided.Description</td>
                         <td class="d-flex gap-2">
-                            <a asp-action="ReportProvider" class="btn btn-danger w-100">Report</a>
+                            <a asp-action="ReportUser" asp-route-userId="@s.ServiceDemander.MemberId" class="btn btn-danger w-100">Report</a>
                         </td>
                     </tr>
                 }
