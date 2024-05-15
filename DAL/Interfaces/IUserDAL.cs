@@ -13,5 +13,9 @@ namespace OfferVerse.DAL.Interfaces
         public bool AddServiceProvided(ServiceProvided service, int uId);
 
         public bool PromoteServiceProvided(int sId);
+
+        public bool CheckCredits(int uId);
+
+        public bool DebitUser(int uId);
     }
 }

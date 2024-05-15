@@ -410,5 +410,75 @@ namespace OfferVerse.DAL
 
             return success;
         }
+
+        public bool CheckCredits(int uId)
+        {
+            bool success = false;
+
+            try
+            {
+                using(SqlConnection connection = new(connectionString)) 
+                {
+                    SqlCommand cmd = new(
+                        "SELECT timeCredits FROM Users " +
+                        " WHERE userId = @uId", connection
+                        );
+
+                    cmd.Parameters.AddWithValue("@uId", uId);
+
+                    connection.Open();
+
+                    using(SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            int credits = reader.GetInt32("timeCredits");
+
+                            success = credits >= 5;
+                        }
+                    }
+                }
+            }
+            catch(SqlException e)
+            {
+                throw new Exception("An SQL error occurred : " + e.Message);
+            }
+            catch(Exception e)
+            {
+                throw new Exception("Error while checking the credits : " + e.Message);
+            }
+
+            return success;
+        }
+
+        public bool DebitUser(int uId)
+        {
+            bool success = false;
+
+            try
+            {
+                using( SqlConnection connection = new(connectionString))
+                {
+                    SqlCommand cmd = new(
+                        "UPDATE Users " +
+                        "SET timeCredits = timeCredits - 5 ", connection
+                        );
+
+                    connection.Open();
+
+                    success = cmd.ExecuteNonQuery() > 0;
+                }
+            }
+            catch(SqlException e)
+            {
+                throw new Exception("An SQL error occurred : " + e.Message);
+            }
+            catch(Exception e)
+            {
+                throw new Exception("An error occurred while debiting the user : " + e.Message);
+            }
+
+            return success;
+        }
     }
 }
