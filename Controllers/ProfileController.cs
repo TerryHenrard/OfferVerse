@@ -29,6 +29,11 @@ namespace OfferVerse.Controllers
 
         public IActionResult ShowProfile()
         {
+            if (HttpContext.Session.GetInt32("userId") == null)
+            {
+                return RedirectToAction("Connect", "Home");
+            }
+
             int userId = GetUserIdFromSession();
             if (userId == 0)
             {
@@ -41,6 +46,11 @@ namespace OfferVerse.Controllers
 
         public IActionResult EditProfile()
         {
+            if (HttpContext.Session.GetInt32("userId") == null)
+            {
+                return RedirectToAction("Connect", "Home");
+            }
+
             return View(AppUser.GetUserInfo(_userDAL, GetUserIdFromSession())); //TODO: replace 1 with the id of the authenticated user in the session
         }
 
@@ -64,6 +74,11 @@ namespace OfferVerse.Controllers
 
         public IActionResult ShowCreditsTransactions()
         {
+            if (HttpContext.Session.GetInt32("userId") == null)
+            {
+                return RedirectToAction("Connect", "Home");
+            }
+
             AppUser user = AppUser.GetUserInfo(_userDAL, GetUserIdFromSession()); //TODO: replace 4 with the id of the authenticated user in the session
             List<ServiceDemanded> servicesDemanded = AppUser.GetTransactions(_userDAL, GetUserIdFromSession()); //TODO: replace 4 with the id of the authenticated user in the session
 
@@ -78,6 +93,11 @@ namespace OfferVerse.Controllers
 
         public IActionResult ShowInProgressServices()
         {
+            if (HttpContext.Session.GetInt32("userId") == null)
+            {
+                return RedirectToAction("Connect", "Home");
+            }
+
             AppUser user = AppUser.GetUserInfo(_userDAL, GetUserIdFromSession()); //TODO: replace 4 with the id of the authenticated user in the session
             List<ServiceDemanded> servicesDemanded = AppUser.GetTransactions(_userDAL, GetUserIdFromSession(), true); //TODO: replace 4 with the id of the authenticated user in the session
 
@@ -93,6 +113,11 @@ namespace OfferVerse.Controllers
 
         public IActionResult ReviewService(int ServiceDId)
         {
+            if (HttpContext.Session.GetInt32("userId") == null)
+            {
+                return RedirectToAction("Connect", "Home");
+            }
+
             ReviewServiceViewModel viewModel = new()
             {
                 ServiceDemanded = AppUser.GetInProgressTransaction(_userDAL, ServiceDId),
@@ -144,6 +169,11 @@ namespace OfferVerse.Controllers
 
         public IActionResult ReportUser(int reportedId)
         {
+            if (HttpContext.Session.GetInt32("userId") == null)
+            {
+                return RedirectToAction("Connect", "Home");
+            }
+
             ViewData["reportedId"] = reportedId;
             return View(new Report());
         }

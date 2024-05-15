@@ -27,6 +27,11 @@ namespace OfferVerse.Controllers
             return View(); 
         }
 
+        public IActionResult Connect()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
