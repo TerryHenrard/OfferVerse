@@ -120,7 +120,7 @@ namespace OfferVerse.Controllers
                 ServiceDemanded.CreditProvider(_serviceDemandedDAL, servicePId, viewModel.ServiceDemanded.NbHours))
             {
                 TempData["timeCredits"] = AppUser.GetUserInfo(_userDAL, GetUserIdFromSession()).TimeCredits;
-                ViewData["message"] = "Service well finalized";
+                TempData["message"] = "Service well finalized";
 
                 AppUser user = AppUser.GetUserInfo(_userDAL, GetUserIdFromSession()); //TODO: replace 4 with the id of the authenticated user in the session
                 List<ServiceDemanded> servicesDemanded = AppUser.GetTransactions(_userDAL, GetUserIdFromSession(), true); //TODO: replace 4 with the id of the authenticated user in the session
@@ -168,7 +168,7 @@ namespace OfferVerse.Controllers
 
                 if (Report.InsertReport(_reportDAL, report2))
                 {
-                    ViewData["message"] = "User well reported";
+                    TempData["message"] = "User well reported";
                     return RedirectToAction(nameof(ShowInProgressServices));
                 }
             }

@@ -1,0 +1,15 @@
+﻿@model ServiceDemanded
+
+<tr>
+    <th scope="row">@ViewData["index"]</th>
+    <td>@Model.StartService.ToString("dd/MM/yyyy")</td>
+    <td>
+        @Model.ServiceDemander.LastName.ToUpper()
+        @Model.ServiceDemander.FirstName[0].ToString().ToUpper()@Model.ServiceDemander.FirstName.Substring(1)
+    </td>
+    <td>@Model.ServiceProvided.Title</td>
+    <td>@Model.ServiceProvided.Description</td>
+    <td class="d-flex gap-2">
+        <a asp-action="ReportUser" asp-route-reportedId="@Model.ServiceDemander.MemberId" class="btn btn-danger w-100">Report</a>
+    </td>
+</tr>
