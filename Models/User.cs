@@ -1,5 +1,6 @@
 ﻿using OfferVerse.DAL.Interfaces;
 using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 
 namespace OfferVerse.Models
 {
@@ -143,6 +144,8 @@ namespace OfferVerse.Models
             }
             return result;
         }
+
+        public string GetFullName() => $"{LastName.ToUpper()} {char.ToUpper(FirstName[0])}{FirstName[1..]}"; //truncate the string from index 1 to the rest
 
         public bool ApplyProfileChanges(IUserDAL dal)
         {

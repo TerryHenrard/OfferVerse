@@ -1,7 +1,7 @@
 ﻿@using OfferVerse.ViewModels
 @model UserTransactionsViewModel
 
-<h2 class="my-5"><span>@Model.User.LastName.ToUpper() @Model.User.FirstName[0].ToString().ToUpper()@Model.User.FirstName.Substring(1)</span>, Here are all your time transactions</h2>
+<h2 class="my-5">@Model.User.GetFullName(), Here are all your time transactions</h2>
 
 <table class="table  table-bordered table-hover">
     <thead>
@@ -18,40 +18,22 @@
     </thead>
     <tbody>
         @{
+            ViewDataDictionary vd = new(ViewData);
             int index = 1;
+
             foreach (ServiceDemanded s in Model.ServicesDemanded)
             {
-                if (Model.User.Equals(s.ServiceProvider))
-                {
-                    <tr class="alert-success">
-                        <th scope="row">@(index++)</th>
-                        <td>@s.StartService.ToString("dd/MM/yyyy")</td>
-                        <td>@(s.EndService.HasValue ? s.EndService.Value.ToString("dd/MM/yyyy") : "N/A")</td>
-                        <td>@s.ServiceDemander.LastName.ToUpper() @s.ServiceDemander.FirstName[0].ToString().ToUpper()@s.ServiceDemander.FirstName.Substring(1)</td>
-                        <td>You</td>
-                        <td>@s.ServiceProvided.Title</td>
-                        <td>@s.ServiceProvided.Description</td>
-                        <td>+ @s.NbHours</td>
-                    </tr>
-                } 
-                else
-                {
-                    <tr class="alert-danger">
-                        <th scope="row">@(index++)</th>
-                        <td>@s.StartService.ToString("dd/MM/yyyy")</td>
-                        <td>@(s.EndService.HasValue ? s.EndService.Value.ToString("dd/MM/yyyy") : "N/A")</td>
-                        <td>You</td>
-                        <td>@s.ServiceProvider.LastName.ToUpper() @s.ServiceProvider.FirstName[0].ToString().ToUpper()@s.ServiceProvider.FirstName.Substring(1)</td>
-                        <td>@s.ServiceProvided.Title</td>
-                        <td>@s.ServiceProvided.Description</td>
-                        <td>- @s.NbHours</td>
-                    </tr>
-                }
-                
+                vd["index"] = index++;
+                string partialName = Model.User.Equals(s.ServiceProvider)
+                    ? "_PositiveCreditsTransactionsDetails.cshtml"
+                    : "_NegativeCreditsTransactionsDetails.cshtml";
+
+                <partial name="_Partials/@partialName" model="s" view-data="vd" />
             }
         }
+
         <tr class="alert-success">
-            <th scope="row">@(index++)</th>
+            <th scope="row">@vd["index"]</th>
             <td>A</td>
             <td>welcome</td>
             <td>gift</td>

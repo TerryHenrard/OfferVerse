@@ -1,15 +1,13 @@
 ﻿@using OfferVerse.ViewModels
 @model UserTransactionsViewModel
 
-<h2 class="my-5">@Model.User.LastName.ToUpper() @Model.User.FirstName[0].ToString().ToUpper()@Model.User.FirstName.Substring(1), 
-    Here are all your in progress services.
-</h2> 
+<h2 class="my-5">@Model.User.GetFullName(), Here are all your in progress services.</h2> 
+
 <p class="fs-5 my-3">You can either click on <span class="btn btn-primary">Finalize</span> to finalize the service demanded when the work is done</p>
 <p class="fs-5 my-3">or click on <span class="btn btn-danger">Report</span> if there was a problem during the work.</p>
 
 @{
-    string? message = Convert.ToString(TempData["message"]);
-    if (!string.IsNullOrEmpty(message))
+    if (TempData["message"] is string message && !string.IsNullOrEmpty(message)) //if TempData is string, it gives his values to message et then verifies if message is not null or empty
     {
         switch (message)
         {
@@ -50,23 +48,15 @@
     </thead>
     <tbody>
         @{
-            int index = 0;
+            ViewDataDictionary vd = new(ViewData);
+            int index = 1;
+            
             foreach (ServiceDemanded s in Model.ServicesDemanded)
             {
                 if (Model.User.Equals(s.ServiceDemander))
                 {
-                    <tr>
-                        <th>@(++index)</th>
-                        <td>@s.StartService.ToString("dd/MM/yyyy")</td>
-                        <td>@s.ServiceProvider.LastName.ToUpper() 
-                        @s.ServiceProvider.FirstName[0].ToString().ToUpper()@s.ServiceProvider.FirstName.Substring(1)</td>
-                        <td>@s.ServiceProvided.Title</td>
-                        <td>@s.ServiceProvided.Description</td>
-                        <td class="d-flex gap-2">
-                            <a asp-action="ReviewService" asp-route-ServiceDId="@s.ServiceId" class="btn btn-primary w-100">Finalize</a>
-                            <a asp-action="ReportUser" asp-route-reportedId="@s.ServiceProvider.MemberId" class="btn btn-danger w-100">Report</a>
-                        </td>
-                    </tr>
+                    vd["index"] = index++;
+                    <partial name="_Partials/_ServiceDemandedInProgressDetails.cshtml" model="s" view-data="vd"/>
                 }
             }
         }
@@ -87,24 +77,13 @@
     </thead>
     <tbody>
         @{
-            index = 0;
+            index = 1;
             foreach (ServiceDemanded s in Model.ServicesDemanded)
             {
                 if (!Model.User.Equals(s.ServiceDemander))
                 {
-                    <tr>
-                        <th scope="row">@(++index)</th>
-                        <td>@s.StartService.ToString("dd/MM/yyyy")</td>
-                        <td>
-                            @s.ServiceDemander.LastName.ToUpper()
-                            @s.ServiceDemander.FirstName[0].ToString().ToUpper()@s.ServiceDemander.FirstName.Substring(1)
-                        </td>
-                        <td>@s.ServiceProvided.Title</td>
-                        <td>@s.ServiceProvided.Description</td>
-                        <td class="d-flex gap-2">
-                            <a asp-action="ReportUser" asp-route-reportedId="@s.ServiceDemander.MemberId" class="btn btn-danger w-100">Report</a>
-                        </td>
-                    </tr>
+                    vd["index"] = index++;
+                    <partial name="_Partials/_ServiceProvidedInProgressDetails.cshtml" model="s" view-data="vd"/>
                 }
             }
         }
