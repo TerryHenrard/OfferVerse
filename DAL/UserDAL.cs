@@ -94,7 +94,7 @@ namespace OfferVerse.DAL
                             string title = reader.GetString("title");
                             string description = reader.GetString("description");
                             bool priority = reader.GetBoolean("priority");
-                            DateTime datePriority = reader.GetDateTime("datePriority");
+                            DateTime? datePriority = reader.IsDBNull("datePriority") ? null : reader.GetDateTime("datePriority");
                             int userId = reader.GetInt32("userId");
 
                             ServiceProvided s = new ServiceProvided
@@ -363,16 +363,15 @@ namespace OfferVerse.DAL
                 using (SqlConnection connection = new(connectionString))
                 {
                     SqlCommand cmd = new(
-                        "INSERT INTO ServicesProvided (title, description, userId, priority, categoryId, datePriority)" +
-                        "VALUES(@title, @description, @userId, @priority, @categoryId, @datePriority)", connection
+                        "INSERT INTO ServicesProvided (title, description, userId, priority, categoryId)" +
+                        "VALUES(@title, @description, @userId, @priority, @categoryId)", connection
                         );
 
                     cmd.Parameters.AddWithValue("@title", service.Title);
                     cmd.Parameters.AddWithValue("@description", service.Description);
                     cmd.Parameters.AddWithValue("@userId", uId);
                     cmd.Parameters.AddWithValue("@priority", service.Priority);
-                    cmd.Parameters.AddWithValue("@categoryId", 2);
-                    cmd.Parameters.AddWithValue("@datePriority", service.DatePriority);
+                    cmd.Parameters.AddWithValue("@categoryId", service.Category.CategoryId);
                     //TODO : add images to a service
 
                     connection.Open();

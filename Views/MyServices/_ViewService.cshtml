@@ -7,13 +7,20 @@
 
     <td>@Model.Priority</td>
 
-    <td>@Model.DatePriority</td>
+    @if(Model.Priority == true)
+    {
+        <td>@Model.DatePriority</td>
+    }
+    else
+    {
+        <td>Not prioritized</td>
+    }
 
     <td>
         <a asp-action="Confirm" asp-route-sId="@Model.ServiceProvidedId">Delete</a>
-    </td>
-
-    <td>
+    
+        <a asp-action="Modify" asp-route-sId="@Model.ServiceProvidedId">Modify</a>
+    
         @if(Model.Priority != true)
         {
             <a asp-action="Promote" asp-route-sId="@Model.ServiceProvidedId">Promote</a>

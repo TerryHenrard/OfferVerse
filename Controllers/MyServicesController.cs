@@ -10,10 +10,12 @@ namespace OfferVerse.Controllers
     {
         private readonly IUserDAL _UserDal;
         private readonly ICategoryDAL _CategoryDal;
-        public MyServicesController(IUserDAL userDal, ICategoryDAL catDal)
+        private readonly IServicesProvidedDAL _SpDal;
+        public MyServicesController(IUserDAL userDal, ICategoryDAL catDal, IServicesProvidedDAL spDal)
         {
             _UserDal = userDal;
             _CategoryDal = catDal;
+            _SpDal = spDal;
         }
         public IActionResult MyServices()
         {
@@ -49,9 +51,13 @@ namespace OfferVerse.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(ServiceProvided service)
         {
-            service.DatePriority = new DateTime(2000, 1, 1);
-            bool test = AppUser.AddServiceProvided(_UserDal, service, 4);
-            if (ModelState.IsValid)
+            ViewBag.categories = _CategoryDal.GetCategories();
+            //ModelState.IsValid is false because of the data annotations
+            //So i'm verifying manually
+            bool teste = ModelState.Remove("Own");
+            if (ModelState.IsValid &&
+                AppUser.AddServiceProvided(_UserDal, service, 4)
+                )
             {
                 TempData["success"] = "Service created successfully";
                 return RedirectToAction(nameof(MyServices));
@@ -61,14 +67,12 @@ namespace OfferVerse.Controllers
                 TempData["success"] = "Service not created successfully";
             }
 
-            return RedirectToAction(nameof(MyServices));
+            return View();
         }
 
-        public IActionResult Promote()
+        public IActionResult Promote(string sId)
         {
-            int sId = Convert.ToInt32(Request.Query["sId"].ToString());
-
-            if(sId != 1 && AppUser.PromoteServiceProvided(_UserDal, sId))
+            if(Convert.ToInt32(sId) != 1 && AppUser.PromoteServiceProvided(_UserDal, Convert.ToInt32(sId)))
             {
                 TempData["success"] = "Service promoted successfully";
             }
@@ -77,6 +81,32 @@ namespace OfferVerse.Controllers
                 TempData["success"] = "Service not promoted";
             }
             
+            return RedirectToAction(nameof(MyServices));
+        }
+
+        public IActionResult Modify(string sId)
+        { 
+            ViewBag.categories = _CategoryDal.GetCategories();//Put this method into the model + ViewModel for categories   
+            return View(ServiceProvided.GetServiceProvidedInfo(_SpDal, Convert.ToInt32(sId)));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Modify(ServiceProvided sp, string sId)
+        {
+            bool test = sp.ApplyServiceProvidedChanges(_SpDal, sp, Convert.ToInt32(sId));
+            ModelState.Remove("Own");
+            ModelState.Remove("Favorites");
+            if (ModelState.IsValid)
+            {
+                TempData["success"] = "Service modified successfully";
+                return RedirectToAction(nameof(MyServices));
+            }
+            else
+            {
+                TempData["success"] = "Service not modified";
+            }
+
             return RedirectToAction(nameof(MyServices));
         }
     }

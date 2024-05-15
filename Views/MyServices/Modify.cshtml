@@ -1,52 +1,51 @@
 ﻿@model ServiceProvided
-<h1>Create your service provided</h1>
 
-<form method="post" asp-action="Create">
+<form asp-controller="MyServices" asp-action="Modify" method="post">
     <table>
         <tr>
             <td>
                 <label asp-for="Title"></label>
             </td>
             <td>
-                <input type="text" asp-for="Title" />
+                <input asp-for="Title"/>
             </td>
             <td>
                 <span asp-validation-for="Title" class="text-danger px-2"></span>
             </td>
         </tr>
 
-
         <tr>
             <td>
                 <label asp-for="Description"></label>
             </td>
             <td>
-                <input asp-for="Description" />
+                <input asp-for="Description"/>
             </td>
             <td>
                 <span asp-validation-for="Description" class="text-danger px-2"></span>
             </td>
         </tr>
-        <input type="hidden" asp-for="Own.MemberId" value="4" />
+        
         <tr>
             <td>
-                <label asp-for="Category.CategoryId">Category : </label>
-            </td>
-            <td>
-                <select id="category" asp-for="Category.CategoryId">
-                    @foreach (var cat in ViewBag.categories)
+                <select asp-for="Category.CategoryId">
+                    @foreach(var cat in ViewBag.categories)
                     {
                         <option value="@cat.CategoryId">@cat.Name</option>
                     }
                 </select>
             </td>
-            <td>
-                <span asp-validation-for="Category.CategoryId"></span>
-            </td>
         </tr>
+
         <tr>
             <td>
-                <input type="submit" value="Envoyer" />
+                <input type="hidden" name="sId" value="@Model.ServiceProvidedId" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <input type="submit" value="Modifier" />
             </td>
         </tr>
     </table>

@@ -20,14 +20,12 @@
         <th>Priority</th>
 
         <th>Date of Priority</th>
+        <th>Actions</th>
     </tr>
         @foreach (ServiceProvided sp in Model)
         {
             <partial name="_ViewService" for="@sp" />
         }
-    <tr>
-        <td>
-            <a asp-action="Create">Créer un service</a>
-        </td>
-    </tr>
 </table>
+
+<a asp-action="Create">Créer un service</a>
