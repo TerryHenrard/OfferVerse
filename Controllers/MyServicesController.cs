@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using OfferVerse.DAL.Interfaces;
 using OfferVerse.Models;
+using OfferVerse.ViewModels;
 using System.Reflection.Metadata.Ecma335;
 using AppUser = OfferVerse.Models.User;
 
@@ -19,7 +21,12 @@ namespace OfferVerse.Controllers
         }
         public IActionResult MyServices()
         {
-            return View(AppUser.GetAllServicesProvided(_UserDal, 4));
+            return View(AppUser.GetAllServicesProvided(_UserDal, GetUserIdFromSession()));
+        }
+
+        private int GetUserIdFromSession()
+        {
+            return HttpContext.Session.GetInt32("userId") ?? 0;
         }
 
         public IActionResult Confirm()
@@ -43,24 +50,37 @@ namespace OfferVerse.Controllers
 
         public IActionResult Create()
         {
-            ViewBag.categories = _CategoryDal.GetCategories();
-            return View();
+            CreateModifySPViewModel viewModel = new CreateModifySPViewModel()
+            {
+                Sp = new(),
+                Categories = Category.GetCategories(_CategoryDal)
+            };
+            
+            return View(viewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(ServiceProvided service)
-        {
-            ViewBag.categories = _CategoryDal.GetCategories();
-            //ModelState.IsValid is false because of the data annotations
-            //So i'm verifying manually && ModelState.Remove() is not working
-            if (!String.IsNullOrEmpty(service.Title) &&
-                !String.IsNullOrEmpty(service.Description) &&
-                service.Title.Length <= 50 &&
-                service.Title.Length >= 5
-                && service.Description.Length >= 5 &&
-                service.Description.Length <= 200 &&
-                AppUser.AddServiceProvided(_UserDal, service, 4)
+        public IActionResult Create(CreateModifySPViewModel viewModel)
+        {   
+            ModelState.Remove("Sp.Favorites");
+            ModelState.Remove("Sp.Own");
+            ModelState.Remove("Sp.Category.Name");
+            ModelState.Remove("Sp.Category.Sp");
+            ModelState.Remove("Categories");
+
+            if(!ModelState.IsValid)
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                foreach (var error in errors)
+                {
+                    // Log or inspect the error message
+                    Console.WriteLine(error.ErrorMessage);
+                }
+            }
+
+            if (ModelState.IsValid &&
+                AppUser.AddServiceProvided(_UserDal, viewModel.Sp, GetUserIdFromSession())
                 )
             {
                 TempData["success"] = "Service created successfully";
@@ -77,11 +97,12 @@ namespace OfferVerse.Controllers
         public IActionResult Promote(string sId)
         {
             
-            if(AppUser.CheckCredits(_UserDal, 4) && 
+            if(AppUser.CheckCredits(_UserDal, GetUserIdFromSession()) && 
                 Convert.ToInt32(sId) != 1 && 
-                AppUser.PromoteServiceProvided(_UserDal, Convert.ToInt32(sId)))
+                AppUser.PromoteServiceProvided(_UserDal, Convert.ToInt32(sId), GetUserIdFromSession()))
             {
                 TempData["success"] = "Service promoted successfully";
+                TempData["timeCredits"] = AppUser.GetUserInfo(_UserDal, GetUserIdFromSession()).TimeCredits;
             }
             else
             {
@@ -92,19 +113,28 @@ namespace OfferVerse.Controllers
         }
 
         public IActionResult Modify(string sId)
-        { 
-            ViewBag.categories = _CategoryDal.GetCategories();//Put this method into the model + ViewModel for categories   
-            return View(ServiceProvided.GetServiceProvidedInfo(_SpDal, Convert.ToInt32(sId)));
+        {
+            CreateModifySPViewModel viewModel = new()
+            {
+                Sp = ServiceProvided.GetServiceProvidedInfo(_SpDal, Convert.ToInt32(sId)),
+                Categories = Category.GetCategories(_CategoryDal)
+            };
+
+            //Put this method into the model + ViewModel for categories   
+            return View(viewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Modify(ServiceProvided sp, string sId)
+        public IActionResult Modify(CreateModifySPViewModel viewModel, string sId)
         {
-            ModelState.Remove("Own");
-            ModelState.Remove("Favorites");
-            bool test = sp.ApplyServiceProvidedChanges(_SpDal, sp, Convert.ToInt32(sId));
-            if (ModelState.IsValid)
+            ModelState.Remove("Sp.Own");
+            ModelState.Remove("Sp.Favorites");
+            ModelState.Remove("Sp.Category.Sp");
+            ModelState.Remove("Sp.Category.Name");
+            ModelState.Remove("Categories");
+
+            if (ModelState.IsValid && viewModel.Sp.ApplyServiceProvidedChanges(_SpDal, viewModel.Sp, Convert.ToInt32(sId)))
             {
                 TempData["success"] = "Service modified successfully";
                 return RedirectToAction(nameof(MyServices));

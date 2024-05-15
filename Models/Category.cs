@@ -1,4 +1,6 @@
-﻿namespace OfferVerse.Models
+﻿using OfferVerse.DAL.Interfaces;
+
+namespace OfferVerse.Models
 {
     public class Category
     {
@@ -11,12 +13,43 @@
 
         public ServiceProvided Sp { get { return sp; } set { sp = value; } }
 
+        //Constructors
+
         public Category() { }
+
+        public Category(int categoryId)
+        {
+            CategoryId = categoryId;
+        }
 
         public Category(int categoryId, string name)
         {
             CategoryId = categoryId;
             Name = name;
+        }
+
+        //Static methods
+        public static List<Category> GetCategories(ICategoryDAL dal)
+        {
+            return dal.GetCategories();
+        }
+
+        //Overrided Methods
+        public override string ToString() => $" , {CategoryId}, {Name}, {Sp} ";
+
+        public override int GetHashCode()
+        {
+            return ToString().GetHashCode();
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if(obj == null)
+            {
+                return false;
+            }
+
+            return ToString() == obj.ToString();
         }
     }
 }

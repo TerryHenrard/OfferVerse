@@ -1,35 +1,36 @@
-﻿@model ServiceProvided
+﻿@using OfferVerse.ViewModels;
+@model CreateModifySPViewModel;
 
 <form asp-controller="MyServices" asp-action="Modify" method="post">
     <table>
         <tr>
             <td>
-                <label asp-for="Title"></label>
+                <label asp-for="Sp.Title"></label>
             </td>
             <td>
-                <input asp-for="Title"/>
+                <input asp-for="Sp.Title"/>
             </td>
             <td>
-                <span asp-validation-for="Title" class="text-danger px-2"></span>
+                <span asp-validation-for="Sp.Title" class="text-danger px-2"></span>
             </td>
         </tr>
 
         <tr>
             <td>
-                <label asp-for="Description"></label>
+                <label asp-for="Sp.Description"></label>
             </td>
             <td>
-                <input asp-for="Description"/>
+                <input asp-for="Sp.Description"/>
             </td>
             <td>
-                <span asp-validation-for="Description" class="text-danger px-2"></span>
+                <span asp-validation-for="Sp.Description" class="text-danger px-2"></span>
             </td>
         </tr>
         
         <tr>
             <td>
-                <select asp-for="Category.CategoryId">
-                    @foreach(var cat in ViewBag.categories)
+                <select asp-for="Sp.Category.CategoryId">
+                    @foreach(var cat in Model.Categories)
                     {
                         <option value="@cat.CategoryId">@cat.Name</option>
                     }
@@ -39,7 +40,7 @@
 
         <tr>
             <td>
-                <input type="hidden" name="sId" value="@Model.ServiceProvidedId" />
+                <input type="hidden" name="sId" value="@Model.Sp.ServiceProvidedId" />
             </td>
         </tr>
 

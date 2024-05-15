@@ -180,10 +180,10 @@ namespace OfferVerse.Models
             return dal.AddServiceProvided(service, uId);
         }
 
-        public static bool PromoteServiceProvided(IUserDAL dal, int sId)
+        public static bool PromoteServiceProvided(IUserDAL dal, int sId, int uId)
         {
 
-            return dal.DebitUser(4) && dal.PromoteServiceProvided(sId);
+            return dal.DebitUser(uId) && dal.PromoteServiceProvided(sId);
         }
 
         public static bool CheckCredits(IUserDAL dal, int uId)

@@ -1,47 +1,48 @@
-﻿@model ServiceProvided
+﻿@using OfferVerse.ViewModels;
+@model CreateModifySPViewModel;
+
 <h1>Create your service provided</h1>
 
 <form method="post" asp-action="Create">
     <table>
         <tr>
             <td>
-                <label asp-for="Title"></label>
+                <label asp-for="Sp.Title"></label>
             </td>
             <td>
-                <input type="text" asp-for="Title" />
+                <input type="text" asp-for="Sp.Title" />
             </td>
             <td>
-                <span asp-validation-for="Title" class="text-danger px-2"></span>
+                <span asp-validation-for="Sp.Title" class="text-danger px-2"></span>
             </td>
         </tr>
 
 
         <tr>
             <td>
-                <label asp-for="Description"></label>
+                <label asp-for="Sp.Description"></label>
             </td>
             <td>
-                <input asp-for="Description" />
+                <input asp-for="Sp.Description" />
             </td>
             <td>
-                <span asp-validation-for="Description" class="text-danger px-2"></span>
+                <span asp-validation-for="Sp.Description" class="text-danger px-2"></span>
             </td>
         </tr>
-        <input type="hidden" asp-for="Own.MemberId" value="4" />
         <tr>
             <td>
-                <label asp-for="Category.CategoryId">Category : </label>
+                <label asp-for="Sp.Category.CategoryId">Category : </label>
             </td>
             <td>
-                <select id="category" asp-for="Category.CategoryId">
-                    @foreach (var cat in ViewBag.categories)
+                <select id="category" asp-for="Sp.Category.CategoryId">
+                    @foreach (var cat in Model.Categories)
                     {
                         <option value="@cat.CategoryId">@cat.Name</option>
                     }
                 </select>
             </td>
             <td>
-                <span asp-validation-for="Category.CategoryId"></span>
+                <span asp-validation-for="Sp.Category.CategoryId"></span>
             </td>
         </tr>
         <tr>
