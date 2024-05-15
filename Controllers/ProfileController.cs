@@ -29,7 +29,7 @@ namespace OfferVerse.Controllers
 
         public IActionResult ShowProfile()
         {
-            if (HttpContext.Session.GetInt32("userId") == null)
+            if (GetUserIdFromSession() == 0)
             {
                 return RedirectToAction("Connect", "Home");
             }
@@ -46,7 +46,7 @@ namespace OfferVerse.Controllers
 
         public IActionResult EditProfile()
         {
-            if (HttpContext.Session.GetInt32("userId") == null)
+            if (GetUserIdFromSession() == 0)
             {
                 return RedirectToAction("Connect", "Home");
             }
@@ -74,7 +74,7 @@ namespace OfferVerse.Controllers
 
         public IActionResult ShowCreditsTransactions()
         {
-            if (HttpContext.Session.GetInt32("userId") == null)
+            if (GetUserIdFromSession() == 0)
             {
                 return RedirectToAction("Connect", "Home");
             }
@@ -93,7 +93,7 @@ namespace OfferVerse.Controllers
 
         public IActionResult ShowInProgressServices()
         {
-            if (HttpContext.Session.GetInt32("userId") == null)
+            if (GetUserIdFromSession() == 0)
             {
                 return RedirectToAction("Connect", "Home");
             }
@@ -113,7 +113,7 @@ namespace OfferVerse.Controllers
 
         public IActionResult ReviewService(int ServiceDId)
         {
-            if (HttpContext.Session.GetInt32("userId") == null)
+            if (GetUserIdFromSession() == 0)
             {
                 return RedirectToAction("Connect", "Home");
             }
@@ -169,7 +169,7 @@ namespace OfferVerse.Controllers
 
         public IActionResult ReportUser(int reportedId)
         {
-            if (HttpContext.Session.GetInt32("userId") == null)
+            if (GetUserIdFromSession() == 0)
             {
                 return RedirectToAction("Connect", "Home");
             }

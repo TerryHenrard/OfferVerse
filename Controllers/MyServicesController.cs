@@ -21,6 +21,11 @@ namespace OfferVerse.Controllers
         }
         public IActionResult MyServices()
         {
+            if (GetUserIdFromSession() == 0)
+            {
+                return RedirectToAction("Connect", "Home");
+            }
+
             return View(AppUser.GetAllServicesProvided(_UserDal, GetUserIdFromSession()));
         }
 
@@ -50,6 +55,11 @@ namespace OfferVerse.Controllers
 
         public IActionResult Create()
         {
+            if (GetUserIdFromSession() == 0)
+            {
+                return RedirectToAction("Connect", "Home");
+            }
+
             CreateModifySPViewModel viewModel = new CreateModifySPViewModel()
             {
                 Sp = new(),
@@ -86,8 +96,12 @@ namespace OfferVerse.Controllers
 
         public IActionResult Promote(string sId)
         {
-            
-            if(AppUser.CheckCredits(_UserDal, GetUserIdFromSession()) && 
+            if (GetUserIdFromSession() == 0)
+            {
+                return RedirectToAction("Connect", "Home");
+            }
+
+            if (AppUser.CheckCredits(_UserDal, GetUserIdFromSession()) && 
                 Convert.ToInt32(sId) != 1 && 
                 AppUser.PromoteServiceProvided(_UserDal, Convert.ToInt32(sId), GetUserIdFromSession()))
             {
@@ -104,6 +118,11 @@ namespace OfferVerse.Controllers
 
         public IActionResult Modify(string sId)
         {
+            if (GetUserIdFromSession() == 0)
+            {
+                return RedirectToAction("Connect", "Home");
+            }
+
             CreateModifySPViewModel viewModel = new()
             {
                 Sp = ServiceProvided.GetServiceProvidedInfo(_SpDal, Convert.ToInt32(sId)),
