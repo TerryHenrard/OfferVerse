@@ -69,16 +69,6 @@ namespace OfferVerse.Controllers
             ModelState.Remove("Sp.Category.Sp");
             ModelState.Remove("Categories");
 
-            if(!ModelState.IsValid)
-            {
-                var errors = ModelState.Values.SelectMany(v => v.Errors);
-                foreach (var error in errors)
-                {
-                    // Log or inspect the error message
-                    Console.WriteLine(error.ErrorMessage);
-                }
-            }
-
             if (ModelState.IsValid &&
                 AppUser.AddServiceProvided(_UserDal, viewModel.Sp, GetUserIdFromSession())
                 )
@@ -120,7 +110,6 @@ namespace OfferVerse.Controllers
                 Categories = Category.GetCategories(_CategoryDal)
             };
 
-            //Put this method into the model + ViewModel for categories   
             return View(viewModel);
         }
 
