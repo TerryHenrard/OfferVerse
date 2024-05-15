@@ -13,8 +13,8 @@ namespace OfferVerse.Models
 
         //References
         private List<User>? favorites;
-        private User? own;
-        private Category? category;
+        private User own;
+        private Category category;
 
         //Attributes
         public int ServiceProvidedId 
@@ -54,18 +54,6 @@ namespace OfferVerse.Models
             set {  datePriority = value; } 
         }
 
-        //public int UserId
-        //{
-        //    get { return userId; }
-        //    set { userId = value; }
-        //}
-
-        //public int CategoryId
-        //{
-        //    get { return  categoryId; }
-        //    set { categoryId = value; }
-        //}
-
         public User Own
         {
             get { return own; }
@@ -96,18 +84,15 @@ namespace OfferVerse.Models
         {
             Priority = priority;
             DatePriority = datePriority;
-            Own = new User();
-            Own.MemberId = userId;
+            Own = new User(userId);
         }
         public ServiceProvided(string title, string description, int userId, int categoryId)
         {
             Title = title;
             Description = description;
-            Own.MemberId = userId;
+            Own = new User(userId);
             Priority = false;
-            DatePriority = new DateTime(2002, 2, 3);
-            Category = new Category();
-            Category.CategoryId = categoryId;
+            Category = new Category(categoryId);
         }
 
         public ServiceProvided(int serviceProvidedId, string title, string description)
@@ -115,17 +100,13 @@ namespace OfferVerse.Models
         {
             Title = title;
             Description = description;
-            new DateTime(2002, 2, 3);
         }
 
         public ServiceProvided(int serviceProvidedId, string title, string description, int catId, int uId)
             : this(serviceProvidedId, title, description)
         {
-            Category = new Category();
-            Category.CategoryId = catId;
-
-            Own = new User();
-            Own.MemberId = uId;
+            Category = new Category(catId);
+            Own = new User(uId);
         }
 
         public ServiceProvided(int serviceProvidedId)
