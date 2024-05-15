@@ -130,15 +130,5 @@ namespace OfferVerse.Models
         {
             return dal.FinalizeService(serviceDId, nbHours);
         }
-
-        public static bool DebitDemander(IServiceDemandedDAL dal, int serviceDId, int? nbHours)
-        {
-            return dal.DebitDemander(serviceDId, nbHours);
-        }
-        
-        public static bool CreditProvider(IServiceDemandedDAL dal, int servicePId, int? nbHours)
-        {
-            return dal.CreditProvider(servicePId, nbHours);
-        }
     }
 }

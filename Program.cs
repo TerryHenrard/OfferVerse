@@ -17,7 +17,7 @@ builder.Services.AddSession(options =>
 string connectionString = builder.Configuration.GetConnectionString("default");
 
 builder.Services.AddControllersWithViews();
-builder.Services.AddTransient<IServicesProvidedDAL>(sp => new ServiceProvidedDAL(connectionString));
+builder.Services.AddTransient<IServiceProvidedDAL>(sp => new ServiceProvidedDAL(connectionString));
 builder.Services.AddTransient<ICategoryDAL>(cd => new CategoryDAL(connectionString));
 builder.Services.AddTransient<IUserDAL>(ud => new UserDAL(connectionString));
 builder.Services.AddTransient<ICommentaryDAL>(cd => new CommentaryDAL(connectionString));

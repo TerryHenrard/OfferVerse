@@ -10,8 +10,8 @@ namespace OfferVerse.Controllers
     {
         private readonly IUserDAL _UserDal;
         private readonly ICategoryDAL _CategoryDal;
-        private readonly IServicesProvidedDAL _SpDal;
-        public MyServicesController(IUserDAL userDal, ICategoryDAL catDal, IServicesProvidedDAL spDal)
+        private readonly IServiceProvidedDAL _SpDal;
+        public MyServicesController(IUserDAL userDal, ICategoryDAL catDal, IServiceProvidedDAL spDal)
         {
             _UserDal = userDal;
             _CategoryDal = catDal;

@@ -116,8 +116,8 @@ namespace OfferVerse.Controllers
                 servicePId > 0 &&
                 Commentary.InsertCommentary(_commentaryDAL, viewModel.Commentary.Content, viewModel.Commentary.Rating, servicePId) &&
                 ServiceDemanded.FinalizeService(_serviceDemandedDAL, serviceDId, viewModel.ServiceDemanded.NbHours) &&
-                ServiceDemanded.DebitDemander(_serviceDemandedDAL, GetUserIdFromSession(), viewModel.ServiceDemanded.NbHours) && //TODO: remplacer 4 par l'utilisateur connecté
-                ServiceDemanded.CreditProvider(_serviceDemandedDAL, servicePId, viewModel.ServiceDemanded.NbHours))
+                AppUser.DebitUser(_userDAL, GetUserIdFromSession(), viewModel.ServiceDemanded.NbHours) && //TODO: remplacer 4 par l'utilisateur connecté
+                AppUser.CreditUser(_userDAL, servicePId, viewModel.ServiceDemanded.NbHours))
             {
                 TempData["timeCredits"] = AppUser.GetUserInfo(_userDAL, GetUserIdFromSession()).TimeCredits;
                 TempData["message"] = "Service well finalized";

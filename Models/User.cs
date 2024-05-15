@@ -182,13 +182,22 @@ namespace OfferVerse.Models
 
         public static bool PromoteServiceProvided(IUserDAL dal, int sId)
         {
-
             return dal.DebitUser(4) && dal.PromoteServiceProvided(sId);
         }
 
         public static bool CheckCredits(IUserDAL dal, int uId)
         {
             return dal.CheckCredits(uId);
+        }
+
+        public static bool DebitUser(IUserDAL dal, int serviceDId, int? nbHours)
+        {
+            return dal.DebitUser(serviceDId, nbHours);
+        }
+
+        public static bool CreditUser(IUserDAL dal, int servicePId, int? nbHours)
+        {
+            return dal.CreditUser(servicePId, nbHours);
         }
 
         /******Existant methods overrided*******/

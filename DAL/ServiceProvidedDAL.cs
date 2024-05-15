@@ -3,10 +3,11 @@ using OfferVerse.DAL.Interfaces;
 using OfferVerse.Models;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.Eventing.Reader;
 
 namespace OfferVerse.DAL
 {
-    public class ServiceProvidedDAL : IServicesProvidedDAL
+    public class ServiceProvidedDAL : IServiceProvidedDAL
     {
         private readonly string connectionString;
 
@@ -21,7 +22,7 @@ namespace OfferVerse.DAL
 
             try
             {
-                using(SqlConnection connection  = new SqlConnection(connectionString))
+                using(SqlConnection connection  = new(connectionString))
                 {
                     SqlCommand cmd = new(
                         "SELECT servicePId, title, description, categoryId, userId " +
@@ -42,7 +43,7 @@ namespace OfferVerse.DAL
                             int catId = reader.GetInt32("categoryId");
                             int userId = reader.GetInt32("userId");
 
-                            sp = new ServiceProvided(serviceId, title, description, catId, userId);
+                            sp = new(serviceId, title, description, catId, userId);
                         }
                         else
                         {
@@ -69,7 +70,7 @@ namespace OfferVerse.DAL
 
             try
             {
-                using( SqlConnection connection = new SqlConnection( connectionString))
+                using(SqlConnection connection = new( connectionString))
                 {
                     SqlCommand cmd = new(
                         "UPDATE ServicesProvided " +
@@ -96,6 +97,65 @@ namespace OfferVerse.DAL
             }
 
             return success;
+        }
+
+        public List<ServiceProvided> GetServicesProvided(int pageNb, int servicePerPage)
+        {
+            List<ServiceProvided> servicesP = new();
+
+            try
+            {
+                using (SqlConnection connection = new(connectionString))
+                {
+                    string query =
+                      @"SELECT * 
+                        FROM ServicesProvided sp 
+                        INNER JOIN Categories c ON sp.categoryId = c.categoryId
+                        ORDER BY 
+                            sp.priority DESC, 
+                            CASE 
+                                WHEN sp.priority = 1 THEN sp.datePriority 
+                            END ASC,
+                            CASE 
+                                WHEN sp.priority = 0 THEN NEWID() 
+                            END
+                        OFFSET (@pageNb - 1) * @servicePerPage ROWS 
+                        FETCH NEXT @servicePerPage ROWS ONLY";
+                    SqlCommand cmd = new(query, connection);
+
+                    cmd.Parameters.AddWithValue("@servicePerPage", servicePerPage);
+                    cmd.Parameters.AddWithValue("@pageNb", pageNb);
+
+                    connection.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int servicePId = reader.GetInt32("servicePId");
+                            string title = reader.GetString("title");
+                            string description = reader.GetString("description");
+                            bool priority = reader.GetBoolean("priority");
+                            DateTime? datePriority = !reader.IsDBNull("datePriority") ? reader.GetDateTime("datePriority") : null;
+                            int categoryId = reader.GetInt32("categoryId");
+                            int userId = reader.GetInt32("userId");
+                            string categoryName = reader.GetString("name");
+
+                            servicesP.Add(new(servicePId, title, description, priority, datePriority, categoryId, userId, categoryName));
+                        }
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                throw new Exception("An SQL error occured : " + e.Message);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error while getting the list of provided services : " + e.Message);
+            }
+
+            return servicesP;
         }
     }
 }

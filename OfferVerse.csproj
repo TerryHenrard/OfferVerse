@@ -15,4 +15,8 @@
     <Folder Include="img\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\Images\gardening.jpg" />
+  </ItemGroup>
+
 </Project>

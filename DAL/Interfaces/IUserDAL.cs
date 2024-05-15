@@ -11,11 +11,10 @@ namespace OfferVerse.DAL.Interfaces
         public ServiceDemanded GetInProgressTransaction(int serviceDId);
         public bool DeleteServiceProvided(int sId);
         public bool AddServiceProvided(ServiceProvided service, int uId);
-
         public bool PromoteServiceProvided(int sId);
-
         public bool CheckCredits(int uId);
-
         public bool DebitUser(int uId);
+        public bool DebitUser(int memberId, int? nbHours);
+        public bool CreditUser(int memberId, int? nbHours);
     }
 }
