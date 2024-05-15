@@ -1,0 +1,12 @@
+﻿@model ServiceDemanded
+
+<tr class="alert-danger">
+    <th scope="row">@ViewData["index"]</th>
+    <td>@Model.StartService.ToString("dd/MM/yyyy")</td>
+    <td>@(Model.EndService.HasValue ? @Model.EndService.Value.ToString("dd/MM/yyyy") : "N/A")</td>
+    <td>You</td>
+    <td>@Model.ServiceProvider.LastName.ToUpper() @Model.ServiceProvider.FirstName[0].ToString().ToUpper()@Model.ServiceProvider.FirstName.Substring(1)</td>
+    <td>@Model.ServiceProvided.Title</td>
+    <td>@Model.ServiceProvided.Description</td>
+    <td>- @Model.NbHours</td>
+</tr>

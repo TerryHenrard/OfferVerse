@@ -1,5 +1,5 @@
 ﻿@model User
-<h2 class="my-5">@Model.LastName.ToUpper() @Model.FirstName[0].ToString().ToUpper()@Model.FirstName.Substring(1), Welcome to your profile page</h2> <!--Add name in TempData["***"] to have it everywhere-->
+<h2 class="my-5">@Model.GetFullName(), Welcome to your profile page</h2> <!--Add name in TempData["***"] to have it everywhere-->
 
 @{
     if (TempData["message"] != null && Convert.ToString(TempData["message"]) == "Profil edited with success")
@@ -14,31 +14,7 @@
 }
 
 <table class="table table-striped table-bordered table-hover">
-    <tr></tr>
-    <tr>
-        <th>First name</th>
-        <td>@Model.FirstName</td>
-    </tr>
-    <tr>
-        <th>Last name</th>
-        <td>@Model.LastName</td>
-    </tr>
-    <tr>
-        <th>Phone number</th>
-        <td>@Model.PhoneNumber</td>
-    </tr>
-    <tr>
-        <th>Address</th>
-        <td>@Model.StreetNumber @Model.StreetName, @Model.PostCode @Model.City</td>
-    </tr>
-    <tr>
-        <th>Email</th>
-        <td>@Model.Email</td>
-    </tr>
-    <tr>
-        <th>Password</th>
-        <td>●●●●●●●</td>
-    </tr>
+    <partial name="_Partials/_ShowUserDetails.cshtml" model="@Model"/>
 </table>
 
 <div class="d-flex gap-xl-5 justify-content-between">

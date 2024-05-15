@@ -70,6 +70,30 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxTaG93UHJvZmlsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/Profile/_Partials/_EditUserDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxfUGFydGlhbHNcX0VkaXRVc2VyRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/Profile/_Partials/_NegativeCreditsTransactionsDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxfUGFydGlhbHNcX05lZ2F0aXZlQ3JlZGl0c1RyYW5zYWN0aW9uc0RldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/Profile/_Partials/_PositiveCreditsTransactionsDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxfUGFydGlhbHNcX1Bvc2l0aXZlQ3JlZGl0c1RyYW5zYWN0aW9uc0RldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/Profile/_Partials/_ServiceDemandedInProgressDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxfUGFydGlhbHNcX1NlcnZpY2VEZW1hbmRlZEluUHJvZ3Jlc3NEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/Profile/_Partials/_ServiceProvidedInProgressDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxfUGFydGlhbHNcX1NlcnZpY2VQcm92aWRlZEluUHJvZ3Jlc3NEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/Profile/_Partials/_ShowUserDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxfUGFydGlhbHNcX1Nob3dVc2VyRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
