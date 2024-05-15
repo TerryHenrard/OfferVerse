@@ -12,12 +12,14 @@ namespace OfferVerse.Controllers
         private readonly IUserDAL _userDAL;
         private readonly ICommentaryDAL _commentaryDAL;
         private readonly IServiceDemandedDAL _serviceDemandedDAL;
+        private readonly IReportDAL _reportDAL;
 
-        public ProfileController(IUserDAL userDAL, ICommentaryDAL commentaryDAL, IServiceDemandedDAL serviceDemandedDAL)
+        public ProfileController(IUserDAL userDAL, ICommentaryDAL commentaryDAL, IServiceDemandedDAL serviceDemandedDAL, IReportDAL reportDAL)
         {
             _userDAL = userDAL;
             _commentaryDAL = commentaryDAL;
             _serviceDemandedDAL = serviceDemandedDAL;
+            _reportDAL = reportDAL;
         }
 
         private int GetUserIdFromSession()
@@ -39,7 +41,7 @@ namespace OfferVerse.Controllers
 
         public IActionResult EditProfile()
         {
-            return View(AppUser.GetUserInfo(_userDAL, 1)); //TODO: replace 1 with the id of the authenticated user in the session
+            return View(AppUser.GetUserInfo(_userDAL, GetUserIdFromSession())); //TODO: replace 1 with the id of the authenticated user in the session
         }
 
         [HttpPost]
@@ -57,13 +59,13 @@ namespace OfferVerse.Controllers
                 return RedirectToAction(nameof(ShowProfile));
             }
             
-            return View(AppUser.GetUserInfo(_userDAL, 1)); //TODO: replace 1 with the id of the authenticated user in the session
+            return View(AppUser.GetUserInfo(_userDAL, GetUserIdFromSession())); //TODO: replace 1 with the id of the authenticated user in the session
         }
 
         public IActionResult ShowCreditsTransactions()
         {
-            AppUser user = AppUser.GetUserInfo(_userDAL, 4); //TODO: replace 4 with the id of the authenticated user in the session
-            List<ServiceDemanded> servicesDemanded = AppUser.GetTransactions(_userDAL, 4); //TODO: replace 4 with the id of the authenticated user in the session
+            AppUser user = AppUser.GetUserInfo(_userDAL, GetUserIdFromSession()); //TODO: replace 4 with the id of the authenticated user in the session
+            List<ServiceDemanded> servicesDemanded = AppUser.GetTransactions(_userDAL, GetUserIdFromSession()); //TODO: replace 4 with the id of the authenticated user in the session
 
             UserTransactionsViewModel viewModel = new()
             {
@@ -76,8 +78,8 @@ namespace OfferVerse.Controllers
 
         public IActionResult ShowInProgressServices()
         {
-            AppUser user = AppUser.GetUserInfo(_userDAL, 4); //TODO: replace 4 with the id of the authenticated user in the session
-            List<ServiceDemanded> servicesDemanded = AppUser.GetTransactions(_userDAL, 4, true); //TODO: replace 4 with the id of the authenticated user in the session
+            AppUser user = AppUser.GetUserInfo(_userDAL, GetUserIdFromSession()); //TODO: replace 4 with the id of the authenticated user in the session
+            List<ServiceDemanded> servicesDemanded = AppUser.GetTransactions(_userDAL, GetUserIdFromSession(), true); //TODO: replace 4 with the id of the authenticated user in the session
 
             UserTransactionsViewModel viewModel = new()
             {
@@ -114,14 +116,14 @@ namespace OfferVerse.Controllers
                 servicePId > 0 &&
                 Commentary.InsertCommentary(_commentaryDAL, viewModel.Commentary.Content, viewModel.Commentary.Rating, servicePId) &&
                 ServiceDemanded.FinalizeService(_serviceDemandedDAL, serviceDId, viewModel.ServiceDemanded.NbHours) &&
-                ServiceDemanded.DebitDemander(_serviceDemandedDAL, 4, viewModel.ServiceDemanded.NbHours) && //TODO: remplacer 4 par l'utilisateur connecté
+                ServiceDemanded.DebitDemander(_serviceDemandedDAL, GetUserIdFromSession(), viewModel.ServiceDemanded.NbHours) && //TODO: remplacer 4 par l'utilisateur connecté
                 ServiceDemanded.CreditProvider(_serviceDemandedDAL, servicePId, viewModel.ServiceDemanded.NbHours))
             {
-                TempData["timeCredits"] = AppUser.GetUserInfo(_userDAL, 1).TimeCredits;
-                TempData["message"] = "Service well finalized";
+                TempData["timeCredits"] = AppUser.GetUserInfo(_userDAL, GetUserIdFromSession()).TimeCredits;
+                ViewData["message"] = "Service well finalized";
 
-                AppUser user = AppUser.GetUserInfo(_userDAL, 4); //TODO: replace 4 with the id of the authenticated user in the session
-                List<ServiceDemanded> servicesDemanded = AppUser.GetTransactions(_userDAL, 4, true); //TODO: replace 4 with the id of the authenticated user in the session
+                AppUser user = AppUser.GetUserInfo(_userDAL, GetUserIdFromSession()); //TODO: replace 4 with the id of the authenticated user in the session
+                List<ServiceDemanded> servicesDemanded = AppUser.GetTransactions(_userDAL, GetUserIdFromSession(), true); //TODO: replace 4 with the id of the authenticated user in the session
 
                 UserTransactionsViewModel viewModel2 = new()
                 {
@@ -138,6 +140,39 @@ namespace OfferVerse.Controllers
                 Commentary = new()
             };
             return View(viewModel3);
+        }
+
+        public IActionResult ReportUser(int reportedId)
+        {
+            ViewData["reportedId"] = reportedId;
+            return View(new Report());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult ReportUser(Report report, int reportedId)
+        {
+            ModelState.Remove("ReportId");
+            ModelState.Remove("Reporter");
+            ModelState.Remove("Reported");
+
+            if (ModelState.IsValid)
+            {
+                Report report2 = new()
+                {
+                    Title = report.Title,
+                    Description = report.Description,
+                    Reported = new(reportedId),
+                    Reporter = new(GetUserIdFromSession()),
+                };
+
+                if (Report.InsertReport(_reportDAL, report2))
+                {
+                    ViewData["message"] = "User well reported";
+                    return RedirectToAction(nameof(ShowInProgressServices));
+                }
+            }
+            return View(report);
         }
     }
 }

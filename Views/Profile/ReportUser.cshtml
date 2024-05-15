@@ -1,0 +1,43 @@
+﻿@model Report
+
+<h2 class="my-5">Report a user</h2>
+<div class="alert alert-danger">
+    <h4 class="alert-heading">Read this before you continue!</h4>
+    <hr />
+    <p class="mb-0">
+        Please consider what you're about to do carefully, we don't take report lightly. 
+        The purpose of the report must be purely objective,
+        if after investigation we conclude that you have abused the report to
+        harm the experience of another user you will first be sanctioned 
+        (-50 time credits). And if it happens again, you'll be banned for life from 
+        all OfferVerse services. Thank you for your understanding.
+    </p>
+</div>
+
+
+<form method="post" asp-action="ReportUser">
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th class="w-25"><label asp-for="Title"></label></th>
+            <td><input asp-for="Title" class="form-control"/></td>
+            <td class="w-50"><span asp-validation-for="Title" class="text-danger"></span></td>
+        </tr>
+
+        <tr>
+            <th class="w-25"><label asp-for="Description"></label></th>
+            <td>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <p id="length" class="m-0">-100</p>    
+            </td>
+            <td class="w-50"><span asp-validation-for="Description" class="text-danger"></span></td>
+        </tr>
+    </table>
+
+    <div class="d-flex gap-xl-5 justify-content-start">
+        <a asp-action="ShowInProgressServices" class="btn btn-dark my-2 p-2 px-4 w-25">Back</a>
+        <input type="hidden" name="reportedId" value="@ViewData["reportedId"]" />
+        <input type="submit" value="Validate" class="btn btn-success my-2 p-2 px-4 w-25" />
+    </div>
+</form>
+
+<script src="~/js/ReportUser.js" defer></script>

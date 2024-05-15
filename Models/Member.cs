@@ -4,7 +4,7 @@ namespace OfferVerse.Models
 {
     public abstract class Member
     {
-        private readonly int memberId;
+        private int memberId;
         private string email;
         private string password;
         private string firstName;
@@ -13,6 +13,7 @@ namespace OfferVerse.Models
         public int MemberId
         {
             get { return memberId; }
+            set { memberId = value; }
         }
 
         [Display(Name = "Email")]
