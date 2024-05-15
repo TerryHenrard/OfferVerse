@@ -80,7 +80,7 @@ namespace OfferVerse.DAL
                     cmd.Parameters.AddWithValue("@title", sp.Title);
                     cmd.Parameters.AddWithValue("@description", sp.Description);
                     cmd.Parameters.AddWithValue("@catId", sp.Category.CategoryId);
-                    cmd.Parameters.AddWithValue("@sId", sp.ServiceProvidedId);
+                    cmd.Parameters.AddWithValue("@sId", id);
 
                     connection.Open();
                     success = cmd.ExecuteNonQuery() > 0;

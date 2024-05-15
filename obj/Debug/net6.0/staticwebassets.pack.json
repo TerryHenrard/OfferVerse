@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\js\\FinalizeService.js"
     },
     {
+      "Id": "D:\\OfferVerse\\wwwroot\\js\\ReportUser.js",
+      "PackagePath": "staticwebassets\\js\\ReportUser.js"
+    },
+    {
       "Id": "D:\\OfferVerse\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

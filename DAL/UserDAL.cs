@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Globalization;
 using System.Reflection.PortableExecutable;
 
+
 namespace OfferVerse.DAL
 {
     public class UserDAL : IUserDAL
@@ -133,9 +134,9 @@ namespace OfferVerse.DAL
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new(connectionString))
                 {
-                    SqlCommand cmd = new SqlCommand(query, connection);
+                    SqlCommand cmd = new(query, connection);
                     cmd.Parameters.AddWithValue("@phoneNumber", userProfil.PhoneNumber);
                     cmd.Parameters.AddWithValue("@postCode", userProfil.PostCode);
                     cmd.Parameters.AddWithValue("@streetName", userProfil.StreetName);
@@ -144,7 +145,7 @@ namespace OfferVerse.DAL
                     cmd.Parameters.AddWithValue("@email", userProfil.Email);
                     cmd.Parameters.AddWithValue("@firstName", userProfil.FirstName);
                     cmd.Parameters.AddWithValue("@lastName", userProfil.LastName);
-                    cmd.Parameters.AddWithValue("@userId", 1); //TODO: replace 1 with the id of the authenticated user in the session
+                    cmd.Parameters.AddWithValue("@userId", userProfil.MemberId); //TODO: replace 1 with the id of the authenticated user in the session
 
                     if (editPassword)
                     {
@@ -216,13 +217,7 @@ namespace OfferVerse.DAL
                     {
                         int serviceDId = reader.GetInt32("ServiceDId");
                         DateTime startService = reader.GetDateTime("Start date");
-
-                        DateTime? endService = null;
-                        if (!reader.IsDBNull("End date"))
-                        {
-                            endService = reader.GetDateTime("End date");
-                        }
-
+                        DateTime? endService = !reader.IsDBNull("End date") ? reader.GetDateTime("End date") : null;
                         int DId = reader.GetInt32("Demander Id");
                         string DFirstName = reader.GetString("Demander first name");
                         string DLastName = reader.GetString("Demander last name");
@@ -232,12 +227,7 @@ namespace OfferVerse.DAL
                         int SPId = reader.GetInt32("Service provided Id");
                         string title = reader.GetString("Title");
                         string description = reader.GetString("Description");
-
-                        int? hours = null;
-                        if (!reader.IsDBNull("Amount of the transaction"))
-                        {
-                            hours = reader.GetInt32("Amount of the transaction");
-                        }
+                        int? hours = !reader.IsDBNull("Amount of the transaction") ? reader.GetInt32("Amount of the transaction") : null;
 
                         ServicesD.Add(new(serviceDId, 
                                           startService, 
@@ -321,7 +311,7 @@ namespace OfferVerse.DAL
 
         public bool DeleteServiceProvided(int sId)
         {
-            bool success = true;
+            bool success = false;
             try
             {
                 using (SqlConnection connection = new(connectionString))
@@ -344,19 +334,17 @@ namespace OfferVerse.DAL
             catch (SqlException e)
             {
                 throw new Exception("An SQL error occured : " + e.Message);
-                success = false;
             }
             catch (Exception e)
             {
                 throw new Exception("Error while deleting a service : " + e.Message);
-                success = false;
             }
 
             return success;
         }
         public bool AddServiceProvided(ServiceProvided service, int uId)
         {
-            bool success = true;
+            bool success = false;
 
             try
             {
@@ -380,12 +368,10 @@ namespace OfferVerse.DAL
             }
             catch (SqlException e)
             {
-                success = false;
                 throw new Exception("An SQL error occurred : " + e.Message);
             }
             catch (Exception e)
             {
-                success = false;
                 throw new Exception("Error while creating a service : " + e.Message);
             }
 
@@ -394,7 +380,7 @@ namespace OfferVerse.DAL
 
         public bool PromoteServiceProvided(int sId)
         {
-            bool success = true;
+            bool success = false;
 
             try
             {
@@ -415,12 +401,10 @@ namespace OfferVerse.DAL
             }
             catch (SqlException e)
             {
-                success = false;
                 throw new Exception("An SQL error occurred : " + e.Message);
             }
             catch(Exception e)
             {
-                success = false; 
                 throw new Exception("Error while promoting a service : " + e.Message);
             }
 

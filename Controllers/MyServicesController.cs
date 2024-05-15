@@ -53,9 +53,13 @@ namespace OfferVerse.Controllers
         {
             ViewBag.categories = _CategoryDal.GetCategories();
             //ModelState.IsValid is false because of the data annotations
-            //So i'm verifying manually
-            bool teste = ModelState.Remove("Own");
-            if (ModelState.IsValid &&
+            //So i'm verifying manually && ModelState.Remove() is not working
+            if (!String.IsNullOrEmpty(service.Title) &&
+                !String.IsNullOrEmpty(service.Description) &&
+                service.Title.Length <= 50 &&
+                service.Title.Length >= 5
+                && service.Description.Length >= 5 &&
+                service.Description.Length <= 200 &&
                 AppUser.AddServiceProvided(_UserDal, service, 4)
                 )
             {
@@ -94,9 +98,9 @@ namespace OfferVerse.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Modify(ServiceProvided sp, string sId)
         {
-            bool test = sp.ApplyServiceProvidedChanges(_SpDal, sp, Convert.ToInt32(sId));
             ModelState.Remove("Own");
             ModelState.Remove("Favorites");
+            bool test = sp.ApplyServiceProvidedChanges(_SpDal, sp, Convert.ToInt32(sId));
             if (ModelState.IsValid)
             {
                 TempData["success"] = "Service modified successfully";
