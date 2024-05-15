@@ -1,24 +1,39 @@
 ﻿@using OfferVerse.ViewModels
 @model UserTransactionsViewModel
 
-<h2 class="my-5"><span>@Model.User.LastName.ToUpper() @Model.User.FirstName[0].ToString().ToUpper()@Model.User.FirstName.Substring(1)</span>, 
+<h2 class="my-5">@Model.User.LastName.ToUpper() @Model.User.FirstName[0].ToString().ToUpper()@Model.User.FirstName.Substring(1), 
     Here are all your in progress services.
 </h2> 
 <p class="fs-5 my-3">You can either click on <span class="btn btn-primary">Finalize</span> to finalize the service demanded when the work is done</p>
 <p class="fs-5 my-3">or click on <span class="btn btn-danger">Report</span> if there was a problem during the work.</p>
 
 @{
-    if (TempData["message"] != null && Convert.ToString(TempData["message"]) == "Service well finalized")
+    string? message = Convert.ToString(ViewData["message"]);
+    if (!string.IsNullOrEmpty(message))
     {
-        <div class="alert alert-success" role="alert">
-            <h4 class="alert-heading">Well done!</h4>
-            <p>You have successfully finalized this service. Your time credits have been exchanged with the service provider</p>
-            <hr />
-            <p class="mb-0">If the changes do not appear, please report it to <a href="mailto:administrators@offerverse.com">administrators@offerverse.com</a>.</p>
-        </div>
+        switch (message)
+        {
+            case "Service well finalized":
+                <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">Well done!</h4>
+                    <p>You have successfully finalized this service. Your time credits have been exchanged with the service provider</p>
+                    <hr />
+                    <p class="mb-0">If the changes do not appear, please report it to <a href="mailto:administrators@offerverse.com">administrators@offerverse.com</a>.</p>
+                </div>
+                break;
+
+            case "User well reported":
+                <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">Report successfully created</h4>
+                    <p>We'll keep in touch to let you know about the report! Be patient.</p>
+                </div>
+                break;
+
+            default:
+                break;
+        }
     }
 }
-
 
 <h3 class="mt-5">Services demanded</h3>
 <table class="table table-bordered table-hover" style="table-layout: fixed; width: 100%;">
@@ -48,7 +63,7 @@
                         <td>@s.ServiceProvided.Description</td>
                         <td class="d-flex gap-2">
                             <a asp-action="ReviewService" asp-route-ServiceDId="@s.ServiceId" class="btn btn-primary w-100">Finalize</a>
-                            <a asp-action="ReportUser" asp-route-userId="@s.ServiceProvider.MemberId" class="btn btn-danger w-100">Report</a>
+                            <a asp-action="ReportUser" asp-route-reportedId="@s.ServiceProvider.MemberId" class="btn btn-danger w-100">Report</a>
                         </td>
                     </tr>
                 }
@@ -86,7 +101,7 @@
                         <td>@s.ServiceProvided.Title</td>
                         <td>@s.ServiceProvided.Description</td>
                         <td class="d-flex gap-2">
-                            <a asp-action="ReportUser" asp-route-userId="@s.ServiceDemander.MemberId" class="btn btn-danger w-100">Report</a>
+                            <a asp-action="ReportUser" asp-route-reportedId="@s.ServiceDemander.MemberId" class="btn btn-danger w-100">Report</a>
                         </td>
                     </tr>
                 }

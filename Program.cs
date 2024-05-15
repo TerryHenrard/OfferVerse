@@ -21,6 +21,7 @@ builder.Services.AddTransient<ICategoryDAL>(cd => new CategoryDAL(connectionStri
 builder.Services.AddTransient<IUserDAL>(ud => new UserDAL(connectionString));
 builder.Services.AddTransient<ICommentaryDAL>(cd => new CommentaryDAL(connectionString));
 builder.Services.AddTransient<IServiceDemandedDAL>(sd => new ServiceDemandedDAL(connectionString));
+builder.Services.AddTransient<IReportDAL>(rp => new ReportDAL(connectionString));
 
 var app = builder.Build();
 
