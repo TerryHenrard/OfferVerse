@@ -10,8 +10,6 @@ namespace OfferVerse.Models
         private string description;
         private bool priority;
         private DateTime? datePriority;
-        private int userId;//Référence vers userId
-        private int categoryId;
 
         //References
         private List<User>? favorites;
@@ -146,9 +144,27 @@ namespace OfferVerse.Models
             return dal.ApplyServiceProvidedChanges(sp, id);
         }
 
+
+        //Overrided methods
         public override string ToString()
         {
-            return Title + " - " + Description + "-" + Priority + "-" + DatePriority;
+            return $" ,{ServiceProvidedId}, {Title}, {Description}, {Priority}, {DatePriority}, {Favorites}, " +
+                $"{Own}, {Category}";
+        }
+
+        public override int GetHashCode()
+        {
+            return ToString().GetHashCode();    
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            return ToString() == obj.ToString();
         }
     }
 }
