@@ -10,11 +10,13 @@ namespace OfferVerse.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IUserDAL _userDAL;
+        private readonly IServiceProvidedDAL _serviceProvidedDAL;
 
-        public HomeController(ILogger<HomeController> logger, IUserDAL userDAL)
+        public HomeController(ILogger<HomeController> logger, IUserDAL userDAL, IServiceProvidedDAL serviceProvidedDAL)
         {
             _logger = logger;
             _userDAL = userDAL;
+            _serviceProvidedDAL = serviceProvidedDAL;
         }
 
         public IActionResult Index()
@@ -24,7 +26,7 @@ namespace OfferVerse.Controllers
             HttpContext.Session.SetInt32("userId", user.MemberId); //TODO: remplacer par l'id de l'utilisateur connecté
             TempData["timeCredits"] = user.TimeCredits;
 
-            return View(); 
+            return View(ServiceProvided.GetServicesProvided(_serviceProvidedDAL, 1, 12)); 
         }
 
         public IActionResult Connect()

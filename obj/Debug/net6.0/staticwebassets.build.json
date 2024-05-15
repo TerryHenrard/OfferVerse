@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "fcEODqKdQFkqXsoFGLGipfnuAzCQgP9bs2Xu6Ete/wU=",
+  "Hash": "7NQvDErmN7pu06xlSFiRCVvfhvmbJH1F7ki9ybNnGjA=",
   "Source": "OfferVerse",
   "BasePath": "_content/OfferVerse",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\OfferVerse\\wwwroot\\Images\\gardening.jpg",
+      "SourceId": "OfferVerse",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\OfferVerse\\wwwroot\\",
+      "BasePath": "_content/OfferVerse",
+      "RelativePath": "Images/gardening.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\gardening.jpg"
     },
     {
       "Identity": "D:\\OfferVerse\\wwwroot\\js\\EditProfile.js",

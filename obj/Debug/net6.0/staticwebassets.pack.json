@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\OfferVerse.bundle.scp.css"
     },
     {
+      "Id": "D:\\OfferVerse\\wwwroot\\Images\\gardening.jpg",
+      "PackagePath": "staticwebassets\\Images\\gardening.jpg"
+    },
+    {
       "Id": "D:\\OfferVerse\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

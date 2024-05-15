@@ -72,11 +72,23 @@ namespace OfferVerse.Models
             set { category = value; }
         }
 
-        //Constructors
-        public ServiceProvided()
+        //constructors
+        public ServiceProvided(int servicePId, string title, string description, bool priority, DateTime? datePriority)
         {
-
+            this.serviceProvidedId = servicePId;
+            Title = title;
+            Description = description;
+            Priority = priority;
+            DatePriority = datePriority;
         }
+        public ServiceProvided(int servicePId, string title, string description, bool priority, DateTime? datePriority, int userId, int categoryId, string categoryName)
+            :this(servicePId, title, description, priority, datePriority)
+        {
+            Own = new(userId);
+            Category = new(categoryId, categoryName);
+        }
+
+        /********************************************************************************/
 
         public ServiceProvided(int serviceProvidedId, string title, 
             string description, bool priority, DateTime? datePriority, int userId)
@@ -114,17 +126,26 @@ namespace OfferVerse.Models
             this.serviceProvidedId = serviceProvidedId;
         }
 
+        public ServiceProvided()
+        {
+
+        }
+
         //Methods
-        public static ServiceProvided GetServiceProvidedInfo(IServicesProvidedDAL dal, int sId)
+        public static ServiceProvided GetServiceProvidedInfo(IServiceProvidedDAL dal, int sId)
         {
             return dal.GetServiceProvidedInfo(sId);
         }
 
-        public bool ApplyServiceProvidedChanges(IServicesProvidedDAL dal, ServiceProvided sp, int id)
+        public bool ApplyServiceProvidedChanges(IServiceProvidedDAL dal, ServiceProvided sp, int id)
         {
             return dal.ApplyServiceProvidedChanges(sp, id);
         }
 
+        public static List<ServiceProvided> GetServicesProvided(IServiceProvidedDAL dal, int pageNb, int servicePerPage)
+        {
+            return dal.GetServicesProvided(pageNb, servicePerPage);
+        }
 
         //Overrided methods
         public override string ToString()

@@ -1,8 +1,29 @@
-﻿@{
+﻿@model List<ServiceProvided>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4 my-5">Welcome to <span>OfferVerse</span></h1>
-    
 </div>
+
+
+   
+        <div class="d-flex flex-wrap align-items-center justify-content-center gap-5">
+@{
+
+    foreach(ServiceProvided sp in Model)
+    {
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="~/Images/gardening.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+        </div>
+    }
+}
+            </div>
+

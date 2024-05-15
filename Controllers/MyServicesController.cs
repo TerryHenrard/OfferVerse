@@ -12,8 +12,8 @@ namespace OfferVerse.Controllers
     {
         private readonly IUserDAL _UserDal;
         private readonly ICategoryDAL _CategoryDal;
-        private readonly IServicesProvidedDAL _SpDal;
-        public MyServicesController(IUserDAL userDal, ICategoryDAL catDal, IServicesProvidedDAL spDal)
+        private readonly IServiceProvidedDAL _SpDal;
+        public MyServicesController(IUserDAL userDal, ICategoryDAL catDal, IServiceProvidedDAL spDal)
         {
             _UserDal = userDal;
             _CategoryDal = catDal;
@@ -103,7 +103,7 @@ namespace OfferVerse.Controllers
 
             if (AppUser.CheckCredits(_UserDal, GetUserIdFromSession()) && 
                 Convert.ToInt32(sId) != 1 && 
-                AppUser.PromoteServiceProvided(_UserDal, Convert.ToInt32(sId), GetUserIdFromSession()))
+                AppUser.PromoteServiceProvided(_UserDal, GetUserIdFromSession()))
             {
                 TempData["success"] = "Service promoted successfully";
                 TempData["timeCredits"] = AppUser.GetUserInfo(_UserDal, GetUserIdFromSession()).TimeCredits;

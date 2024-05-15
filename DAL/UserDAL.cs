@@ -148,11 +148,7 @@ namespace OfferVerse.DAL
                     cmd.Parameters.AddWithValue("@userId", userProfil.MemberId); //TODO: replace 1 with the id of the authenticated user in the session
 
                     if (editPassword)
-                    {
-                        cmd.Parameters.AddWithValue(
-                            "@password", 
-                            BCrypt.Net.BCrypt.EnhancedHashPassword(userProfil.Password, 13));
-                    }
+                        cmd.Parameters.AddWithValue("@password", BCrypt.Net.BCrypt.EnhancedHashPassword(userProfil.Password, 13));
 
                     connection.Open();
                     success = cmd.ExecuteNonQuery() > 0;
@@ -170,9 +166,9 @@ namespace OfferVerse.DAL
             return success;
         }
 
-        public List<ServiceDemanded> GetTransactions(int memberId, bool inProgress)
+        public List<ServiceDemanded> GetTransactions(int memberId, bool inProgress = false)
         {
-            List<ServiceDemanded> ServicesD = new List<ServiceDemanded>();
+            List<ServiceDemanded> ServicesD = new();
 
             using (SqlConnection connection = new(connectionString))
             {
@@ -195,15 +191,11 @@ namespace OfferVerse.DAL
                                 INNER JOIN ServicesProvided sp ON sd.serviceProvidedId = sp.servicePId
                                 INNER JOIN Users UDemander ON UDemander.userId = sd.serviceDemander_userId 
                                 INNER JOIN Users UProvider ON UProvider.userId = sd.serviceProvider_userId 
-                                WHERE u.userId = @userId AND sd.endService";
-                if (inProgress)
-                    query += " IS NULL";
-                else
-                    query += " IS NOT NULL";
-
+                                WHERE u.userId = @userId AND sd.endService ";
+                query += inProgress ? "IS NULL" : "IS NOT NULL";
                 query += " ORDER BY sd.startService DESC";
 
-                SqlCommand cmd = new SqlCommand(query, connection);
+                SqlCommand cmd = new(query, connection);
                 cmd.Parameters.AddWithValue("@userId", memberId);
 
                 if (inProgress)
@@ -476,6 +468,74 @@ namespace OfferVerse.DAL
             catch(Exception e)
             {
                 throw new Exception("An error occurred while debiting the user : " + e.Message);
+            }
+
+            return success;
+        }
+
+        public bool DebitUser(int memberId, int? nbHours)
+        {
+            bool success = false;
+
+            try
+            {
+                using (SqlConnection connection = new(connectionString))
+                {
+                    SqlCommand cmd = new(
+                        @"UPDATE Users 
+                          SET timeCredits = timeCredits - @timeCredits
+                          WHERE userId = @serviceDId",
+                        connection);
+
+                    cmd.Parameters.AddWithValue("@timeCredits", nbHours);
+                    cmd.Parameters.AddWithValue("@serviceDId", memberId);
+
+                    connection.Open();
+                    int res = cmd.ExecuteNonQuery();
+                    success = res > 0;
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+            return success;
+        }
+
+        public bool CreditUser(int memberId, int? nbHours)
+        {
+            bool success = false;
+
+            try
+            {
+                using (SqlConnection connection = new(connectionString))
+                {
+                    SqlCommand cmd = new(
+                        @"UPDATE Users 
+                          SET timeCredits = timeCredits + @timeCredits
+                          WHERE userId = @servicePId",
+                        connection);
+
+                    cmd.Parameters.AddWithValue("@timeCredits", nbHours);
+                    cmd.Parameters.AddWithValue("@servicePId", memberId);
+
+                    connection.Open();
+                    int res = cmd.ExecuteNonQuery();
+                    success = res > 0;
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
 
             return success;
