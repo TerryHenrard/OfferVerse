@@ -77,3 +77,43 @@ D:\OfferVerse\obj\Debug\net6.0\OfferVerse.genruntimeconfig.cache
 D:\OfferVerse\obj\Debug\net6.0\ref\OfferVerse.dll
 I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse\bin\Debug\net6.0\BCrypt.Net-Next.dll
 D:\OfferVerse\bin\Debug\net6.0\BCrypt.Net-Next.dll
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\bin\Debug\net6.0\appsettings.Development.json
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\bin\Debug\net6.0\appsettings.json
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\bin\Debug\net6.0\OfferVerse.staticwebassets.runtime.json
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\bin\Debug\net6.0\OfferVerse.exe
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\bin\Debug\net6.0\OfferVerse.deps.json
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\bin\Debug\net6.0\OfferVerse.runtimeconfig.json
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\bin\Debug\net6.0\OfferVerse.dll
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\bin\Debug\net6.0\OfferVerse.pdb
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\bin\Debug\net6.0\BCrypt.Net-Next.dll
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\bin\Debug\net6.0\System.Data.SqlClient.dll
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\bin\Debug\net6.0\runtimes\win-arm64\native\sni.dll
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\bin\Debug\net6.0\runtimes\win-x64\native\sni.dll
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\obj\Debug\net6.0\OfferVerse.csproj.AssemblyReference.cache
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\obj\Debug\net6.0\OfferVerse.GeneratedMSBuildEditorConfig.editorconfig
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\obj\Debug\net6.0\OfferVerse.AssemblyInfoInputs.cache
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\obj\Debug\net6.0\OfferVerse.AssemblyInfo.cs
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\obj\Debug\net6.0\OfferVerse.csproj.CoreCompileInputs.cache
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\obj\Debug\net6.0\OfferVerse.MvcApplicationPartsAssemblyInfo.cache
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\obj\Debug\net6.0\OfferVerse.RazorAssemblyInfo.cache
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\obj\Debug\net6.0\OfferVerse.RazorAssemblyInfo.cs
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\obj\Debug\net6.0\OfferVerse.sourcelink.json
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\obj\Debug\net6.0\staticwebassets.build.json
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\obj\Debug\net6.0\staticwebassets.development.json
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\obj\Debug\net6.0\staticwebassets\msbuild.OfferVerse.Microsoft.AspNetCore.StaticWebAssets.props
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\obj\Debug\net6.0\staticwebassets\msbuild.build.OfferVerse.props
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.OfferVerse.props
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.OfferVerse.props
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\obj\Debug\net6.0\staticwebassets.pack.json
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\obj\Debug\net6.0\scopedcss\bundle\OfferVerse.styles.css
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\obj\Debug\net6.0\scopedcss\projectbundle\OfferVerse.bundle.scp.css
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\obj\Debug\net6.0\OfferVerse.csproj.Up2Date
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\obj\Debug\net6.0\OfferVerse.dll
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\obj\Debug\net6.0\refint\OfferVerse.dll
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\obj\Debug\net6.0\OfferVerse.pdb
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\obj\Debug\net6.0\OfferVerse.genruntimeconfig.cache
+I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\obj\Debug\net6.0\ref\OfferVerse.dll
