@@ -304,7 +304,25 @@ namespace OfferVerse.DAL
                         string cimagePath = reader.GetString("cimagePath");
                         string cname = reader.GetString("cname");
 
-                        sp = new(servicePId, sptitle, spdescription, sppriority, spdatePriority, uuserid, ufirstName, ulastName, ccategoryId, cname, cimagePath);
+                        sp = new(
+                            servicePId, 
+                            sptitle, 
+                            spdescription, 
+                            sppriority, 
+                            spdatePriority, 
+                            uuserid, 
+                            uphoneNumber, 
+                            postCode, 
+                            ustreetName, 
+                            ustreetNumber, 
+                            ucity, 
+                            uemail, 
+                            ufirstName, 
+                            ulastName, 
+                            ccategoryId, 
+                            cname, 
+                            cimagePath);  ;
+
                         GetCommentariesForService(sp);
                     }
                     else

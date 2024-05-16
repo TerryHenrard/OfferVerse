@@ -1,11 +1,11 @@
 ﻿@model List<ServiceProvided>
 
-@if (!String.IsNullOrEmpty((string)TempData["Deletion"]))
+@if (!String.IsNullOrEmpty(Convert.ToString(TempData["Deletion"])))
 {
     <div class="alert alert-success">@TempData["Deletion"]</div>
 }
 
-@if (!String.IsNullOrEmpty((string)TempData["success"]))
+@if (!String.IsNullOrEmpty(Convert.ToString(TempData["success"])))
 {
     <div class="alert alert-success">@TempData["Success"]</div>
 }

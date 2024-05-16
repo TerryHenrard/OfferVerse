@@ -96,10 +96,27 @@ namespace OfferVerse.Models
             Commentaries = new List<Commentary>();
         }
 
-        public ServiceProvided(int servicePId, string title, string description, bool priority, DateTime? datePriority, int userId, string firstName, string lastName, int categoryId, string categoryName, string imagePath)
+        public ServiceProvided(
+            int servicePId, 
+            string title, 
+            string description, 
+            bool priority, 
+            DateTime? datePriority, 
+            int userId, 
+            string phoneNumber,
+            string postCode,
+            string streetName,
+            string streetNumber,
+            string city,
+            string email,
+            string firstName,
+            string lastName, 
+            int categoryId, 
+            string categoryName, 
+            string imagePath)
             : this(servicePId, title, description, priority, datePriority)
         {
-            Own = new(userId, firstName, lastName);
+            Own = new(userId, email, "", firstName, lastName, phoneNumber, postCode, streetNumber, streetName, city, 0);
             Category = new(categoryId, categoryName, imagePath);
             Commentaries = new List<Commentary>();
         }
