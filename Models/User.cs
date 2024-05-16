@@ -200,6 +200,17 @@ namespace OfferVerse.Models
             return dal.CreditUser(servicePId, nbHours);
         }
 
+        public static bool CheckIfServiceDemanded(IUserDAL dal, int uId, int spId)
+        {
+            return dal.CheckIfServiceDemanded(uId, spId);
+        }
+
+        public static bool AskForAService(IUserDAL dal, int sDemanderId, int sProvidedId, int sProviderId)
+        {
+            return !CheckIfServiceDemanded(dal, sDemanderId, sProvidedId) && CheckCredits(dal, sDemanderId) && 
+                dal.AskForAService(sProvidedId, sDemanderId, sProviderId);
+        }
+
         /******Existant methods overrided*******/
         public override string ToString()
         {

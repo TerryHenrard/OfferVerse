@@ -16,6 +16,7 @@ namespace OfferVerse.Models
         private User own;
         private Category category;
         private List<Commentary> commentaries;
+        private List<ServiceDemanded>? servicesDemanded;
 
         //Attributes
         public int ServiceProvidedId 
@@ -77,6 +78,12 @@ namespace OfferVerse.Models
         {
             get { return commentaries; }
             set {  commentaries = value; }
+        }
+
+        public List<ServiceDemanded> ServicesDemanded
+        {
+            get { return servicesDemanded; }
+            set { servicesDemanded = value; }
         }
 
         //constructors
