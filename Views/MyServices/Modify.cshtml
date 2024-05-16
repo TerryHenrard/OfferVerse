@@ -29,6 +29,9 @@
         
         <tr>
             <td>
+                <label asp-for="Categories"></label>
+            </td>
+            <td>
                 <select asp-for="Sp.Category.CategoryId">
                     @foreach(var cat in Model.Categories)
                     {
@@ -46,10 +49,10 @@
 
         <tr>
             <td>
-                <input type="submit" value="Modifier" />
+                <input type="submit" value="Apply" />
             </td>
             <td>
-                <a asp-action="MyServices">Annuler</a>
+                <a asp-action="MyServices">Cancel</a>
             </td>
         </tr>
     </table>
