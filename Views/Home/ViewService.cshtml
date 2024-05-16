@@ -69,17 +69,15 @@
             </div>
 
             <div class="comment-section">
-                <!-- Section pour afficher les commentaires -->
                 @if (Model.ServiceProvided.Commentaries.Any())
                 {
-                    <h5 class="comment-section-title">Comments:</h5>
+                    <h5 class="comment-section-title">@(@Model.ServiceProvided.Commentaries.Count is int nb && nb > 1 ? nb + " Comments:" : nb + " Comment:") </h5>
                     <ul class="comment-list">
                         @foreach (Commentary comment in Model.ServiceProvided.Commentaries)
                         {
                             <li class="comment-item">
                                 <div class="comment-author">@comment.User.GetFullName()</div>
-                                <div class="comment-content">@comment.Content</div>
-                                <div class="comment-rating">
+                                <div class="comment-rating my-3">
                                     Rating:
                                     @for (int i = 0; i < comment.Rating; i++)
                                     {
@@ -88,6 +86,7 @@
                                         </svg>
                                     }
                                 </div>
+                                <div class="comment-content">@comment.Content</div>
                             </li>
                         }
                     </ul>
