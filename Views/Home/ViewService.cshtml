@@ -66,6 +66,7 @@
                         <a asp-action="PutInFavorite" asp-route-servicePId="@Model.ServiceProvided.ServiceProvidedId" class="btn btn-warning">Add to favorite</a>
                     }
                 }
+                <a class="btn btn-primary mt-3" asp-action="AskForAService" asp-route-sProvidedId="@Model.ServiceProvided.ServiceProvidedId" asp-route-sProviderId="@Model.ServiceProvided.Own.MemberId">Ask</a>
             </div>
 
             <div class="comment-section">
@@ -96,7 +97,6 @@
                     <p class="no-comments-message">No comments yet.</p>
                 }
             </div>
-            
         </div>
     </div>
 </div>

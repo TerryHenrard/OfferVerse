@@ -67,7 +67,6 @@ namespace OfferVerse.Controllers
                 TempData["Sucess"] = "Unable to Ask a service";
             }
 
-            Console.WriteLine(TempData["success"]);
             return RedirectToAction(nameof(Index));
         }
 
