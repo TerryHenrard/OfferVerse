@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OfferVerse.DAL;
 using OfferVerse.DAL.Interfaces;
 using OfferVerse.Models;
 using System.Diagnostics;
@@ -20,9 +21,14 @@ namespace OfferVerse.Controllers
             _serviceProvidedDAL = serviceProvidedDAL;
         }
 
+        private int GetUserIdFromSession()
+        {
+            return HttpContext.Session.GetInt32("userId") ?? 0;
+        }
+
         public IActionResult Index(int pageNumber = 1)
         {
-            AppUser user = AppUser.GetUserInfo(_userDAL, 1); // TODO: replace 1 with the id of the authenticated user in the session
+            AppUser user = AppUser.GetUserInfo(_userDAL, GetUserIdFromSession()); 
             HttpContext.Session.SetInt32("userId", user.MemberId); // TODO: replace with the id of the authenticated user
             TempData["timeCredits"] = user.TimeCredits;
 
@@ -54,5 +60,47 @@ namespace OfferVerse.Controllers
         {
             return View();
         }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public IActionResult Connect(User user)
+        {
+            ModelState.Remove("City");
+            ModelState.Remove("LastName");
+            ModelState.Remove("PostCode");
+            ModelState.Remove("FirstName");
+            ModelState.Remove("StreetName");
+            ModelState.Remove("PhoneNumber");
+            ModelState.Remove("StreetNumber");
+            ModelState.Remove("ConfirmPassword");
+
+            if (ModelState.IsValid)
+            {
+                int userId = _userDAL.CheckLogin(user.Email, user.Password);
+
+                if(userId != 0)
+                {
+                    TempData["message"] = "Successfully connected.";
+                    HttpContext.Session.SetInt32("userId", userId);
+                    return RedirectToAction("ResultConnection");
+                }
+                else
+                {
+                    TempData["message"] = "Wrong informations. Please, try again.";
+                    return RedirectToAction("ResultConnection");
+                }
+            }
+            else
+            {
+                TempData["message"] = "Please, enter some validate inputs.";
+            }
+            return View(user);
+        }
+
+        public IActionResult ResultConnection()
+        {
+            return View();
+        }
+
     }
 }
