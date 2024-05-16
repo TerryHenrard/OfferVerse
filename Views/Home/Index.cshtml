@@ -10,20 +10,28 @@
 
 
    
-        <div class="d-flex flex-wrap align-items-center justify-content-center gap-5">
-@{
-
-    foreach(ServiceProvided sp in Model)
+<div class="d-flex flex-wrap align-items-center justify-content-center gap-5">
+    @foreach(ServiceProvided sp in Model)
     {
             <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="~/Images/gardening.jpg" alt="Card image cap">
+                <img class="card-img-top fixed-size-img" src="@sp.Category.ImagePath" alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h5 class="card-title">@sp.Title</h5>
+                    <p class="card-text">@sp.Description</p>
                     <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
         </div>
     }
-}
-            </div>
+</div>
 
+<div>
+    @{
+        int servicesPerPage = Convert.ToInt32(ViewData["servicesPerPage"]);
+        for (int i = 0; i < servicesPerPage; i++)
+        {
+            <a href="#">@(i + 1)</a>
+        }
+    }
+</div>
+
+<href rel="stylesheet" href="~/site.css"></href>

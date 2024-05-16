@@ -6,15 +6,25 @@ namespace OfferVerse.Models
     {
         private int categoryId;
         private string name;
-        private ServiceProvided sp;
+        private string imagePath;
 
-        public int CategoryId { get { return categoryId; } set { categoryId = value; } }
-        public string Name { get { return name; } set { name = value; } }
-
-        public ServiceProvided Sp { get { return sp; } set { sp = value; } }
+        public int CategoryId 
+        { 
+            get { return categoryId; } 
+            set { categoryId = value; } 
+        }
+        public string Name 
+        { 
+            get { return name; } 
+            set { name = value; } 
+        }
+        public string ImagePath
+        {
+            get { return imagePath; }
+            set { imagePath = value; }
+        }
 
         //Constructors
-
         public Category() { }
 
         public Category(int categoryId)
@@ -22,10 +32,11 @@ namespace OfferVerse.Models
             CategoryId = categoryId;
         }
 
-        public Category(int categoryId, string name)
+        public Category(int categoryId, string name, string imagePath)
         {
             CategoryId = categoryId;
             Name = name;
+            ImagePath = imagePath;
         }
 
         //Static methods
@@ -35,7 +46,7 @@ namespace OfferVerse.Models
         }
 
         //Overrided Methods
-        public override string ToString() => $" , {CategoryId}, {Name}, {Sp} ";
+        public override string ToString() => $" , {CategoryId}, {Name}";
 
         public override int GetHashCode()
         {

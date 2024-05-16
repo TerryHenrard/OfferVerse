@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using OfferVerse.DAL.Interfaces;
 using OfferVerse.Models;
 using System.Data;
@@ -99,7 +100,7 @@ namespace OfferVerse.DAL
             return success;
         }
 
-        public List<ServiceProvided> GetServicesProvided(int pageNb, int servicePerPage)
+        public List<ServiceProvided> GetServicesProvided(int pageNb, int servicesPerPage)
         {
             List<ServiceProvided> servicesP = new();
 
@@ -123,7 +124,7 @@ namespace OfferVerse.DAL
                         FETCH NEXT @servicePerPage ROWS ONLY";
                     SqlCommand cmd = new(query, connection);
 
-                    cmd.Parameters.AddWithValue("@servicePerPage", servicePerPage);
+                    cmd.Parameters.AddWithValue("@servicePerPage", servicesPerPage);
                     cmd.Parameters.AddWithValue("@pageNb", pageNb);
 
                     connection.Open();
@@ -140,8 +141,9 @@ namespace OfferVerse.DAL
                             int categoryId = reader.GetInt32("categoryId");
                             int userId = reader.GetInt32("userId");
                             string categoryName = reader.GetString("name");
+                            string imagePath = reader.GetString("imagePath");
 
-                            servicesP.Add(new(servicePId, title, description, priority, datePriority, categoryId, userId, categoryName));
+                            servicesP.Add(new(servicePId, title, description, priority, datePriority, categoryId, userId, categoryName, imagePath));
                         }
                     }
                 }
@@ -156,6 +158,37 @@ namespace OfferVerse.DAL
             }
 
             return servicesP;
+        }
+
+        public int GetNumberOfPages(int servicesPerPage)
+        {
+            double nbPages;
+
+            try
+            {
+                using (SqlConnection connection = new(connectionString))
+                {
+                    SqlCommand cmd = new("SELECT CEILING(COUNT(servicePId) / CAST(@nbServicesPerPage AS FLOAT)) nbPages FROM ServicesProvided;", connection);
+
+                    cmd.Parameters.AddWithValue("@nbServicesPerPage", servicesPerPage);
+                    connection.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        nbPages = reader.Read() ? reader.GetDouble("nbPages") : 0;
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                throw new Exception("An SQL error occured : " + e.Message);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error while getting the list of provided services : " + e.Message);
+            }
+
+            return (int)nbPages;
         }
     }
 }

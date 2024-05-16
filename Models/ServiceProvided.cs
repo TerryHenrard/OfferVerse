@@ -81,11 +81,11 @@ namespace OfferVerse.Models
             Priority = priority;
             DatePriority = datePriority;
         }
-        public ServiceProvided(int servicePId, string title, string description, bool priority, DateTime? datePriority, int userId, int categoryId, string categoryName)
+        public ServiceProvided(int servicePId, string title, string description, bool priority, DateTime? datePriority, int userId, int categoryId, string categoryName, string imagePath)
             :this(servicePId, title, description, priority, datePriority)
         {
             Own = new(userId);
-            Category = new(categoryId, categoryName);
+            Category = new(categoryId, categoryName, imagePath);
         }
 
         /********************************************************************************/
@@ -142,9 +142,14 @@ namespace OfferVerse.Models
             return dal.ApplyServiceProvidedChanges(sp, id);
         }
 
-        public static List<ServiceProvided> GetServicesProvided(IServiceProvidedDAL dal, int pageNb, int servicePerPage)
+        public static List<ServiceProvided> GetServicesProvided(IServiceProvidedDAL dal, int pageNb, int servicesPerPage)
         {
-            return dal.GetServicesProvided(pageNb, servicePerPage);
+            return dal.GetServicesProvided(pageNb, servicesPerPage);
+        }
+
+        public static int GetNumberOfPages(IServiceProvidedDAL dal, int servicesPerPage)
+        {
+            return dal.GetNumberOfPages(servicesPerPage);
         }
 
         //Overrided methods

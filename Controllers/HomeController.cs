@@ -26,7 +26,10 @@ namespace OfferVerse.Controllers
             HttpContext.Session.SetInt32("userId", user.MemberId); //TODO: remplacer par l'id de l'utilisateur connecté
             TempData["timeCredits"] = user.TimeCredits;
 
-            return View(ServiceProvided.GetServicesProvided(_serviceProvidedDAL, 1, 12)); 
+            int servicesPerPage = 12;
+
+            ViewData["servicesPerPage"] = ServiceProvided.GetNumberOfPages(_serviceProvidedDAL, servicesPerPage);
+            return View(ServiceProvided.GetServicesProvided(_serviceProvidedDAL, 1, servicesPerPage)); 
         }
 
         public IActionResult Privacy()
