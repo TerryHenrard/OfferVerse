@@ -9,5 +9,6 @@ namespace OfferVerse.DAL.Interfaces
         public List<ServiceProvided> GetServicesProvided(int pageNb, int servicesPerPage);
         public int GetNumberOfPages(int servicesPerPage);
         public ServiceProvided GetServiceProvided(int servicePId);
+        public bool PutInFavorite(int servicePId, int userId);
     }
 }

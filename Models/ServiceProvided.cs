@@ -1,5 +1,6 @@
 ﻿using OfferVerse.DAL.Interfaces;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace OfferVerse.Models
 {
@@ -12,7 +13,6 @@ namespace OfferVerse.Models
         private DateTime? datePriority;
 
         //References
-        private List<User>? favorites;
         private User own;
         private Category category;
         private List<Commentary> commentaries;
@@ -62,12 +62,6 @@ namespace OfferVerse.Models
             set { own = value; }
         }
 
-        public List<User> Favorites
-        {
-            get { return favorites; }
-            set { favorites = value; }
-        }
-
         public Category Category 
         { 
             get { return category; }
@@ -103,10 +97,27 @@ namespace OfferVerse.Models
             Commentaries = new List<Commentary>();
         }
 
-        public ServiceProvided(int servicePId, string title, string description, bool priority, DateTime? datePriority, int userId, string firstName, string lastName, int categoryId, string categoryName, string imagePath)
+        public ServiceProvided(
+            int servicePId, 
+            string title, 
+            string description, 
+            bool priority, 
+            DateTime? datePriority, 
+            int userId, 
+            string phoneNumber,
+            string postCode,
+            string streetName,
+            string streetNumber,
+            string city,
+            string email,
+            string firstName,
+            string lastName, 
+            int categoryId, 
+            string categoryName, 
+            string imagePath)
             : this(servicePId, title, description, priority, datePriority)
         {
-            Own = new(userId, firstName, lastName);
+            Own = new(userId, email, "", firstName, lastName, phoneNumber, postCode, streetNumber, streetName, city, 0);
             Category = new(categoryId, categoryName, imagePath);
             Commentaries = new List<Commentary>();
         }
@@ -181,7 +192,7 @@ namespace OfferVerse.Models
                 success = true;
             }
             return success;
-        } 
+        }
 
         public static ServiceProvided GetServiceProvidedInfo(IServiceProvidedDAL dal, int sId)
         {
@@ -208,11 +219,15 @@ namespace OfferVerse.Models
             return dal.GetServiceProvided(servicePId);
         }
 
+        public static bool PutInFavorite(IServiceProvidedDAL dal, int servicePId, int userId)
+        {
+            return dal.PutInFavorite(servicePId, userId);
+        }
+
         //Overrided methods
         public override string ToString()
         {
-            return $" ,{ServiceProvidedId}, {Title}, {Description}, {Priority}, {DatePriority}, {Favorites}, " +
-                $"{Own}, {Category}";
+            return $" ,{ServiceProvidedId}, {Title}, {Description}, {Priority}, {DatePriority}";
         }
 
         public override int GetHashCode()
