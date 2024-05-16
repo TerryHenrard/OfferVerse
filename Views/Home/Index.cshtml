@@ -2,28 +2,53 @@
 
 @{
     ViewData["Title"] = "Home Page";
+    int currentPage = Convert.ToInt32(ViewData["currentPage"]);
+    int totalPages = Convert.ToInt32(ViewData["totalPages"]);
+    int maxButtonsToShow = 5;
+    int startPage = Math.Max(1, currentPage - maxButtonsToShow / 2); //make sure that we never go less than 1
+    int endPage = Math.Min(totalPages, startPage + maxButtonsToShow - 1); //make sure that we never go further than total pages
+
+    if (endPage - startPage + 1 < maxButtonsToShow) //make sure there is maxButtonsToShow to display, it can happen if we are close to 1 or the end, so it adjusts the value of start to page to make sure there is 5 buttons to display
+    {
+        startPage = Math.Max(1, endPage - maxButtonsToShow + 1);
+    }
 }
 
 <div class="text-center">
     <h1 class="display-4 my-5">Welcome to <span>OfferVerse</span></h1>
 </div>
 
-
-   
-        <div class="d-flex flex-wrap align-items-center justify-content-center gap-5">
-@{
-
-    foreach(ServiceProvided sp in Model)
-    {
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="~/Images/gardening.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-        </div>
+<div class="d-flex flex-wrap align-items-center justify-content-center gap-5">
+    @{
+        foreach (ServiceProvided sp in Model)
+        {
+            <partial name="_ServiceProvidedCard" model="sp"/>
+        }
     }
-}
-            </div>
+</div>
 
+<div class="my-4 w-75 mx-auto d-flex align-items-center justify-content-center">
+    @if (currentPage > 1) //if at least at the second page
+    {
+        <a asp-action="Index" asp-route-pageNumber="@(currentPage - 1)" class="btn btn-secondary mx-1">Previous</a>
+    }
+
+    @for (int i = startPage; i <= endPage; i++)
+    {
+        if (i == currentPage)
+        {
+            <span class="btn btn-primary mx-1">@i</span>
+        }
+        else
+        {
+            <a asp-action="Index" asp-route-pageNumber="@i" class="btn btn-secondary mx-1">@i</a>
+        }
+    }
+
+    @if (currentPage < totalPages) //if note at the last page
+    {
+        <a asp-action="Index" asp-route-pageNumber="@(currentPage + 1)" class="btn btn-secondary mx-1">Next</a>
+    }
+</div>
+
+<link rel="stylesheet" href="~/site.css" />

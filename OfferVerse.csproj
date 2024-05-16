@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\Images\gardening.jpg" />
+    <None Include="wwwroot\Images\Gardening.jpg" />
   </ItemGroup>
 
 </Project>

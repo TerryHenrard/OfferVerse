@@ -119,7 +119,7 @@ namespace OfferVerse.Controllers
             bool test = Convert.ToInt32(sId) != 1;
             if (AppUser.CheckCredits(_UserDal, GetUserIdFromSession()) && 
                 Convert.ToInt32(sId) != 1 && 
-                AppUser.PromoteServiceProvided(_UserDal, Convert.ToInt32(sId)))
+                AppUser.PromoteServiceProvided(_UserDal, Convert.ToInt32(sId), GetUserIdFromSession()))
             {
                 TempData["success"] = "Service promoted successfully";
                 TempData["timeCredits"] = AppUser.GetUserInfo(_UserDal, GetUserIdFromSession()).TimeCredits;

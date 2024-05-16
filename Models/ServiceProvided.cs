@@ -15,6 +15,7 @@ namespace OfferVerse.Models
         private List<User>? favorites;
         private User own;
         private Category category;
+        private List<Commentary> commentaries;
 
         //Attributes
         public int ServiceProvidedId 
@@ -62,7 +63,7 @@ namespace OfferVerse.Models
 
         public List<User> Favorites
         {
-            get { return  favorites; }
+            get { return favorites; }
             set { favorites = value; }
         }
 
@@ -70,6 +71,12 @@ namespace OfferVerse.Models
         { 
             get { return category; }
             set { category = value; }
+        }
+        
+        public List<Commentary> Commentaries
+        {
+            get { return commentaries; }
+            set {  commentaries = value; }
         }
 
         //constructors
@@ -81,11 +88,20 @@ namespace OfferVerse.Models
             Priority = priority;
             DatePriority = datePriority;
         }
-        public ServiceProvided(int servicePId, string title, string description, bool priority, DateTime? datePriority, int userId, int categoryId, string categoryName)
+        public ServiceProvided(int servicePId, string title, string description, bool priority, DateTime? datePriority, int userId, int categoryId, string categoryName, string imagePath)
             :this(servicePId, title, description, priority, datePriority)
         {
             Own = new(userId);
-            Category = new(categoryId, categoryName);
+            Category = new(categoryId, categoryName, imagePath);
+            Commentaries = new List<Commentary>();
+        }
+
+        public ServiceProvided(int servicePId, string title, string description, bool priority, DateTime? datePriority, int userId, string firstName, string lastName, int categoryId, string categoryName, string imagePath)
+            : this(servicePId, title, description, priority, datePriority)
+        {
+            Own = new(userId, firstName, lastName);
+            Category = new(categoryId, categoryName, imagePath);
+            Commentaries = new List<Commentary>();
         }
 
         /********************************************************************************/
@@ -131,7 +147,35 @@ namespace OfferVerse.Models
 
         }
 
-        //Methods
+        /******Methods******/
+        public double GlobalRating()
+        {
+            if (Commentaries.Count > 0)
+            {
+                double somme = 0;
+                foreach (Commentary com in Commentaries)
+                {
+                    somme += com.Rating;
+                }
+                return Math.Round(somme / Commentaries.Count, 1);
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
+        public bool AddCommentary(Commentary commentary)
+        {
+            bool success = false;
+            if (commentary != null && !Commentaries.Contains(commentary))
+            {
+                Commentaries.Add(commentary);
+                success = true;
+            }
+            return success;
+        } 
+
         public static ServiceProvided GetServiceProvidedInfo(IServiceProvidedDAL dal, int sId)
         {
             return dal.GetServiceProvidedInfo(sId);
@@ -142,9 +186,19 @@ namespace OfferVerse.Models
             return dal.ApplyServiceProvidedChanges(sp, id);
         }
 
-        public static List<ServiceProvided> GetServicesProvided(IServiceProvidedDAL dal, int pageNb, int servicePerPage)
+        public static List<ServiceProvided> GetServicesProvided(IServiceProvidedDAL dal, int pageNb, int servicesPerPage)
         {
-            return dal.GetServicesProvided(pageNb, servicePerPage);
+            return dal.GetServicesProvided(pageNb, servicesPerPage);
+        }
+
+        public static int GetNumberOfPages(IServiceProvidedDAL dal, int servicesPerPage)
+        {
+            return dal.GetNumberOfPages(servicesPerPage);
+        }
+
+        public static ServiceProvided GetServiceProvided(IServiceProvidedDAL dal, int servicePId)
+        {
+            return dal.GetServiceProvided(servicePId);
         }
 
         //Overrided methods

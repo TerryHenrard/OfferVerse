@@ -34,7 +34,8 @@ namespace OfferVerse.DAL
                         {
                             int catId = reader.GetInt32("categoryId");
                             string catName = reader.GetString("Name");
-                            categories.Add(new(catId, catName));
+                            string imagePath = reader.GetString("ImagePath");
+                            categories.Add(new(catId, catName, imagePath));
                         }
                     }
                    

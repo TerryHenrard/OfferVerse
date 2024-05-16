@@ -11,6 +11,7 @@ namespace OfferVerse.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IUserDAL _userDAL;
         private readonly IServiceProvidedDAL _serviceProvidedDAL;
+        private const int servicesPerPage = 12;
 
         public HomeController(ILogger<HomeController> logger, IUserDAL userDAL, IServiceProvidedDAL serviceProvidedDAL)
         {
@@ -19,14 +20,23 @@ namespace OfferVerse.Controllers
             _serviceProvidedDAL = serviceProvidedDAL;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int pageNumber = 1)
         {
-            AppUser user = AppUser.GetUserInfo(_userDAL, 1); //TODO: replace 1 with the id of the authenticated user in the session
-
-            HttpContext.Session.SetInt32("userId", user.MemberId); //TODO: remplacer par l'id de l'utilisateur connecté
+            AppUser user = AppUser.GetUserInfo(_userDAL, 1); // TODO: replace 1 with the id of the authenticated user in the session
+            HttpContext.Session.SetInt32("userId", user.MemberId); // TODO: replace with the id of the authenticated user
             TempData["timeCredits"] = user.TimeCredits;
 
-            return View(ServiceProvided.GetServicesProvided(_serviceProvidedDAL, 1, 12)); 
+            int totalPages = ServiceProvided.GetNumberOfPages(_serviceProvidedDAL, servicesPerPage);
+            ViewData["currentPage"] = pageNumber;
+            ViewData["totalPages"] = totalPages;
+            List<ServiceProvided> sp = ServiceProvided.GetServicesProvided(_serviceProvidedDAL, pageNumber, servicesPerPage);
+
+            return View(sp);
+        }
+
+        public IActionResult ViewService(int servicePId)
+        {
+            return View(ServiceProvided.GetServiceProvided(_serviceProvidedDAL, servicePId));  
         }
 
         public IActionResult Privacy()

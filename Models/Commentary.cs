@@ -68,22 +68,25 @@ namespace OfferVerse.Models
             set { serviceProvided = value; }
         }
 
-        public Commentary(int commentaryId, string content, int rating, DateTime commentaryDate, int userId, int servicePId)
-        {
-            this.commentaryId = commentaryId;
-            Content = content;
-            Rating = rating;
-            CommentaryDate = commentaryDate;
-            User = new(userId);
-            ServiceProvided = new(servicePId);
-        }
-
         public Commentary(int commentaryId, string content, int rating, DateTime commentaryDate)
         {
             this.commentaryId = commentaryId;
             Content = content;
             Rating = rating;
             CommentaryDate = commentaryDate;
+        }
+
+        public Commentary(int commentaryId, string content, int rating, DateTime commentaryDate, int userId, string firstName, string lastName)
+            : this(commentaryId, content, rating, commentaryDate)
+        {
+            User = new(userId, firstName, lastName);
+        }
+
+        public Commentary(int commentaryId, string content, int rating, DateTime commentaryDate, int userId, int servicePId)
+            :this(commentaryId, content, rating, commentaryDate)
+        {
+            User = new(userId);
+            ServiceProvided = new(servicePId);
         }
 
         public Commentary()
