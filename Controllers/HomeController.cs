@@ -139,5 +139,39 @@ namespace OfferVerse.Controllers
             }
             return RedirectToAction("ViewService", new { servicePId });
         }
+
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public IActionResult Register(User user)
+        {
+            if(ModelState.IsValid)
+            {
+                int result = _userDAL.Register(user.FirstName, user.LastName, user.Email, user.City, user.PostCode, user.StreetName, user.StreetNumber, user.Password, user.ConfirmPassword, user.PhoneNumber);
+                if(result == -2) // password don't match
+                {
+                    TempData["message"] = "The password don't match.";
+                }
+                else if(result == -1)
+                {
+                    TempData["message"] = "An error has occured.";
+                }
+                else
+                {
+                    HttpContext.Session.SetInt32("userId", result);
+                    TempData["message"] = "The account has been created";
+                    return RedirectToAction("Index");
+                }
+            }
+            else
+            {
+                TempData["message"] = "Wrong informations. Please, try again.";
+            }
+            return View(user);
+        }
     }
 }

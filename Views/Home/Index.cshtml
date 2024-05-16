@@ -1,14 +1,11 @@
 ﻿@model List<ServiceProvided>
 
+
 @{
-    if (TempData["message"] != null && Convert.ToString(TempData["message"]) == "Successfully connected.")
-    {
-        <div class="alert alert-success" role="alert">
-            <h4 class="alert-heading">Well done!</h4>
-            <p>Successfully connected.</p>
-        </div>
-    }
+    ViewDataDictionary vd = new(ViewData);
+    vd["message"] = TempData["message"];
 }
+<partial name="_displayAlertMessage" view-data="vd" />
 
 @{
     ViewData["Title"] = "Home Page";
