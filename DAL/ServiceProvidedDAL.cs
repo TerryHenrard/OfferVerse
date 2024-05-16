@@ -375,5 +375,35 @@ namespace OfferVerse.DAL
 
             return success;
         }
+
+        public bool DeleteInFavorite(int servicePId, int userId)
+        {
+            bool success = false;
+
+            try
+            {
+                using (SqlConnection connection = new(connectionString))
+                {
+                    SqlCommand cmd = new("DELETE FROM Favorites WHERE userId = @userId AND servicePId = @servicePId",
+                        connection);
+                    cmd.Parameters.AddWithValue("@userId", userId);
+                    cmd.Parameters.AddWithValue("@servicePId", servicePId);
+
+                    connection.Open();
+                    int res = cmd.ExecuteNonQuery();
+                    success = res > 0;
+                }
+            }
+            catch (SqlException e)
+            {
+                throw new Exception("An SQL error occured : " + e.Message);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error while getting the list of provided services : " + e.Message);
+            }
+
+            return success;
+        }
     }
 }

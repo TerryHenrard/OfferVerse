@@ -168,20 +168,11 @@ namespace OfferVerse.Models
         /******Methods******/
         public double GlobalRating()
         {
-            if (Commentaries.Count > 0)
-            {
-                double somme = 0;
-                foreach (Commentary com in Commentaries)
-                {
-                    somme += com.Rating;
-                }
-                return Math.Round(somme / Commentaries.Count, 1);
-            }
-            else
-            {
-                return -1;
-            }
+            return Commentaries.Count > 0
+                ? Math.Round(Commentaries.Average(com => com.Rating), 1)
+                : -1;
         }
+
 
         public bool AddCommentary(Commentary commentary)
         {
