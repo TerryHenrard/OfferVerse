@@ -7,9 +7,9 @@
 
     <td>@Model.Priority</td>
 
-    @if(Model.Priority == true)
+    @if(Model.Priority == true && Model.DatePriority.HasValue)
     {
-        <td>@Model.DatePriority</td>
+        <td>@Model.DatePriority.Value.ToString("dd-MM-yyyy")</td>
     }
     else
     {
