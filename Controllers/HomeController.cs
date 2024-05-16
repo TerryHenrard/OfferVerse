@@ -2,6 +2,7 @@
 using OfferVerse.DAL;
 using OfferVerse.DAL.Interfaces;
 using OfferVerse.Models;
+using OfferVerse.ViewModels;
 using System.Diagnostics;
 using AppUser = OfferVerse.Models.User;
 
@@ -42,7 +43,12 @@ namespace OfferVerse.Controllers
 
         public IActionResult ViewService(int servicePId)
         {
-            return View(ServiceProvided.GetServiceProvided(_serviceProvidedDAL, servicePId));  
+            ViewServiceViewModel ViewModel = new()
+            {
+                ServiceProvided = ServiceProvided.GetServiceProvided(_serviceProvidedDAL, servicePId),
+                Favorites = AppUser.GetFavorites(_userDAL, GetUserIdFromSession()),
+            };
+            return View(ViewModel);  
         }
 
         public IActionResult Privacy()
@@ -94,6 +100,25 @@ namespace OfferVerse.Controllers
                 TempData["message"] = "Please, enter some validate inputs.";
             }
             return View(user);
+        }
+
+        public IActionResult PutInFavorite(int servicePId)
+        {
+            if (GetUserIdFromSession() == 0)
+            {
+                TempData["message"] = "must be logged in to put in favorite";
+                return RedirectToAction("Connect", "Home");
+            }
+
+            if (ServiceProvided.PutInFavorite(_serviceProvidedDAL, servicePId, GetUserIdFromSession()))
+            {
+                TempData["message"] = "Added to your favorite";
+            }
+            else
+            {
+                TempData["message"] = "Not added to your favorite";
+            }
+            return RedirectToAction("ViewService", new { servicePId });
         }
     }
 }

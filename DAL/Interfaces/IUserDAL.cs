@@ -17,5 +17,6 @@ namespace OfferVerse.DAL.Interfaces
         public bool DebitUser(int memberId, int? nbHours);
         public bool CreditUser(int memberId, int? nbHours);
         public int CheckLogin(string mail, string password);
+        public List<ServiceProvided> GetFavorites(int userId);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using OfferVerse.DAL.Interfaces;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace OfferVerse.Models
 {
@@ -12,7 +13,6 @@ namespace OfferVerse.Models
         private DateTime? datePriority;
 
         //References
-        private List<User>? favorites;
         private User own;
         private Category category;
         private List<Commentary> commentaries;
@@ -59,12 +59,6 @@ namespace OfferVerse.Models
         {
             get { return own; }
             set { own = value; }
-        }
-
-        public List<User> Favorites
-        {
-            get { return favorites; }
-            set { favorites = value; }
         }
 
         public Category Category 
@@ -191,7 +185,7 @@ namespace OfferVerse.Models
                 success = true;
             }
             return success;
-        } 
+        }
 
         public static ServiceProvided GetServiceProvidedInfo(IServiceProvidedDAL dal, int sId)
         {
@@ -218,11 +212,15 @@ namespace OfferVerse.Models
             return dal.GetServiceProvided(servicePId);
         }
 
+        public static bool PutInFavorite(IServiceProvidedDAL dal, int servicePId, int userId)
+        {
+            return dal.PutInFavorite(servicePId, userId);
+        }
+
         //Overrided methods
         public override string ToString()
         {
-            return $" ,{ServiceProvidedId}, {Title}, {Description}, {Priority}, {DatePriority}, {Favorites}, " +
-                $"{Own}, {Category}";
+            return $" ,{ServiceProvidedId}, {Title}, {Description}, {Priority}, {DatePriority}";
         }
 
         public override int GetHashCode()

@@ -342,5 +342,38 @@ namespace OfferVerse.DAL
 
             return sp;
         }
+
+        public bool PutInFavorite(int servicePId, int userId)
+        {
+            bool success = false;
+
+            try
+            {
+                using (SqlConnection connection = new(connectionString))
+                {
+                    SqlCommand cmd = new(
+                        @"INSERT INTO Favorites(UserId, servicePId, addedDate)
+                          VALUES(@userId, @servicePId, @addedDate)", 
+                        connection);
+                    cmd.Parameters.AddWithValue("@userId", userId);
+                    cmd.Parameters.AddWithValue("@servicePId", servicePId);
+                    cmd.Parameters.AddWithValue("@addedDate", DateTime.Now);
+                    
+                    connection.Open();
+                    int res = cmd.ExecuteNonQuery();
+                    success = res > 0;
+                }
+            }
+            catch (SqlException e)
+            {
+                throw new Exception("An SQL error occured : " + e.Message);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error while getting the list of provided services : " + e.Message);
+            }
+
+            return success;
+        }
     }
 }

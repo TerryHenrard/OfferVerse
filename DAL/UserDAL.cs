@@ -575,5 +575,52 @@ namespace OfferVerse.DAL
 
             return userId;
         }
+
+        public List<ServiceProvided> GetFavorites(int userId)
+        {
+            List<ServiceProvided> favorites = new();
+            try
+            {
+                using (SqlConnection connection = new(connectionString))
+                {
+                    string query =
+                        @"SELECT sp.*
+                          FROM Favorites fav 
+                          INNER JOIN Users u ON fav.userId = u.userId
+                          INNER JOIN ServicesProvided sp ON sp.servicePId = fav.servicePId
+                          WHERE u.userId = @userId";
+
+                    SqlCommand command = new(query, connection);
+                    command.Parameters.AddWithValue("@userId", userId);
+
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        int servicePId = reader.GetInt32("servicePId");
+                        string title = reader.GetString("title");
+                        string description = reader.GetString("description");
+                        bool priority = reader.GetBoolean("priority");
+                        DateTime? datePriority = !reader.IsDBNull("datePriority") ? reader.GetDateTime("datePriority") : null;
+                        int categoryId = reader.GetInt32("categoryId");
+
+                        ServiceProvided sp = new(servicePId, title, description, priority, datePriority, categoryId);
+                        favorites.Add(sp);
+                    }
+                    
+                }
+            }
+            catch (SqlException e)
+            {
+                throw new Exception("An SQL error occured : " + e.Message);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error while getting the list of provided services : " + e.Message);
+            }
+
+            return favorites;
+        }
     }
 }

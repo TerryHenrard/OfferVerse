@@ -17,6 +17,7 @@ namespace OfferVerse.Models
         /******References******/
         List<ServiceDemanded>? servicesDemanded;
         List<ServiceProvided>? servicesProvided;
+        List<ServiceProvided>? favorites;
 
 
         /******Properties******/
@@ -90,6 +91,12 @@ namespace OfferVerse.Models
             set { servicesProvided = value; }
         }
 
+        public List<ServiceProvided>? Favorites
+        {
+            get { return favorites; }
+            set { favorites = value; }
+        }
+
         /******Constructors******/
         public User()
         {
@@ -143,6 +150,19 @@ namespace OfferVerse.Models
                 result = true;
             }
             return result;
+        }
+
+        public bool AddFavorite(ServiceProvided sp)
+        {
+            bool success = false;
+            if (sp != null && 
+                Favorites != null && 
+                !Favorites.Contains(sp))
+            {
+                Favorites.Add(sp);
+                success = true;
+            }
+            return success;
         }
 
         public string GetFullName() => $"{LastName.ToUpper()} {char.ToUpper(FirstName[0])}{FirstName[1..]}"; //truncate the string from index 1 to the rest
@@ -199,6 +219,14 @@ namespace OfferVerse.Models
         {
             return dal.CreditUser(servicePId, nbHours);
         }
+        public static int CheckLogin(IUserDAL dal, string mail, string password)
+        {
+            return dal.CheckLogin(mail, password);
+        }
+        public static List<ServiceProvided>GetFavorites(IUserDAL dal, int userId)
+        {
+            return dal.GetFavorites(userId);    
+        }
 
         /******Existant methods overrided*******/
         public override string ToString()
@@ -219,11 +247,6 @@ namespace OfferVerse.Models
                 return false;
             }
             return ToString() == obj.ToString();
-        }
-
-        public static int CheckLogin(IUserDAL dal,  string mail, string password)
-        {
-            return dal.CheckLogin(mail, password);
         }
     }
 }
