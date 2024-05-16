@@ -21,5 +21,6 @@ namespace OfferVerse.DAL.Interfaces
         public bool AskForAService(int sProvidedId, int sDemanderId, int sProviderId);
 
         public bool CheckIfServiceDemanded(int uId, int spId);
+        public List<ServiceProvided> GetFavorites(int userId);
     }
 }
