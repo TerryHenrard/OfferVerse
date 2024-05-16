@@ -29,10 +29,15 @@ namespace OfferVerse.Controllers
             int totalPages = ServiceProvided.GetNumberOfPages(_serviceProvidedDAL, servicesPerPage);
             ViewData["currentPage"] = pageNumber;
             ViewData["totalPages"] = totalPages;
+            List<ServiceProvided> sp = ServiceProvided.GetServicesProvided(_serviceProvidedDAL, pageNumber, servicesPerPage);
 
-            return View(ServiceProvided.GetServicesProvided(_serviceProvidedDAL, pageNumber, servicesPerPage));
+            return View(sp);
         }
 
+        public IActionResult ViewService(int servicePId)
+        {
+            return View(ServiceProvided.GetServiceProvided(_serviceProvidedDAL, servicePId));  
+        }
 
         public IActionResult Privacy()
         {

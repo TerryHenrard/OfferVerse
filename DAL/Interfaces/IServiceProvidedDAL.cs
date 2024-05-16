@@ -8,5 +8,6 @@ namespace OfferVerse.DAL.Interfaces
         public bool ApplyServiceProvidedChanges(ServiceProvided sp, int id);
         public List<ServiceProvided> GetServicesProvided(int pageNb, int servicesPerPage);
         public int GetNumberOfPages(int servicesPerPage);
+        public ServiceProvided GetServiceProvided(int servicePId);
     }
 }
