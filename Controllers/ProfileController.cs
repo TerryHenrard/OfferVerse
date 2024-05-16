@@ -29,6 +29,11 @@ namespace OfferVerse.Controllers
 
         public IActionResult ShowProfile()
         {
+            if (GetUserIdFromSession() == 0)
+            {
+                return RedirectToAction("Connect", "Home");
+            }
+
             int userId = GetUserIdFromSession();
             if (userId == 0)
             {
@@ -41,6 +46,11 @@ namespace OfferVerse.Controllers
 
         public IActionResult EditProfile()
         {
+            if (GetUserIdFromSession() == 0)
+            {
+                return RedirectToAction("Connect", "Home");
+            }
+
             return View(AppUser.GetUserInfo(_userDAL, GetUserIdFromSession())); //TODO: replace 1 with the id of the authenticated user in the session
         }
 
@@ -48,6 +58,11 @@ namespace OfferVerse.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult EditProfile(AppUser user) 
         {
+            if (GetUserIdFromSession() == 0)
+            {
+                return RedirectToAction("Connect", "Home");
+            }
+
             if (!user.EditPassword)
             {
                 ModelState.Remove("Password");
@@ -64,6 +79,11 @@ namespace OfferVerse.Controllers
 
         public IActionResult ShowCreditsTransactions()
         {
+            if (GetUserIdFromSession() == 0)
+            {
+                return RedirectToAction("Connect", "Home");
+            }
+
             AppUser user = AppUser.GetUserInfo(_userDAL, GetUserIdFromSession()); //TODO: replace 4 with the id of the authenticated user in the session
             List<ServiceDemanded> servicesDemanded = AppUser.GetTransactions(_userDAL, GetUserIdFromSession()); //TODO: replace 4 with the id of the authenticated user in the session
 
@@ -78,6 +98,11 @@ namespace OfferVerse.Controllers
 
         public IActionResult ShowInProgressServices()
         {
+            if (GetUserIdFromSession() == 0)
+            {
+                return RedirectToAction("Connect", "Home");
+            }
+
             AppUser user = AppUser.GetUserInfo(_userDAL, GetUserIdFromSession()); //TODO: replace 4 with the id of the authenticated user in the session
             List<ServiceDemanded> servicesDemanded = AppUser.GetTransactions(_userDAL, GetUserIdFromSession(), true); //TODO: replace 4 with the id of the authenticated user in the session
 
@@ -93,6 +118,11 @@ namespace OfferVerse.Controllers
 
         public IActionResult ReviewService(int ServiceDId)
         {
+            if (GetUserIdFromSession() == 0)
+            {
+                return RedirectToAction("Connect", "Home");
+            }
+
             ReviewServiceViewModel viewModel = new()
             {
                 ServiceDemanded = AppUser.GetInProgressTransaction(_userDAL, ServiceDId),
@@ -105,6 +135,11 @@ namespace OfferVerse.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult ReviewService(ReviewServiceViewModel viewModel, int servicePId, int serviceDId)
         {
+            if (GetUserIdFromSession() == 0)
+            {
+                return RedirectToAction("Connect", "Home");
+            }
+
             if (!string.IsNullOrEmpty(viewModel.Commentary.Content) &&
                 viewModel.Commentary.Content.Length >= 15 && 
                 viewModel.Commentary.Content.Length <= 200 && 
@@ -144,6 +179,11 @@ namespace OfferVerse.Controllers
 
         public IActionResult ReportUser(int reportedId)
         {
+            if (GetUserIdFromSession() == 0)
+            {
+                return RedirectToAction("Connect", "Home");
+            }
+
             ViewData["reportedId"] = reportedId;
             return View(new Report());
         }
@@ -152,6 +192,11 @@ namespace OfferVerse.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult ReportUser(Report report, int reportedId)
         {
+            if (GetUserIdFromSession() == 0)
+            {
+                return RedirectToAction("Connect", "Home");
+            }
+
             ModelState.Remove("ReportId");
             ModelState.Remove("Reporter");
             ModelState.Remove("Reported");
