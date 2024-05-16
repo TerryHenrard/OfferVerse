@@ -156,6 +156,7 @@ namespace OfferVerse.Controllers
             {
                 return RedirectToAction("Connect", "Home");
             }
+            viewModel.Categories = Category.GetCategories(_CategoryDal);
 
             ModelState.Remove("Sp.Own");
             ModelState.Remove("Sp.Favorites");
@@ -163,7 +164,6 @@ namespace OfferVerse.Controllers
             ModelState.Remove("Sp.Category.Name");
             ModelState.Remove("Sp.Category.ImagePath");
             ModelState.Remove("Sp.Commentaries");
-            ModelState.Remove("Categories");
 
             if (!ModelState.IsValid)
             {
@@ -185,7 +185,7 @@ namespace OfferVerse.Controllers
                 TempData["success"] = "Service not modified";
             }
 
-            return RedirectToAction(nameof(MyServices));
+            return View(viewModel);
         }
     }
 }
