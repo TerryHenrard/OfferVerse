@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hQRvuW95wuXGCDzjFQYszvYSDT71hwgXS9iL5dOmZr0=",
+  "Hash": "FK89qlJmNEHpMlFvax9xdv2I87/gA6fo03jH6ztsVTU=",
   "Source": "OfferVerse",
   "BasePath": "_content/OfferVerse",
   "Mode": "Default",
@@ -338,6 +338,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\Legal-services.jpg"
+    },
+    {
+      "Identity": "I:\\BAC_2_développement_d_application\\Q2\\Projet_fin_annee\\dossier\\OfferVerse\\wwwroot\\Images\\LogoOfferVerse.png",
+      "SourceId": "OfferVerse",
+      "SourceType": "Discovered",
+      "ContentRoot": "I:\\BAC_2_développement_d_application\\Q2\\Projet_fin_annee\\dossier\\OfferVerse\\wwwroot\\",
+      "BasePath": "_content/OfferVerse",
+      "RelativePath": "Images/LogoOfferVerse.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\LogoOfferVerse.png"
     },
     {
       "Identity": "I:\\BAC_2_développement_d_application\\Q2\\Projet_fin_annee\\dossier\\OfferVerse\\wwwroot\\Images\\Marketing-and-communication.jpg",

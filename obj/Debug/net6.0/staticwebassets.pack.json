@@ -57,6 +57,10 @@
       "PackagePath": "staticwebassets\\Images\\Legal-services.jpg"
     },
     {
+      "Id": "I:\\BAC_2_développement_d_application\\Q2\\Projet_fin_annee\\dossier\\OfferVerse\\wwwroot\\Images\\LogoOfferVerse.png",
+      "PackagePath": "staticwebassets\\Images\\LogoOfferVerse.png"
+    },
+    {
       "Id": "I:\\BAC_2_développement_d_application\\Q2\\Projet_fin_annee\\dossier\\OfferVerse\\wwwroot\\Images\\Marketing-and-communication.jpg",
       "PackagePath": "staticwebassets\\Images\\Marketing-and-communication.jpg"
     },
