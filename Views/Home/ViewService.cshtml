@@ -6,9 +6,8 @@
 
     ViewDataDictionary vd = new(ViewData);
     vd["message"] = TempData["message"];
+    <partial name="_displayAlertMessage" view-data="vd"/>
 }
-
-<partial name="_displayAlertMessage" view-data="vd"/>
 
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -66,7 +65,7 @@
                         <a asp-action="PutInFavorite" asp-route-servicePId="@Model.ServiceProvided.ServiceProvidedId" class="btn btn-warning">Add to favorite</a>
                     }
                 }
-                <a class="btn btn-primary mt-3" asp-action="AskForAService" asp-route-sProvidedId="@Model.ServiceProvided.ServiceProvidedId" asp-route-sProviderId="@Model.ServiceProvided.Own.MemberId">Ask</a>
+                <a class="btn btn-primary" asp-action="AskForAService" asp-route-sProvidedId="@Model.ServiceProvided.ServiceProvidedId" asp-route-sProviderId="@Model.ServiceProvided.Own.MemberId">Ask</a>
             </div>
 
             <div class="comment-section">
