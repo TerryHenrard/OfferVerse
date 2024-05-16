@@ -21,6 +21,11 @@ namespace OfferVerse.Controllers
         }
         public IActionResult MyServices()
         {
+            if (GetUserIdFromSession() == 0)
+            {
+                return RedirectToAction("Connect", "Home");
+            }
+
             return View(AppUser.GetAllServicesProvided(_UserDal, GetUserIdFromSession()));
         }
 
@@ -31,6 +36,11 @@ namespace OfferVerse.Controllers
 
         public IActionResult Confirm()
         {
+            if (GetUserIdFromSession() == 0)
+            {
+                return RedirectToAction("Connect", "Home");
+            }
+
             ViewData["sId"] = Request.Query["sId"];
 
             return View();
@@ -40,6 +50,11 @@ namespace OfferVerse.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Confirm(AppUser user, int sId)
         {
+            if (GetUserIdFromSession() == 0)
+            {
+                return RedirectToAction("Connect", "Home");
+            }
+
             if (user.DeleteServiceProvided(_UserDal, sId))
             {
                 TempData["Deletion"] = "Service deleted";
@@ -50,6 +65,11 @@ namespace OfferVerse.Controllers
 
         public IActionResult Create()
         {
+            if (GetUserIdFromSession() == 0)
+            {
+                return RedirectToAction("Connect", "Home");
+            }
+
             CreateModifySPViewModel viewModel = new CreateModifySPViewModel()
             {
                 Sp = new(),
@@ -62,7 +82,12 @@ namespace OfferVerse.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(CreateModifySPViewModel viewModel)
-        {   
+        {
+            if (GetUserIdFromSession() == 0)
+            {
+                return RedirectToAction("Connect", "Home");
+            }
+
             ModelState.Remove("Sp.Favorites");
             ModelState.Remove("Sp.Own");
             ModelState.Remove("Sp.Category.Name");
@@ -86,6 +111,11 @@ namespace OfferVerse.Controllers
 
         public IActionResult Promote(string sId)
         {
+            if (GetUserIdFromSession() == 0)
+            {
+                return RedirectToAction("Connect", "Home");
+            }
+
             bool test = Convert.ToInt32(sId) != 1;
             if (AppUser.CheckCredits(_UserDal, GetUserIdFromSession()) && 
                 Convert.ToInt32(sId) != 1 && 
@@ -104,6 +134,11 @@ namespace OfferVerse.Controllers
 
         public IActionResult Modify(string sId)
         {
+            if (GetUserIdFromSession() == 0)
+            {
+                return RedirectToAction("Connect", "Home");
+            }
+
             CreateModifySPViewModel viewModel = new()
             {
                 Sp = ServiceProvided.GetServiceProvidedInfo(_SpDal, Convert.ToInt32(sId)),
@@ -117,6 +152,11 @@ namespace OfferVerse.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Modify(CreateModifySPViewModel viewModel, string sId)
         {
+            if (GetUserIdFromSession() == 0)
+            {
+                return RedirectToAction("Connect", "Home");
+            }
+
             ModelState.Remove("Sp.Own");
             ModelState.Remove("Sp.Favorites");
             ModelState.Remove("Sp.Category.Sp");
