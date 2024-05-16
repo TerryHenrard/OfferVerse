@@ -14,6 +14,11 @@
     }
 }
 
+@if (!String.IsNullOrEmpty(Convert.ToString(TempData["success"])))
+{
+    <div class="alert alert-success">@TempData["success"]</div>
+}
+
 <div class="text-center">
     <h1 class="display-4 my-5"><span style="color: #FC0A7A;">Welcome</span> <span style="color: #0192D1;">to</span> <span style="color: #FFC300;">Offer</span><span style="color: #1E1E1E;">Verse</span> <img src="/Images/LogoOfferVerse.png" width="150" alt="OfferVerse Logo" /></h1>
 </div>

@@ -58,7 +58,8 @@
 
                             <a asp-action="Index" class="btn btn-secondary mt-3">Back</a>
 
-                            <a asp-action=""></a>
+                            <a asp-controller="Home" asp-action="AskForAService" asp-route-sProviderId="@Model.Own.MemberId" 
+                            asp-route-sProvidedID="@Model.ServiceProvidedId">Ask</a>
                         </div>
                     </div>
                 </div>
