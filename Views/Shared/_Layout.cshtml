@@ -11,44 +11,42 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between d-flex justify-content-between align-items-center">
+        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">OfferVerse</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item mx-2">
-                            <a asp-controller="Home" asp-action="Index" class="fs-4 btn btn-link">OfferVerse</a>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="MyServices" asp-action="MyServices">My services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Profile" asp-action="ShowProfile">Profile</a>
                         </li>
                         <li class="nav-item mx-2">
-                            <a asp-controller="MyServices" asp-action="MyServices" class="fs-4 btn btn-link">My services</a>
+                            <a asp-controller="Home" asp-action="Connect" class="fs-4 btn btn-link">Connection</a>
                         </li>
-                        <li class="nav-item mx-2">
-                            <a asp-controller="Profile" asp-action="ShowProfile" class="fs-4 btn btn-link">Profile</a>
-                        </li>
+
                     </ul>
                     @if (TempData["timeCredits"] != null)
                     {
                         int timeCredits = Convert.ToInt32(TempData["timeCredits"]);
                         TempData["timeCredits"] = timeCredits; // Reassigns the previous value, because it's destroyed after reading.
-
                         <ul class="navbar-nav">
-
-                            @if (timeCredits > 0)
-                            {
-                                <li class="nav-item alert alert-success m-0">
-                                    <p class="m-0 text-success fw-bold">+@timeCredits hours</p>
-                                </li>
-                            }
-                            else
-                            {
-                                <li class="nav-item alert alert-danger m-0">
-                                    <p class="m-0 text-danger fw-bold">@timeCredits hours</p>
-                                </li>
-                            }
+                            <li class="nav-item">
+                                <div class="alert @((timeCredits > 0) ? "alert-success" : "alert-danger") m-0">
+                                    @timeCredits hours
+                                </div>
+                            </li>
                         </ul>
                     }
                 </div>
             </div>
         </nav>
+
     </header>
     <div class="container">
         <main role="main" class="pb-3">

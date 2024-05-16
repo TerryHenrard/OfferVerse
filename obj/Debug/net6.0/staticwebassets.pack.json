@@ -1,331 +1,335 @@
 {
   "Files": [
     {
-      "Id": "D:\\OfferVerse\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\OfferVerse.bundle.scp.css",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\OfferVerse.bundle.scp.css",
       "PackagePath": "staticwebassets\\OfferVerse.bundle.scp.css"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\Images\\Art-and-creation.jpg",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\Images\\Art-and-creation.jpg",
       "PackagePath": "staticwebassets\\Images\\Art-and-creation.jpg"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\Images\\Audiovisual.jpg",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\Images\\Audiovisual.jpg",
       "PackagePath": "staticwebassets\\Images\\Audiovisual.jpg"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\Images\\Baby-sitting.jpg",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\Images\\Baby-sitting.jpg",
       "PackagePath": "staticwebassets\\Images\\Baby-sitting.jpg"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\Images\\Car-maintenance.jpg",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\Images\\Car-maintenance.jpg",
       "PackagePath": "staticwebassets\\Images\\Car-maintenance.jpg"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\Images\\Cleaning.jpg",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\Images\\Cleaning.jpg",
       "PackagePath": "staticwebassets\\Images\\Cleaning.jpg"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\Images\\Cooking-and-baking.jpg",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\Images\\Cooking-and-baking.jpg",
       "PackagePath": "staticwebassets\\Images\\Cooking-and-baking.jpg"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\Images\\DIY.jpg",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\Images\\DIY.jpg",
       "PackagePath": "staticwebassets\\Images\\DIY.jpg"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\Images\\Events.jpg",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\Images\\Events.jpg",
       "PackagePath": "staticwebassets\\Images\\Events.jpg"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\Images\\Healthcare.jpg",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\Images\\Healthcare.jpg",
       "PackagePath": "staticwebassets\\Images\\Healthcare.jpg"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\Images\\Home-help.jpg",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\Images\\Home-help.jpg",
       "PackagePath": "staticwebassets\\Images\\Home-help.jpg"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\Images\\IT-assistance.jpg",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\Images\\IT-assistance.jpg",
       "PackagePath": "staticwebassets\\Images\\IT-assistance.jpg"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\Images\\Legal-services.jpg",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\Images\\Legal-services.jpg",
       "PackagePath": "staticwebassets\\Images\\Legal-services.jpg"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\Images\\Marketing-and-communication.jpg",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\Images\\LogoOfferVerse.png",
+      "PackagePath": "staticwebassets\\Images\\LogoOfferVerse.png"
+    },
+    {
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\Images\\Marketing-and-communication.jpg",
       "PackagePath": "staticwebassets\\Images\\Marketing-and-communication.jpg"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\Images\\Personal-coaching.jpg",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\Images\\Personal-coaching.jpg",
       "PackagePath": "staticwebassets\\Images\\Personal-coaching.jpg"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\Images\\Pet-care.jpg",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\Images\\Pet-care.jpg",
       "PackagePath": "staticwebassets\\Images\\Pet-care.jpg"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\Images\\Private-lesson.jpg",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\Images\\Private-lesson.jpg",
       "PackagePath": "staticwebassets\\Images\\Private-lesson.jpg"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\Images\\Transport-And-house-move.jpg",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\Images\\Transport-And-house-move.jpg",
       "PackagePath": "staticwebassets\\Images\\Transport-And-house-move.jpg"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\Images\\gardening.jpg",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\Images\\gardening.jpg",
       "PackagePath": "staticwebassets\\Images\\gardening.jpg"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\css\\site.css",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\favicon.ico",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\js\\EditProfile.js",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\js\\EditProfile.js",
       "PackagePath": "staticwebassets\\js\\EditProfile.js"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\js\\FinalizeService.js",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\js\\FinalizeService.js",
       "PackagePath": "staticwebassets\\js\\FinalizeService.js"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\js\\ReportUser.js",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\js\\ReportUser.js",
       "PackagePath": "staticwebassets\\js\\ReportUser.js"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\js\\site.js",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Id": "D:\\OfferVerse\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Id": "C:\\Bac 2\\Q2\\Projet\\OfferVerse\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
