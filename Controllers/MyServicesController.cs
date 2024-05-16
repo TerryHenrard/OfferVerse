@@ -86,10 +86,10 @@ namespace OfferVerse.Controllers
 
         public IActionResult Promote(string sId)
         {
-            
-            if(AppUser.CheckCredits(_UserDal, GetUserIdFromSession()) && 
+            bool test = Convert.ToInt32(sId) != 1;
+            if (AppUser.CheckCredits(_UserDal, GetUserIdFromSession()) && 
                 Convert.ToInt32(sId) != 1 && 
-                AppUser.PromoteServiceProvided(_UserDal, Convert.ToInt32(sId), GetUserIdFromSession()))
+                AppUser.PromoteServiceProvided(_UserDal, Convert.ToInt32(sId)))
             {
                 TempData["success"] = "Service promoted successfully";
                 TempData["timeCredits"] = AppUser.GetUserInfo(_UserDal, GetUserIdFromSession()).TimeCredits;
