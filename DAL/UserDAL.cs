@@ -576,6 +576,79 @@ namespace OfferVerse.DAL
             return userId;
         }
 
+        public bool AskForAService(int sProvidedId, int sDemanderId, int sProviderId)
+        {
+            bool success = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand cmd = new(
+                        "INSERT INTO ServicesDemanded (serviceProvidedId, serviceDemander_userId, serviceProvider_userId) " +
+                        " VALUES (@sProvidedId, @sDemanderId, @sProviderId)", connection
+                        );
+
+                    cmd.Parameters.AddWithValue("@sProvidedId", sProvidedId);
+                    cmd.Parameters.AddWithValue("@sProviderId", sProviderId);
+                    cmd.Parameters.AddWithValue("@sDemanderId", sDemanderId);
+
+                    connection.Open();
+                    success = cmd.ExecuteNonQuery() > 0;
+                }
+            }
+            catch (SqlException e)
+            {
+                throw new Exception("An SQL error has occurred : " + e.Message);
+            }
+            catch(Exception e)
+            {
+                throw new Exception("Error while asking for a service : " + e.Message);
+            }
+
+            return success;
+        }
+
+        public bool CheckIfServiceDemanded(int uId, int spId)
+        {
+            bool success = false;
+
+            try
+            {
+                using(SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand cmd = new(
+                        "SELECT serviceDId FROM ServicesDemanded " +
+                        " WHERE endService IS NULL AND serviceProvidedId = @spId AND serviceDemander_userId = @uId",
+                        connection
+                        );
+
+                    cmd.Parameters.AddWithValue("@spId", spId);
+                    cmd.Parameters.AddWithValue("@uId", uId);
+
+                    connection.Open();
+                    
+                    using(SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if(reader.Read())
+                        {
+                            success = true;
+                        }
+                    }
+                }
+            }
+            catch(SqlException e)
+            {
+                throw new Exception("An SQL exception has occurred : " + e.Message);
+            }
+            catch( Exception e )
+            {
+                throw new Exception("Error while checking if service si demanded : " + e.Message);
+            }
+
+            return success;
+        }
+
         public List<ServiceProvided> GetFavorites(int userId)
         {
             List<ServiceProvided> favorites = new();

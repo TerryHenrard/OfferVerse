@@ -51,6 +51,26 @@ namespace OfferVerse.Controllers
             return View(ViewModel);  
         }
 
+        public IActionResult AskForAService(int sProvidedId, int sProviderId)
+        {
+            if (GetUserIdFromSession() == 0)
+            {
+                return RedirectToAction("Connect", "Home");
+            }
+
+            if (AppUser.AskForAService(_userDAL, GetUserIdFromSession(), sProvidedId, sProviderId))
+            {
+                TempData["Success"] = "Service Asked";
+            }
+            else
+            {
+                TempData["Sucess"] = "Unable to Ask a service";
+            }
+
+            Console.WriteLine(TempData["success"]);
+            return RedirectToAction(nameof(Index));
+        }
+
         public IActionResult Privacy()
         {
             return View();
