@@ -1,20 +1,21 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    font-family: 'Arial', sans-serif;
 }
 
 .fixed-size-img {
@@ -23,3 +24,222 @@ body {
     object-fit: cover;
     object-position: center;
 }
+
+.card-custom {
+    width: 18rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s;
+    margin: 1rem;
+}
+
+.card-custom:hover {
+    transform: scale(1.05);
+}
+
+.card-custom img {
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.card-custom .card-body {
+    flex: 1;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-custom .card-title {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.card-custom .card-text {
+    flex: 1;
+}
+
+.card-custom .alert-enhanced {
+    top: -10px;
+    left: -10px;
+    border-radius: 5px;
+}
+
+.card-custom .rating-stars svg {
+margin-right: 2px;
+fill: gold;
+}
+
+.card-custom .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    align-self: flex-start;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.card-custom .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.pagination .btn {
+    margin: 0 0.25rem;
+}
+
+.pagination .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+}
+
+.pagination .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: #fff;
+}
+
+.text-center h1 {
+    font-family: 'Georgia', serif;
+    font-size: 3rem;
+    color: #333;
+}
+
+.text-center h1 span {
+    color: #007bff;
+}
+
+
+.card-service-details {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-service-details {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-service-details .card-header {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+.card-service-details .card-body {
+    padding: 2rem;
+}
+
+.card-service-details .img-fluid {
+    border-radius: 10px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.card-service-details .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    align-self: flex-start;
+}
+
+.card-service-details .btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+.container-service-details {
+    margin-top: 3rem;
+}
+
+.row-service-details {
+    justify-content: center;
+}
+
+.col-service-details {
+    max-width: 800px;
+}
+
+.card-service-details .card-title {
+    margin-bottom: 0;
+}
+
+/* Styles pour les éléments spécifiques */
+.card-service-details p {
+    margin-bottom: 1rem;
+}
+
+.card-service-details h5 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.comment-list {
+    width: 100%;
+}
+.comment-section {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.comment-section-title {
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+}
+
+.comment-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.comment-item { 
+    background: #ebebeb;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.comment-content {
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.comment-rating {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.no-comments-message {
+    font-size: 1rem;
+    font-style: italic;
+    color: #6c757d;
+}
+
+.btn-back {
+    background-color: #6c757d;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.btn-back:hover {
+    background-color: #5a6268;
+}
+
+
+

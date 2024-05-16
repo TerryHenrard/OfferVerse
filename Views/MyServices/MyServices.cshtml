@@ -10,22 +10,29 @@
     <div class="alert alert-success">@TempData["Success"]</div>
 }
 
-<h1>List of provided services</h1>
-<table class="table table-bordered table-hover">
-    <tr>
-        <th>Titre</th>
+<div class="container mt-5">
+    <h1 class="mb-4">List of provided services</h1>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Priority</th>
+                    <th scope="col">Date of Priority</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (ServiceProvided sp in Model)
+                {
+                    <partial name="_ViewService" for="@sp" />
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
 
-        <th>Description</th>
-
-        <th>Priority</th>
-
-        <th>Date of Priority</th>
-        <th>Actions</th>
-    </tr>
-        @foreach (ServiceProvided sp in Model)
-        {
-            <partial name="_ViewService" for="@sp" />
-        }
-</table>
-
-<a asp-action="Create">Créer un service</a>
+<div class="container">
+    <a asp-action="Create" class="btn btn-primary mt-3">Create a service</a>
+</div>
