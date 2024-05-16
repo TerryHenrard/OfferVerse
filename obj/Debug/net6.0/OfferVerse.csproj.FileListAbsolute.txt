@@ -117,3 +117,42 @@ I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - C
 I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\obj\Debug\net6.0\OfferVerse.pdb
 I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\obj\Debug\net6.0\OfferVerse.genruntimeconfig.cache
 I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse - Copie\obj\Debug\net6.0\ref\OfferVerse.dll
+C:\Bac 2\Q2\Projet\OfferVerse\bin\Debug\net6.0\appsettings.Development.json
+C:\Bac 2\Q2\Projet\OfferVerse\bin\Debug\net6.0\appsettings.json
+C:\Bac 2\Q2\Projet\OfferVerse\bin\Debug\net6.0\OfferVerse.staticwebassets.runtime.json
+C:\Bac 2\Q2\Projet\OfferVerse\bin\Debug\net6.0\OfferVerse.exe
+C:\Bac 2\Q2\Projet\OfferVerse\bin\Debug\net6.0\OfferVerse.deps.json
+C:\Bac 2\Q2\Projet\OfferVerse\bin\Debug\net6.0\OfferVerse.runtimeconfig.json
+C:\Bac 2\Q2\Projet\OfferVerse\bin\Debug\net6.0\OfferVerse.dll
+C:\Bac 2\Q2\Projet\OfferVerse\bin\Debug\net6.0\OfferVerse.pdb
+C:\Bac 2\Q2\Projet\OfferVerse\bin\Debug\net6.0\BCrypt.Net-Next.dll
+C:\Bac 2\Q2\Projet\OfferVerse\bin\Debug\net6.0\System.Data.SqlClient.dll
+C:\Bac 2\Q2\Projet\OfferVerse\bin\Debug\net6.0\runtimes\win-arm64\native\sni.dll
+C:\Bac 2\Q2\Projet\OfferVerse\bin\Debug\net6.0\runtimes\win-x64\native\sni.dll
+C:\Bac 2\Q2\Projet\OfferVerse\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
+C:\Bac 2\Q2\Projet\OfferVerse\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Bac 2\Q2\Projet\OfferVerse\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Bac 2\Q2\Projet\OfferVerse\obj\Debug\net6.0\OfferVerse.csproj.AssemblyReference.cache
+C:\Bac 2\Q2\Projet\OfferVerse\obj\Debug\net6.0\OfferVerse.GeneratedMSBuildEditorConfig.editorconfig
+C:\Bac 2\Q2\Projet\OfferVerse\obj\Debug\net6.0\OfferVerse.AssemblyInfoInputs.cache
+C:\Bac 2\Q2\Projet\OfferVerse\obj\Debug\net6.0\OfferVerse.AssemblyInfo.cs
+C:\Bac 2\Q2\Projet\OfferVerse\obj\Debug\net6.0\OfferVerse.csproj.CoreCompileInputs.cache
+C:\Bac 2\Q2\Projet\OfferVerse\obj\Debug\net6.0\OfferVerse.MvcApplicationPartsAssemblyInfo.cache
+C:\Bac 2\Q2\Projet\OfferVerse\obj\Debug\net6.0\OfferVerse.RazorAssemblyInfo.cache
+C:\Bac 2\Q2\Projet\OfferVerse\obj\Debug\net6.0\OfferVerse.RazorAssemblyInfo.cs
+C:\Bac 2\Q2\Projet\OfferVerse\obj\Debug\net6.0\staticwebassets\msbuild.OfferVerse.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Bac 2\Q2\Projet\OfferVerse\obj\Debug\net6.0\staticwebassets\msbuild.build.OfferVerse.props
+C:\Bac 2\Q2\Projet\OfferVerse\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.OfferVerse.props
+C:\Bac 2\Q2\Projet\OfferVerse\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.OfferVerse.props
+C:\Bac 2\Q2\Projet\OfferVerse\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Bac 2\Q2\Projet\OfferVerse\obj\Debug\net6.0\staticwebassets.build.json
+C:\Bac 2\Q2\Projet\OfferVerse\obj\Debug\net6.0\staticwebassets.development.json
+C:\Bac 2\Q2\Projet\OfferVerse\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Bac 2\Q2\Projet\OfferVerse\obj\Debug\net6.0\scopedcss\bundle\OfferVerse.styles.css
+C:\Bac 2\Q2\Projet\OfferVerse\obj\Debug\net6.0\scopedcss\projectbundle\OfferVerse.bundle.scp.css
+C:\Bac 2\Q2\Projet\OfferVerse\obj\Debug\net6.0\OfferVerse.csproj.CopyComplete
+C:\Bac 2\Q2\Projet\OfferVerse\obj\Debug\net6.0\OfferVerse.dll
+C:\Bac 2\Q2\Projet\OfferVerse\obj\Debug\net6.0\refint\OfferVerse.dll
+C:\Bac 2\Q2\Projet\OfferVerse\obj\Debug\net6.0\OfferVerse.pdb
+C:\Bac 2\Q2\Projet\OfferVerse\obj\Debug\net6.0\OfferVerse.genruntimeconfig.cache
+C:\Bac 2\Q2\Projet\OfferVerse\obj\Debug\net6.0\ref\OfferVerse.dll
