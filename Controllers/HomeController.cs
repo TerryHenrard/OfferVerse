@@ -102,12 +102,11 @@ namespace OfferVerse.Controllers
                 {
                     TempData["message"] = "Successfully connected.";
                     HttpContext.Session.SetInt32("userId", userId);
-                    return RedirectToAction("ResultConnection");
+                    return RedirectToAction("Index");
                 }
                 else
                 {
                     TempData["message"] = "Wrong informations. Please, try again.";
-                    return RedirectToAction("ResultConnection");
                 }
             }
             else
@@ -116,11 +115,5 @@ namespace OfferVerse.Controllers
             }
             return View(user);
         }
-
-        public IActionResult ResultConnection()
-        {
-            return View();
-        }
-
     }
 }
