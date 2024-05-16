@@ -45,8 +45,9 @@ namespace OfferVerse.Controllers
             return View(ServiceProvided.GetServiceProvided(_serviceProvidedDAL, servicePId));  
         }
 
-        public IActionResult AskForAService()
+        public IActionResult AskForAService(int sId)
         {
+
             return RedirectToAction(nameof(Index));
         }
 
