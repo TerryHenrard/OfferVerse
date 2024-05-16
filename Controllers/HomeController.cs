@@ -61,8 +61,9 @@ namespace OfferVerse.Controllers
             return View();
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
-        public IActionResult TryLogin(User user)
+        public IActionResult Connect(User user)
         {
             ModelState.Remove("City");
             ModelState.Remove("LastName");
@@ -72,7 +73,6 @@ namespace OfferVerse.Controllers
             ModelState.Remove("PhoneNumber");
             ModelState.Remove("StreetNumber");
             ModelState.Remove("ConfirmPassword");
-            ModelState.Remove("Password");
 
             if (ModelState.IsValid)
             {
@@ -94,7 +94,7 @@ namespace OfferVerse.Controllers
             {
                 TempData["message"] = "Please, enter some validate inputs.";
             }
-            return RedirectToAction("ResultConnection");
+            return View(user);
         }
 
         public IActionResult ResultConnection()

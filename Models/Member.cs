@@ -16,7 +16,7 @@ namespace OfferVerse.Models
             set { memberId = value; }
         }
 
-        [Display(Name = "Email")]
+        [Display(Name = "connerie")]
         [MaxLength(50, ErrorMessage = "50 characters maximum")]
         [MinLength(4, ErrorMessage = "4 characters minimum")]
         [EmailAddress(ErrorMessage = "Invalid email address")]
