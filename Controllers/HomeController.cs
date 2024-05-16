@@ -173,5 +173,19 @@ namespace OfferVerse.Controllers
             }
             return View(user);
         }
+
+        public IActionResult Logout()
+        {
+            if(GetUserIdFromSession() != 0)
+            {
+                HttpContext.Session.SetInt32("userId", 0);
+                TempData["message"] = "Successfully disconnected.";
+            }
+            else
+            {
+                TempData["message"] = "You are not logged in.";
+            }
+            return RedirectToAction("Index");
+        }
     }
 }

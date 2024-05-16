@@ -67,7 +67,20 @@
                     <p>Successfully connected.</p>
                 </div>
                 break;
-
+            case "Successfully disconnected.":
+                <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">Successfully disconnected.</h4>
+                    <p>You have been successfully disconnected.</p>
+                </div>
+                break;
+            case "You are not logged in.":
+                <div class="alert alert-warning" role="alert">
+                    <h4 class="alert-warning">You are not logged in.</h4>
+                    <p>You can't logout if you are not logged in.</p>
+                    <hr />
+                    <p class="mb-0">If something is going wrong, please report it at <a href="mailto:administrators@offerverse.com">administrators@offerverse.com</a>.</p>
+                </div>
+                break;
             default:
                 break;
         }

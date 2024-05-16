@@ -45,6 +45,7 @@ namespace OfferVerse.Models
 
         [Display(Name = "Street number")]
         [MaxLength(5, ErrorMessage = "5 characters maximum")]
+        [RegularExpression("^[0-9]+$", ErrorMessage = "Street number must contain only digits")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Street number field required")]
         public string StreetNumber
         {
@@ -52,9 +53,11 @@ namespace OfferVerse.Models
             set { streetNumber = value; }
         }
 
+
         [Display(Name = "Street name")]
         [MaxLength(50, ErrorMessage = "50 characters maximum")]
         [MinLength(2, ErrorMessage = "2 characters minimum")]
+        [RegularExpression("^[a-zA-Z]+$", ErrorMessage = "Street name must contain only letters")]
         [DataType(DataType.Text)]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Street name field required")]
         public string StreetName
@@ -63,10 +66,11 @@ namespace OfferVerse.Models
             set { streetName = value; }
         }
 
+
         [Display(Name = "City")]
         [MaxLength(50, ErrorMessage = "50 characters maximum")]
         [MinLength(4, ErrorMessage = "4 characters minimum")]
-        [RegularExpression("^[a-zA-ZÀ-ÿ\\s'-]+$", ErrorMessage = "City must contain only letters and valid special characters like spaces, hyphens, and apostrophes")]
+        [RegularExpression("^[a-zA-Z]+$", ErrorMessage = "City must contain only letters")]
         [DataType(DataType.Text)]
         [Required(AllowEmptyStrings = false, ErrorMessage = "City field required")]
         public string City
@@ -74,6 +78,7 @@ namespace OfferVerse.Models
             get { return city; }
             set { city = value; }
         }
+
 
         public int TimeCredits
         {
