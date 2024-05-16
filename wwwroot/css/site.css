@@ -240,6 +240,42 @@ fill: gold;
 .btn-back:hover {
     background-color: #5a6268;
 }
+.comment-section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
 
+.comment-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.comment-item {
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+.comment-content {
+    margin-bottom: 0.5rem;
+}
+
+.comment-author {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.comment-rating {
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.star-icon {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.25rem;
+    fill: gold;
+}
 
 

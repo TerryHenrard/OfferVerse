@@ -1,23 +1,31 @@
-﻿@model ServiceProvided
+﻿@using OfferVerse.ViewModels
+@model ViewServiceViewModel
 
 @{
     ViewBag.Title = "Service Details";
+
+    ViewDataDictionary vd = new(ViewData);
+    vd["message"] = TempData["message"];
 }
+
+<partial name="_displayAlertMessage" view-data="vd"/>
 
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="bg-secondary text-white p-4 mb-4">
-                <h3>@Model.Title</h3>
+                <h3>@Model.ServiceProvided.Title</h3>
+                <hr />
+                <p class="my-0">@Model.ServiceProvided.Description</p>
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <img src="@Model.Category.ImagePath" alt="@Model.Category.Name" class="img-fluid mb-3 w-100" />
+                    <img src="@Model.ServiceProvided.Category.ImagePath" alt="@Model.ServiceProvided.Category.Name" class="img-fluid mb-3 w-100" />
                 </div>
                 <div class="col-md-8">
-                    <p><strong>Description:</strong> @Model.Description</p>
+                    
                     <p>
-                        <strong>Priority:</strong> @if (Model.Priority)
+                        <strong>Priority:</strong> @if (Model.ServiceProvided.Priority)
                         {
                             <span class="text-warning">Enhanced</span>
                         }
@@ -26,30 +34,61 @@
                             <span class="text-secondary">Standard</span>
                         }
                     </p>
-                    @if (Model.DatePriority.HasValue)
+                    @if (Model.ServiceProvided.DatePriority.HasValue)
                     {
-                        <p><strong>Date Priority:</strong> @Model.DatePriority.Value.ToShortDateString()</p>
+                        <p><strong>Prioritized since:</strong> @Model.ServiceProvided.DatePriority.Value.ToShortDateString()</p>
                     }
-                    <p><strong>User:</strong> @Model.Own.FirstName @Model.Own.LastName</p>
-                    <p><strong>Contact:</strong> @Model.Own.Email</p>
-                    <p><strong>Category:</strong> @Model.Category.Name</p>
-                    <p><strong>Address:</strong> @Model.Own.StreetNumber @Model.Own.StreetName, @Model.Own.City, @Model.Own.PostCode</p>
-                    <p><strong>Phone:</strong> @Model.Own.PhoneNumber</p>
-                    <p><strong>Global Rating:</strong> @(Model.GlobalRating() != -1 ? Model.GlobalRating() + "/5" : "Not evaluated yet")</p>
-                    <p><strong>Commentaries:</strong> Based on @Model.Commentaries.Count @(Model.Commentaries.Count == 1 ? "commentary" : "commentaries")</p>
+                    <p><strong>Provider:</strong> @Model.ServiceProvided.Own.GetFullName()</p>
+                    <p><strong>Email:</strong> @Model.ServiceProvided.Own.Email</p>
+                    <p><strong>Phone number:</strong> @string.Format("{0:###-##-##-##}", long.Parse(Model.ServiceProvided.Own.PhoneNumber))</p>
+                    <p><strong>Category:</strong> @Model.ServiceProvided.Category.Name</p>
+                    <p>
+                        <strong>Global Rating:</strong>
+                        @(Model.ServiceProvided.GlobalRating() != -1 ? Model.ServiceProvided.GlobalRating() + "/5" : "Not evaluated yet")
+                        @if (Model.ServiceProvided.GlobalRating() != -1 && Model.ServiceProvided.Commentaries.Any())
+                        {
+                            <span>based on @Model.ServiceProvided.Commentaries.Count @(Model.ServiceProvided.Commentaries.Count == 1 ? "evaluation" : "evaluations")</span>
+                        }
+                    </p>
+
                 </div>
             </div>
+            <div class=" my-3 d-flex align-items-center justify-content-start gap-3">
+                <a asp-action="Index" class="btn btn-dark">Back</a>
+                @{
+                    if(Model.Favorites.Count > 0 &&
+                       Model.Favorites.Contains(Model.ServiceProvided))
+                    {
+                        <a asp-action="DeleteFromFavorite" asp-route-servicePId="@Model.ServiceProvided.ServiceProvidedId" class="btn btn-danger">Delete from favorite</a>
+                    }
+                    else
+                    {
+                        <a asp-action="PutInFavorite" asp-route-servicePId="@Model.ServiceProvided.ServiceProvidedId" class="btn btn-warning">Add to favorite</a>
+                    }
+                }
+                <a class="btn btn-primary mt-3" asp-action="AskForAService" asp-route-sProvidedId="@Model.ServiceProvided.ServiceProvidedId" asp-route-sProviderId="@Model.ServiceProvided.Own.MemberId">Ask</a>
+            </div>
+
             <div class="comment-section">
                 <!-- Section pour afficher les commentaires -->
-                @if (Model.Commentaries.Any())
+                @if (Model.ServiceProvided.Commentaries.Any())
                 {
                     <h5 class="comment-section-title">Comments:</h5>
                     <ul class="comment-list">
-                        @foreach (var comment in Model.Commentaries)
+                        @foreach (Commentary comment in Model.ServiceProvided.Commentaries)
                         {
-                            <li class="comment-item alert border">
+                            <li class="comment-item">
+                                <div class="comment-author">@comment.User.GetFullName()</div>
                                 <div class="comment-content">@comment.Content</div>
-                                <div class="comment-rating">Rating: @comment.Rating</div>
+                                <div class="comment-rating">
+                                    Rating:
+                                    @for (int i = 0; i < comment.Rating; i++)
+                                    {
+                                        <svg class="star-icon mx-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
+                                            <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z" />
+                                        </svg>
+                                    }
+                                </div>
                             </li>
                         }
                     </ul>
@@ -59,7 +98,6 @@
                     <p class="no-comments-message">No comments yet.</p>
                 }
             </div>
-            <a asp-action="Index" class="btn btn-back">Back</a>
         </div>
     </div>
 </div>

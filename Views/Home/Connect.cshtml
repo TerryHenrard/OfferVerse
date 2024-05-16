@@ -2,27 +2,12 @@
 
 <h1>Login</h1>
 
-@{
-    if (TempData["message"] != null && Convert.ToString(TempData["message"]) == "Wrong informations. Please, try again.")
-    {
-        <div class="alert alert-danger" role="alert">
-            <h4 class="alert-danger">Something went wrong.</h4>
-            <p>The email or the password or both informations are wrong. Please, try again.</p>
-            <hr />
-            <p class="mb-0">If you're not able to connect, please report it to <a href="mailto:administrators@offerverse.com">administrators@offerverse.com</a>.</p>
-        </div>
-    }
 
-    if (TempData["message"] != null && Convert.ToString(TempData["message"]) == "Please, enter some validate inputs.")
-    {
-        <div class="alert alert-danger" role="alert">
-            <h4 class="alert-danger">Error.</h4>
-            <p>Please, enter some validate inputs.</p>
-            <hr />
-            <p class="mb-0">If something is going wrong, please report it to <a href="mailto:administrators@offerverse.com">administrators@offerverse.com</a>.</p>
-        </div>
-    }
+@{
+    ViewDataDictionary vd = new(ViewData);
+    vd["message"] = TempData["message"];
 }
+<partial name="_displayAlertMessage" view-data="vd" />
 
 <form method="post" asp-action="Connect">
     <div class="form-group">
