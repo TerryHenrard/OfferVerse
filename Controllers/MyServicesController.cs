@@ -161,7 +161,19 @@ namespace OfferVerse.Controllers
             ModelState.Remove("Sp.Favorites");
             ModelState.Remove("Sp.Category.Sp");
             ModelState.Remove("Sp.Category.Name");
+            ModelState.Remove("Sp.Category.ImagePath");
+            ModelState.Remove("Sp.Commentaries");
             ModelState.Remove("Categories");
+
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                foreach (var error in errors)
+                {
+                    // Log or inspect the error message
+                    Console.WriteLine(error.ErrorMessage);
+                }
+            }
 
             if (ModelState.IsValid && viewModel.Sp.ApplyServiceProvidedChanges(_SpDal, viewModel.Sp, Convert.ToInt32(sId)))
             {
