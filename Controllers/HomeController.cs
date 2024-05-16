@@ -55,7 +55,7 @@ namespace OfferVerse.Controllers
         {
             if (GetUserIdFromSession() == 0)
             {
-                return RedirectToAction("Connect", "Home");
+                return RedirectToAction(nameof(Connect));
             }
 
             if (AppUser.AskForAService(_userDAL, GetUserIdFromSession(), sProvidedId, sProviderId))
@@ -107,7 +107,7 @@ namespace OfferVerse.Controllers
                 {
                     TempData["message"] = "Successfully connected.";
                     HttpContext.Session.SetInt32("userId", userId);
-                    return RedirectToAction("Index");
+                    return RedirectToAction(nameof(Index));
                 }
                 else
                 {
@@ -126,7 +126,7 @@ namespace OfferVerse.Controllers
             if (GetUserIdFromSession() == 0)
             {
                 TempData["message"] = "must be logged in to put in favorite";
-                return RedirectToAction("Connect", "Home");
+                return RedirectToAction(nameof(Connect));
             }
 
             if (ServiceProvided.PutInFavorite(_serviceProvidedDAL, servicePId, GetUserIdFromSession()))
@@ -137,7 +137,25 @@ namespace OfferVerse.Controllers
             {
                 TempData["message"] = "Not added to your favorite";
             }
-            return RedirectToAction("ViewService", new { servicePId });
+            return RedirectToAction(nameof(ViewService), new { servicePId });
+        }
+
+        public IActionResult DeleteFavorite(int servicePId)
+        {
+            if (GetUserIdFromSession() == 0)
+            {
+                return RedirectToAction(nameof(Connect));
+            }
+
+            if (ServiceProvided.DeleteInFavorite(_serviceProvidedDAL, servicePId, GetUserIdFromSession()))
+            {
+                TempData["message"] = "Deleted from your favorites";
+            }
+            else
+            {
+                TempData["message"] = "Not deleted from your favorites";
+            }
+            return RedirectToAction(nameof(ViewService), new { servicePId });
         }
 
         public IActionResult Register()
@@ -164,7 +182,7 @@ namespace OfferVerse.Controllers
                 {
                     HttpContext.Session.SetInt32("userId", result);
                     TempData["message"] = "The account has been created";
-                    return RedirectToAction("Index");
+                    return RedirectToAction(nameof(Index));
                 }
             }
             else
