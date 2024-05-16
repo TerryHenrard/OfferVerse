@@ -540,5 +540,40 @@ namespace OfferVerse.DAL
 
             return success;
         }
+
+        public int CheckLogin(string mail, string password)
+        {
+            int userId = 0; // 0 means he's not connected
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand cmd = new(
+                        "SELECT userId " +
+                        "FROM Users " +
+                        "WHERE email = @mail AND password = @password", connection);
+                    cmd.Parameters.AddWithValue("@mail", mail);
+                    cmd.Parameters.AddWithValue("@password", password);
+
+                    connection.Open();
+
+                    using(SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if(reader.Read())
+                        {
+                            userId = reader.GetInt32("userId");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred: " + ex.Message);
+                return -1;
+            }
+
+            return userId;
+        }
     }
 }

@@ -220,5 +220,10 @@ namespace OfferVerse.Models
             }
             return ToString() == obj.ToString();
         }
+
+        public static int CheckLogin(IUserDAL dal,  string mail, string password)
+        {
+            return dal.CheckLogin(mail, password);
+        }
     }
 }
