@@ -1,5 +1,12 @@
 ﻿@model List<ServiceProvided>
 
+
+@{
+    ViewDataDictionary vd = new(ViewData);
+    vd["message"] = TempData["message"];
+}
+<partial name="_displayAlertMessage" view-data="vd" />
+
 @{
     ViewData["Title"] = "Home Page";
     int currentPage = Convert.ToInt32(ViewData["currentPage"]);

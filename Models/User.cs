@@ -33,7 +33,8 @@ namespace OfferVerse.Models
         }
 
         [Display(Name = "Post code")]
-        [StringLength(4, ErrorMessage = "Post code must contain 4 numbers")]
+        [StringLength(4, ErrorMessage = "Post code must contain exactly 4 numbers")]
+        [RegularExpression("^[0-9]{4}$", ErrorMessage = "Post code must be exactly 4 digits")]
         [DataType(DataType.PostalCode)]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Post code field required")]
         public string PostCode
@@ -65,6 +66,7 @@ namespace OfferVerse.Models
         [Display(Name = "City")]
         [MaxLength(50, ErrorMessage = "50 characters maximum")]
         [MinLength(4, ErrorMessage = "4 characters minimum")]
+        [RegularExpression("^[a-zA-ZÀ-ÿ\\s'-]+$", ErrorMessage = "City must contain only letters and valid special characters like spaces, hyphens, and apostrophes")]
         [DataType(DataType.Text)]
         [Required(AllowEmptyStrings = false, ErrorMessage = "City field required")]
         public string City
@@ -258,6 +260,11 @@ namespace OfferVerse.Models
                 return false;
             }
             return ToString() == obj.ToString();
+        }
+
+        public static int Register(IUserDAL dal, string firstName, string lastName, string mail, string city, string postCode, string streetName, string streetNumber, string password, string confirmPassword, string phoneNumber)
+        {
+            return dal.Register(firstName, lastName, mail, city, postCode, streetName, streetNumber, password, confirmPassword, phoneNumber);
         }
     }
 }
