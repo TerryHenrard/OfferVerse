@@ -58,7 +58,7 @@
                     if(Model.Favorites.Count > 0 &&
                        Model.Favorites.Contains(Model.ServiceProvided))
                     {
-                        <a asp-action="DeleteFromFavorite" asp-route-servicePId="@Model.ServiceProvided.ServiceProvidedId" class="btn btn-danger">Delete from favorite</a>
+                        <a asp-action="DeleteFavorite" asp-route-servicePId="@Model.ServiceProvided.ServiceProvidedId" class="btn btn-danger">Delete from favorite</a>
                     }
                     else
                     {

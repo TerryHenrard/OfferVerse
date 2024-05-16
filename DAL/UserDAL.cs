@@ -550,11 +550,10 @@ namespace OfferVerse.DAL
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     SqlCommand cmd = new(
-                        "SELECT userId " +
+                        "SELECT userId, password " +
                         "FROM Users " +
-                        "WHERE email = @mail AND password = @password", connection);
+                        "WHERE email = @mail", connection);
                     cmd.Parameters.AddWithValue("@mail", mail);
-                    cmd.Parameters.AddWithValue("@password", password);
 
                     connection.Open();
 
@@ -562,7 +561,11 @@ namespace OfferVerse.DAL
                     {
                         if (reader.Read())
                         {
-                            userId = reader.GetInt32("userId");
+                            string hashedPasswordFromDB = reader.GetString(reader.GetOrdinal("password"));
+                            if (BCrypt.Net.BCrypt.EnhancedVerify(password, hashedPasswordFromDB))
+                            {
+                                userId = reader.GetInt32(reader.GetOrdinal("userId"));
+                            }
                         }
                     }
                 }

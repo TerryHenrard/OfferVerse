@@ -215,6 +215,11 @@ namespace OfferVerse.Models
             return dal.PutInFavorite(servicePId, userId);
         }
 
+        public static bool DeleteInFavorite(IServiceProvidedDAL dal, int servicePId, int userId)
+        {
+            return dal.DeleteInFavorite(servicePId, userId);
+        }
+
         //Overrided methods
         public override string ToString()
         {

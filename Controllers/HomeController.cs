@@ -55,7 +55,7 @@ namespace OfferVerse.Controllers
         {
             if (GetUserIdFromSession() == 0)
             {
-                return RedirectToAction(nameof(Connect), nameof(HomeController));
+                return RedirectToAction(nameof(Connect));
             }
 
             if (AppUser.AskForAService(_userDAL, GetUserIdFromSession(), sProvidedId, sProviderId))
@@ -126,7 +126,7 @@ namespace OfferVerse.Controllers
             if (GetUserIdFromSession() == 0)
             {
                 TempData["message"] = "must be logged in to put in favorite";
-                return RedirectToAction(nameof(Connect), nameof(HomeController));
+                return RedirectToAction(nameof(Connect));
             }
 
             if (ServiceProvided.PutInFavorite(_serviceProvidedDAL, servicePId, GetUserIdFromSession()))
@@ -142,7 +142,20 @@ namespace OfferVerse.Controllers
 
         public IActionResult DeleteFavorite(int servicePId)
         {
-            return RedirectToAction();
+            if (GetUserIdFromSession() == 0)
+            {
+                return RedirectToAction(nameof(Connect));
+            }
+
+            if (ServiceProvided.DeleteInFavorite(_serviceProvidedDAL, servicePId, GetUserIdFromSession()))
+            {
+                TempData["message"] = "Deleted from your favorites";
+            }
+            else
+            {
+                TempData["message"] = "Not deleted from your favorites";
+            }
+            return RedirectToAction(nameof(ViewService), new { servicePId });
         }
 
         public IActionResult Register()
