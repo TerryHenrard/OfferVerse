@@ -9,111 +9,109 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = OfferVerse
 build_property.RootNamespace = OfferVerse
-build_property.ProjectDir = I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse\
-build_property.EnableComHosting = 
-build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.ProjectDir = D:\OfferVerse\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = I:\BAC_2_développement_d_application\Q2\Projet_fin_annee\dossier\OfferVerse
+build_property.MSBuildProjectDirectory = D:\OfferVerse
 build_property._RazorSourceGeneratorDebug = 
 
-[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/Home/Index.cshtml]
+[D:/OfferVerse/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/Home/Privacy.cshtml]
+[D:/OfferVerse/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/MyServices/Confirm.cshtml]
+[D:/OfferVerse/Views/MyServices/Confirm.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlTZXJ2aWNlc1xDb25maXJtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/MyServices/Create.cshtml]
+[D:/OfferVerse/Views/MyServices/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlTZXJ2aWNlc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/MyServices/Modify.cshtml]
+[D:/OfferVerse/Views/MyServices/Modify.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlTZXJ2aWNlc1xNb2RpZnkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/MyServices/MyServices.cshtml]
+[D:/OfferVerse/Views/MyServices/MyServices.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlTZXJ2aWNlc1xNeVNlcnZpY2VzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/MyServices/_ViewService.cshtml]
+[D:/OfferVerse/Views/MyServices/_ViewService.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlTZXJ2aWNlc1xfVmlld1NlcnZpY2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/Profile/EditProfile.cshtml]
+[D:/OfferVerse/Views/Profile/EditProfile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxFZGl0UHJvZmlsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/Profile/ReportProvider.cshtml]
+[D:/OfferVerse/Views/Profile/ReportProvider.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxSZXBvcnRQcm92aWRlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/Profile/ReportUser.cshtml]
+[D:/OfferVerse/Views/Profile/ReportUser.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxSZXBvcnRVc2VyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/Profile/ReviewService.cshtml]
+[D:/OfferVerse/Views/Profile/ReviewService.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxSZXZpZXdTZXJ2aWNlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/Profile/ShowCreditsTransactions.cshtml]
+[D:/OfferVerse/Views/Profile/ShowCreditsTransactions.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxTaG93Q3JlZGl0c1RyYW5zYWN0aW9ucy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/Profile/ShowInProgressServices.cshtml]
+[D:/OfferVerse/Views/Profile/ShowInProgressServices.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxTaG93SW5Qcm9ncmVzc1NlcnZpY2VzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/Profile/ShowProfile.cshtml]
+[D:/OfferVerse/Views/Profile/ShowProfile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxTaG93UHJvZmlsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/Profile/_Partials/_EditUserDetails.cshtml]
+[D:/OfferVerse/Views/Profile/_Partials/_EditUserDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxfUGFydGlhbHNcX0VkaXRVc2VyRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/Profile/_Partials/_NegativeCreditsTransactionsDetails.cshtml]
+[D:/OfferVerse/Views/Profile/_Partials/_NegativeCreditsTransactionsDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxfUGFydGlhbHNcX05lZ2F0aXZlQ3JlZGl0c1RyYW5zYWN0aW9uc0RldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/Profile/_Partials/_PositiveCreditsTransactionsDetails.cshtml]
+[D:/OfferVerse/Views/Profile/_Partials/_PositiveCreditsTransactionsDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxfUGFydGlhbHNcX1Bvc2l0aXZlQ3JlZGl0c1RyYW5zYWN0aW9uc0RldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/Profile/_Partials/_ServiceDemandedInProgressDetails.cshtml]
+[D:/OfferVerse/Views/Profile/_Partials/_ServiceDemandedInProgressDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxfUGFydGlhbHNcX1NlcnZpY2VEZW1hbmRlZEluUHJvZ3Jlc3NEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/Profile/_Partials/_ServiceProvidedInProgressDetails.cshtml]
+[D:/OfferVerse/Views/Profile/_Partials/_ServiceProvidedInProgressDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxfUGFydGlhbHNcX1NlcnZpY2VQcm92aWRlZEluUHJvZ3Jlc3NEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/Profile/_Partials/_ShowUserDetails.cshtml]
+[D:/OfferVerse/Views/Profile/_Partials/_ShowUserDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxfUGFydGlhbHNcX1Nob3dVc2VyRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/Shared/Error.cshtml]
+[D:/OfferVerse/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/OfferVerse/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/_ViewImports.cshtml]
+[D:/OfferVerse/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/_ViewStart.cshtml]
+[D:/OfferVerse/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[I:/BAC_2_développement_d_application/Q2/Projet_fin_annee/dossier/OfferVerse/Views/Shared/_Layout.cshtml]
+[D:/OfferVerse/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-5ekkxa9utb
