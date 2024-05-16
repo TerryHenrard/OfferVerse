@@ -1,6 +1,16 @@
 ﻿@model List<ServiceProvided>
 
 @{
+    if (TempData["message"] != null && Convert.ToString(TempData["message"]) == "Successfully connected.")
+    {
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">Well done!</h4>
+            <p>Successfully connected.</p>
+        </div>
+    }
+}
+
+@{
     ViewData["Title"] = "Home Page";
     int currentPage = Convert.ToInt32(ViewData["currentPage"]);
     int totalPages = Convert.ToInt32(ViewData["totalPages"]);
