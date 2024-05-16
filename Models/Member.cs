@@ -16,7 +16,7 @@ namespace OfferVerse.Models
             set { memberId = value; }
         }
 
-        [Display(Name = "connerie")]
+        [Display(Name = "Email")]
         [MaxLength(50, ErrorMessage = "50 characters maximum")]
         [MinLength(4, ErrorMessage = "4 characters minimum")]
         [EmailAddress(ErrorMessage = "Invalid email address")]
@@ -28,7 +28,7 @@ namespace OfferVerse.Models
             set { email = value; }
         }
 
-        [Display(Name = "New password")]
+        [Display(Name = "Password")]
         [MinLength(8, ErrorMessage = "8 characters minimum")]
         [DataType(DataType.Password)]
         [RegularExpression(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$", ErrorMessage = "Must contains at least 1 uppercase and 1 lowercase letter and a number")]
