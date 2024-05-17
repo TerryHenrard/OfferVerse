@@ -2,7 +2,7 @@
 
 <tr>
     <th scope="row">@ViewData["index"]</th>
-    <td>@Model.StartService.Value.ToString("dd/MM/yyyy")</td>
+    <td>@(Model.StartService.HasValue ? @Model.StartService.Value.ToString("dd/MM/yyyy") : "N/A")</td>
     <td>
         @Model.ServiceDemander.LastName.ToUpper()
         @Model.ServiceDemander.FirstName[0].ToString().ToUpper()@Model.ServiceDemander.FirstName.Substring(1)

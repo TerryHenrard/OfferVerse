@@ -2,20 +2,21 @@
 
 @if (!String.IsNullOrEmpty(Convert.ToString(TempData["Deletion"])))
 {
-    <div class="alert alert-success">@TempData["Deletion"]</div>
+    <div class="alert alert-success my-3">@TempData["Deletion"]</div>
 }
 
 @if (!String.IsNullOrEmpty(Convert.ToString(TempData["success"])))
 {
-    <div class="alert alert-success">@TempData["Success"]</div>
+    <div class="alert alert-success my-3">@TempData["Success"]</div>
 }
 
 <div class="container mt-5">
     <h1 class="mb-4">List of provided services</h1>
     <div class="table-responsive">
-        <table class="table table-bordered table-hover table-striped">
+        <table class="table table-bordered table-hover table-striped" style="table-layout: fixed; width: 100%;">
             <thead class="thead-dark">
                 <tr>
+                    <th scope="col" style="width: 2.5%;">#</th>
                     <th scope="col">Title</th>
                     <th scope="col">Description</th>
                     <th scope="col">Priority</th>
@@ -24,9 +25,15 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (ServiceProvided sp in Model)
-                {
-                    <partial name="_ViewService" for="@sp" />
+                @{
+                    ViewDataDictionary vd = new(ViewData);
+                    int index = 1;
+
+                    foreach (ServiceProvided sp in Model)
+                    {
+                        vd["index"] = index++;
+                        <partial name="_ViewService" model="sp" view-data="vd" />
+                    }
                 }
             </tbody>
         </table>
@@ -34,9 +41,6 @@
 </div>
 
 <div class="container">
+    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary mt-3">Back</a>
     <a asp-action="Create" class="btn btn-primary mt-3">Create a service</a>
-</div>
-
-<div>
-    <a asp-controller="Home" asp-action="Index">Back</a>
 </div>

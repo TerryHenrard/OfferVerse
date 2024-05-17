@@ -60,11 +60,11 @@ namespace OfferVerse.Controllers
 
             if (GetUserIdFromSession() != sProviderId && AppUser.AskForAService(_userDAL, GetUserIdFromSession(), sProvidedId, sProviderId))
             {
-                TempData["Success"] = "Service Asked";
+                TempData["message"] = "Service Asked";
             }
             else
             {
-                TempData["Success"] = "Unable to Ask a service";
+                TempData["message"] = "Unable to Ask a service";
             }
 
             return RedirectToAction(nameof(Index));
