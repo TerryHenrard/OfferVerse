@@ -58,7 +58,7 @@ namespace OfferVerse.Controllers
                 return RedirectToAction(nameof(Connect));
             }
 
-            if (AppUser.AskForAService(_userDAL, GetUserIdFromSession(), sProvidedId, sProviderId))
+            if (GetUserIdFromSession() != sProviderId && AppUser.AskForAService(_userDAL, GetUserIdFromSession(), sProvidedId, sProviderId))
             {
                 TempData["message"] = "Service Asked";
             }

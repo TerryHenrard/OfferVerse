@@ -101,15 +101,15 @@ namespace OfferVerse.Models
                                DateTime? startService, 
                                DateTime? endService, 
                                int? nbHours, 
-                               int PId, 
+                               int PId, //Provider
                                string PFirstName, 
                                string PLastName,
-                               int DId, 
+                               int DId, //Demander
                                string DFirstName, 
                                string DLastName, 
-                               int SPId, 
+                               int SPId, //Service provided
                                string title, 
-                               string descrption)
+                               string description)
         {
             this.serviceId = serviceId;
             StartService = startService;
@@ -117,9 +117,10 @@ namespace OfferVerse.Models
             NbHours = nbHours;
             ServiceProvider = new User(PId, PFirstName, PLastName);
             ServiceDemander = new User(DId, DFirstName, DLastName);
-            ServiceProvided = new ServiceProvided(SPId, title, descrption);
+            ServiceProvided = new ServiceProvided(SPId, title, description);
         }
 
+        
         public ServiceDemanded()
         {
 
@@ -129,6 +130,11 @@ namespace OfferVerse.Models
         public static bool FinalizeService(IServiceDemandedDAL dal, int serviceDId, int? nbHours)
         {
             return dal.FinalizeService(serviceDId, nbHours);
+        }
+
+        public static List<ServiceDemanded> GetServicesDemanded(IServiceDemandedDAL dal, int uId)
+        {
+            return dal.GetServicesDemanded(uId);
         }
     }
 }

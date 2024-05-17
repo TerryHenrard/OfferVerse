@@ -745,5 +745,69 @@ namespace OfferVerse.DAL
             return userId;
         }
 
+
+        public bool AcceptDemand(int demandId)
+        {
+            bool success = false;
+
+            try
+            {
+                using(SqlConnection connection = new(connectionString))
+                {
+                    SqlCommand cmd = new(
+                        "UPDATE ServicesDemanded " +
+                        " SET startService = @start " +
+                        " WHERE serviceDId = @dID ", connection
+                        );
+
+                    cmd.Parameters.AddWithValue("@start", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@dId", demandId);
+
+                    connection.Open();
+                    success = cmd.ExecuteNonQuery() > 0;
+                }
+            }
+            catch(SqlException e)
+            {
+                throw new Exception("An SQL error has occurred : " + e.Message);
+            }
+            catch(Exception e)
+            {
+                throw new Exception("An error has occurred while accepting the demand : " + e.Message);
+            }
+
+            return success;
+        }
+
+        public bool RefuseDemand(int demandId)
+        {
+            bool success = false;
+
+            try
+            {
+                using(SqlConnection connection = new(connectionString))
+                {
+                    SqlCommand cmd = new(
+                        "DELETE FROM ServicesDemanded " +
+                        " WHERE serviceDId = @sId ", connection
+                        );
+
+                    cmd.Parameters.AddWithValue("@sId", demandId);
+                    
+                    connection.Open();
+                    success = cmd.ExecuteNonQuery() > 0;
+                }
+            }
+            catch (SqlException e)
+            {
+                throw new Exception("An SQL error has occurred : " + e.Message);
+            }
+            catch(Exception e)
+            {
+                throw new Exception("Error while refusing the demand : " + e.Message);
+            }
+            
+            return success;
+        }
     }
 }
