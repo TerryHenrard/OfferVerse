@@ -27,7 +27,7 @@ namespace OfferVerse.DAL
                 using (SqlConnection connection = new(connectionString))
                 {
                     SqlCommand cmd = new(
-                        "SELECT * FROM OfferVerse.dbo.Users " +
+                        "SELECT * FROM Users " +
                         "WHERE userId = @userId", 
                         connection);
                     cmd.Parameters.AddWithValue("@userId", userId);
@@ -80,7 +80,7 @@ namespace OfferVerse.DAL
                 using (SqlConnection connection = new(connectionString))
                 {
                     SqlCommand cmd = new(
-                        "SELECT * FROM OfferVerse.dbo.ServicesProvided WHERE userId = @memberId",
+                        "SELECT * FROM ServicesProvided WHERE userId = @memberId",
                         connection
                         );
 
@@ -123,7 +123,7 @@ namespace OfferVerse.DAL
             bool success = false;
             bool editPassword = userProfil.EditPassword;
             string query =
-                "UPDATE OfferVerse.dbo.Users " +
+                "UPDATE Users " +
                 "SET phoneNumber = @phoneNumber, postCode = @postCode, streetName = @streetName, " +
                 "streetNumber = @streetNumber, city = @city, email = @email, firstName = @firstName, lastName = @lastName";
 
