@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using OfferVerse.DAL.Interfaces;
+using System.ComponentModel.DataAnnotations;
 
 namespace OfferVerse.Models
 {
@@ -118,6 +119,21 @@ namespace OfferVerse.Models
                 return false;
             }
             return ToString() == obj.ToString();
+        }
+
+        public static int CheckLogin(IUserDAL dal, string mail, string password)
+        {
+            return dal.CheckLogin(mail, password);
+        }
+
+        public static int CheckRegister(IUserDAL dal, string firstName, string lastName, string mail, string city, string postCode, string streetName, string streetNumber, string password, string confirmPassword, string phoneNumber)
+        {
+            return dal.Register(firstName, lastName, mail, city, postCode, streetName, streetNumber, password, confirmPassword, phoneNumber);
+        }
+
+        public static bool CheckIfAdmin(IUserDAL dal, int userId)
+        {
+            return dal.IsAdmin(userId);
         }
     }
 }

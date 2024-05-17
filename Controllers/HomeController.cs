@@ -104,12 +104,12 @@ namespace OfferVerse.Controllers
 
             if (ModelState.IsValid)
             {
-                int userId = _userDAL.CheckLogin(user.Email, user.Password);
+                int userId = Member.CheckLogin(_userDAL, user.Email, user.Password);
 
                 if(userId != 0)
                 {
                     HttpContext.Session.SetInt32("userId", userId);
-                    bool isAdmin = _userDAL.IsAdmin(userId);
+                    bool isAdmin = Member.CheckIfAdmin(_userDAL, userId);
                     if(isAdmin)
                     {
                         HttpContext.Session.SetInt32("userId", userId);
@@ -190,7 +190,7 @@ namespace OfferVerse.Controllers
         {
             if(ModelState.IsValid)
             {
-                int result = _userDAL.Register(user.FirstName, user.LastName, user.Email, user.City, user.PostCode, user.StreetName, user.StreetNumber, user.Password, user.ConfirmPassword, user.PhoneNumber);
+                int result = Member.CheckRegister(_userDAL, user.FirstName, user.LastName, user.Email, user.City, user.PostCode, user.StreetName, user.StreetNumber, user.Password, user.ConfirmPassword, user.PhoneNumber);
                 if(result == -2) // password don't match
                 {
                     TempData["message"] = "The password don't match.";
