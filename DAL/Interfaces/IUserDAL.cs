@@ -23,5 +23,7 @@ namespace OfferVerse.DAL.Interfaces
         public bool CheckIfServiceDemanded(int uId, int spId);
         public List<ServiceProvided> GetFavorites(int userId);
         public int Register(string firstName, string lastName, string mail, string city, string postCode, string streetName, string streetNumber, string password, string confirmPassword, string phoneNumber);
+        public bool IsAdmin(int id);
+
     }
 }

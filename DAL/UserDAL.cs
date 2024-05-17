@@ -579,6 +579,38 @@ namespace OfferVerse.DAL
             return userId;
         }
 
+        public bool IsAdmin(int id)
+        {
+            bool isAdmin = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand cmd = new SqlCommand("SELECT isAdmin FROM Users WHERE userId = @userId", connection);
+                    cmd.Parameters.AddWithValue("@userId", id);
+
+                    connection.Open();
+                    var result = cmd.ExecuteScalar();
+
+                    if (result != null && result != DBNull.Value)
+                    {
+                        isAdmin = Convert.ToBoolean(result);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("SQL Error: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+
+            return isAdmin;
+        }
+
 
 
         public bool AskForAService(int sProvidedId, int sDemanderId, int sProviderId)

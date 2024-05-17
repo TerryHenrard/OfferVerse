@@ -76,6 +76,15 @@ namespace OfferVerse.Models
             Description = description;
         }
 
+        public Report(int reportId, string title, string description, User reporter, User reported)
+        {
+            this.reportId = reportId;
+            Title = title;
+            Description = description;
+            Reporter = reporter;
+            Reported = reported;
+        }
+
         public Report(int reportId)
         {
             this.reportId = reportId;

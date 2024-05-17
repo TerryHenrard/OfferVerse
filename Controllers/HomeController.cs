@@ -12,14 +12,16 @@ namespace OfferVerse.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IUserDAL _userDAL;
+        private readonly IReportDAL _reportDAL;
         private readonly IServiceProvidedDAL _serviceProvidedDAL;
         private const int servicesPerPage = 12;
 
-        public HomeController(ILogger<HomeController> logger, IUserDAL userDAL, IServiceProvidedDAL serviceProvidedDAL)
+        public HomeController(ILogger<HomeController> logger, IUserDAL userDAL, IServiceProvidedDAL serviceProvidedDAL, IReportDAL reportDal)
         {
             _logger = logger;
             _userDAL = userDAL;
             _serviceProvidedDAL = serviceProvidedDAL;
+            _reportDAL = reportDal;
         }
 
         private int GetUserIdFromSession()
@@ -105,9 +107,18 @@ namespace OfferVerse.Controllers
 
                 if(userId != 0)
                 {
-                    TempData["message"] = "Successfully connected.";
                     HttpContext.Session.SetInt32("userId", userId);
-                    return RedirectToAction(nameof(Index));
+                    bool isAdmin = _userDAL.IsAdmin(userId);
+                    if(isAdmin)
+                    {
+                        TempData["message"] = "Successfully connected, dear Admin.";
+                        return RedirectToAction("Admin", "Admin");
+                    }
+                    else
+                    {
+                        TempData["message"] = "Successfully connected.";
+                        return RedirectToAction(nameof(Index));
+                    } 
                 }
                 else
                 {
@@ -205,5 +216,6 @@ namespace OfferVerse.Controllers
             }
             return RedirectToAction("Index");
         }
+
     }
 }
