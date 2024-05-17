@@ -207,7 +207,7 @@ namespace OfferVerse.Controllers
             }
             else
             {
-                TempData["message"] = "Wrong informations. Please, try again.";
+                TempData["message"] = "Wrong informations. Please, try again.Register";
             }
             return View(user);
         }
