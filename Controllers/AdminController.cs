@@ -32,11 +32,11 @@ namespace OfferVerse.Controllers
 
         public IActionResult Admin()
         {
-            bool isAdmin = _userDAL.IsAdmin(GetUserIdFromSession());
+            bool isAdmin = Member.CheckIfAdmin(_userDAL, GetUserIdFromSession());
             if (isAdmin)
             {
                 TempData["displayLogout"] = GetUserIdFromSession() != 0;
-                List<Report> reports = _reportDAL.GetReports();
+                List<Report> reports = AppUser.GetAllReports(_reportDAL);
                 return View(reports);
             }
             else
@@ -49,7 +49,7 @@ namespace OfferVerse.Controllers
         [HttpPost]
         public IActionResult Sanction(int id)
         {
-            bool success = _reportDAL.SanctionUser(id);
+            bool success = AppUser.SanctionUser(_reportDAL, id);
             if (success)
                 TempData["message"] = "The user has been sanctionned.";
             else
@@ -61,7 +61,7 @@ namespace OfferVerse.Controllers
         [HttpPost]
         public IActionResult DeleteReport(int reportId)
         {
-            bool success = _reportDAL.DeleteReport(reportId);
+            bool success = AppUser.DeleteReportUser(_reportDAL, reportId);
             if (success)
                 TempData["message"] = "The report has been deleted.";
             else

@@ -226,10 +226,7 @@ namespace OfferVerse.Models
         {
             return dal.CreditUser(servicePId, nbHours);
         }
-        public static int CheckLogin(IUserDAL dal, string mail, string password)
-        {
-            return dal.CheckLogin(mail, password);
-        }
+        
         public static List<ServiceProvided>GetFavorites(IUserDAL dal, int userId)
         {
             return dal.GetFavorites(userId);    
@@ -277,9 +274,19 @@ namespace OfferVerse.Models
             return ToString() == obj.ToString();
         }
 
-        public static int Register(IUserDAL dal, string firstName, string lastName, string mail, string city, string postCode, string streetName, string streetNumber, string password, string confirmPassword, string phoneNumber)
+        public static bool SanctionUser(IReportDAL dal, int userId)
         {
-            return dal.Register(firstName, lastName, mail, city, postCode, streetName, streetNumber, password, confirmPassword, phoneNumber);
+            return dal.SanctionUser(userId);
+        }
+
+        public static List<Report> GetAllReports(IReportDAL dal)
+         {
+             return dal.GetReports();
+         }
+
+        public static bool DeleteReportUser(IReportDAL dal, int reportId)
+        {
+            return dal.DeleteReport(reportId);
         }
     }
 }

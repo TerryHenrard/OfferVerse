@@ -13,31 +13,24 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-controller="Home" asp-action="Index"><img src="/Images/LogoOfferVerse.png" width="75" alt="OfferVerse Logo" /></a>
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">OfferVerse</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
-                    <ul class="navbar-nav gap-3">
+                    <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link fs-4" asp-controller="MyServices" asp-action="MyServices">My services</a>
+                            <a class="nav-link" asp-controller="MyServices" asp-action="MyServices">My services</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link fs-4" asp-controller="Profile" asp-action="ShowProfile">Profile</a>
+                            <a class="nav-link" asp-controller="Profile" asp-action="ShowProfile">Profile</a>
                         </li>
                         <li class="nav-item mx-2">
-                            <a class="nav-link fs-4" asp-controller="ServicesDemand" asp-action="ViewServicesDemand">My demands</a>
+                            <a class="nav-link" asp-controller="Home" asp-action="Connect">Login</a>
                         </li>
-                        @{
-                            bool displayLogOut = Convert.ToBoolean(TempData["displayLogout"]);
-                            TempData["displayLogout"] = displayLogOut;
-                            var linkText = displayLogOut ? "Logout" : "Login";
-                            var actionName = displayLogOut ? "Logout" : "Connect";
-                        }
-
                         <li class="nav-item mx-2">
-                            <a class="nav-link fs-4" asp-controller="Home" asp-action="@actionName">@linkText</a>
+                            <a class="nav-link" asp-controller="Home" asp-action="Logout">Logout</a>
                         </li>
 
                     </ul>
@@ -66,7 +59,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - OfferVerse - Codded with <span class="fs-4">&#9825;</span> by HENRARD Terry, ALBRECQ Gary and MARAIN Dimitri
+            &copy; 2024 - OfferVerse - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
