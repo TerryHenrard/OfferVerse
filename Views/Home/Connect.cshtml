@@ -1,32 +1,32 @@
 ﻿@model User
 
-<h1>Login</h1>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1 class="mb-4">Login</h1>
 
+            @{
+                ViewDataDictionary vd = new(ViewData);
+                vd["message"] = TempData["message"];
+            }
+            <partial name="_displayAlertMessage" view-data="vd" />
 
-@{
-    ViewDataDictionary vd = new(ViewData);
-    vd["message"] = TempData["message"];
-}
-<partial name="_displayAlertMessage" view-data="vd" />
+            <form method="post" asp-action="Connect">
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label">Email</label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Password" class="form-label">Password</label>
+                    <input type="password" asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
 
-<form method="post" asp-action="Connect">
-    <div class="form-group">
-        <label asp-for="Email"></label>
-        <input asp-for="Email" class="form-control" />
-        <span asp-validation-for="Email" class="text-danger"></span>
+            <p class="mt-4">You don't have an account? <a asp-controller="Home" asp-action="Register" class="btn-link">Register</a></p>
+            
+        </div>
     </div>
-    <div class="form-group">
-        <label asp-for="Password"></label>
-        <input asp-for="Password" class="form-control" />
-        <span asp-validation-for="Password" class="text-danger"></span>
-    </div>
-    <button type="submit" class="btn btn-primary">Login</button>
-</form>
-
-<p>You don't have an account yet? Create one here</p>
-<a asp-controller="Home" asp-action="Register" class="btn btn-secondary">Register</a>
-
-
-
-
-
+</div>

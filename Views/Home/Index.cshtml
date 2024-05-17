@@ -1,5 +1,11 @@
 ﻿@model List<ServiceProvided>
 
+
+@if (!String.IsNullOrEmpty(Convert.ToString(TempData["success"])))
+{
+    <div class="alert alert-success">@TempData["success"]</div>
+}
+
 @{
     ViewDataDictionary vd = new(ViewData);
     vd["message"] = TempData["message"];
@@ -18,11 +24,6 @@
     {
         startPage = Math.Max(1, endPage - maxButtonsToShow + 1);
     }
-}
-
-@if (!String.IsNullOrEmpty(Convert.ToString(TempData["success"])))
-{
-    <div class="alert alert-success">@TempData["success"]</div>
 }
 
 <div class="text-center">
