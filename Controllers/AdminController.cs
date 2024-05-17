@@ -35,6 +35,7 @@ namespace OfferVerse.Controllers
             bool isAdmin = _userDAL.IsAdmin(GetUserIdFromSession());
             if (isAdmin)
             {
+                TempData["displayLogout"] = GetUserIdFromSession() != 0;
                 List<Report> reports = _reportDAL.GetReports();
                 return View(reports);
             }

@@ -112,6 +112,7 @@ namespace OfferVerse.Controllers
                     bool isAdmin = _userDAL.IsAdmin(userId);
                     if(isAdmin)
                     {
+                        HttpContext.Session.SetInt32("userId", userId);
                         TempData["message"] = "Successfully connected, dear Admin.";
                         return RedirectToAction("Admin", "Admin");
                     }
