@@ -1,0 +1,35 @@
+﻿@model List<ServiceProvided>
+
+<div class="container mt-5">
+    <h1 class="mb-4">Favorites</h1>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover table-striped" style="table-layout: fixed; width: 100%;">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" style="width: 2.5%;">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Priority</th>
+                    <th scope="col">Date of Priority</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    ViewDataDictionary vd = new(ViewData);
+                    int index = 1;
+
+                    foreach (ServiceProvided sp in Model)
+                    {
+                        vd["index"] = index++;
+                        <partial name="_Partials/_ServiceProvidedDetails.cshtml" model="sp" view-data="vd" />
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="container">
+    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary mt-3 w-25">Back</a>
+</div>

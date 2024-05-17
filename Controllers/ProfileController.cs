@@ -219,5 +219,10 @@ namespace OfferVerse.Controllers
             }
             return View(report);
         }
+
+        public IActionResult ShowFavorites()
+        {
+            return View(AppUser.GetFavorites(_userDAL, GetUserIdFromSession()));
+        }
     }
 }

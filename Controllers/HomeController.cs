@@ -30,9 +30,10 @@ namespace OfferVerse.Controllers
         public IActionResult Index(int pageNumber = 1)
         {
             AppUser user = AppUser.GetUserInfo(_userDAL, GetUserIdFromSession()); 
-            HttpContext.Session.SetInt32("userId", user.MemberId); // TODO: replace with the id of the authenticated user
             TempData["timeCredits"] = user.TimeCredits;
 
+            TempData["displayLogout"] = GetUserIdFromSession() != 0;
+            
             int totalPages = ServiceProvided.GetNumberOfPages(_serviceProvidedDAL, servicesPerPage);
             ViewData["currentPage"] = pageNumber;
             ViewData["totalPages"] = totalPages;
@@ -140,7 +141,7 @@ namespace OfferVerse.Controllers
             return RedirectToAction(nameof(ViewService), new { servicePId });
         }
 
-        public IActionResult DeleteFavorite(int servicePId)
+        public IActionResult DeleteFavorite(int servicePId, bool redirectToViewService = true)
         {
             if (GetUserIdFromSession() == 0)
             {
@@ -155,7 +156,15 @@ namespace OfferVerse.Controllers
             {
                 TempData["message"] = "Not deleted from your favorites";
             }
-            return RedirectToAction(nameof(ViewService), new { servicePId });
+
+            if (redirectToViewService)
+            {
+                return RedirectToAction(nameof(ViewService), new { servicePId });
+            }
+            else
+            {
+                return RedirectToAction("ShowFavorites", "Profile");
+            }
         }
 
         public IActionResult Register()

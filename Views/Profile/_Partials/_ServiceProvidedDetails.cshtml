@@ -1,0 +1,22 @@
+﻿@model ServiceProvided
+
+<tr>
+    <td><strong>@ViewData["index"]</strong></td>
+    <td>@Model.Title</td>
+    <td>@Model.Description</td>
+    <td>@(Model.Priority ? "Enhanceds" : "Standard")</td>
+    <td>
+        @if (Model.Priority && Model.DatePriority.HasValue)
+        {
+            @Model.DatePriority.Value.ToString("dd-MM-yyyy")
+        }
+        else
+        {
+            <span class="text-muted">Not prioritized</span>
+        }
+    </td>
+    <td class="d-flex gap-2">
+        <a asp-controller="Home" asp-action="DeleteFavorite" asp-route-servicePId="@Model.ServiceProvidedId" asp-route-redirectToViewService="@false" class="btn btn-danger">Delete</a>
+        <a asp-controller="Home" asp-action="ViewService" asp-route-servicePId="@Model.ServiceProvidedId" class="btn btn-primary">Check</a>
+    </td>
+</tr>
