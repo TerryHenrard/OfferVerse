@@ -58,13 +58,13 @@ namespace OfferVerse.Controllers
                 return RedirectToAction(nameof(Connect));
             }
 
-            if (AppUser.AskForAService(_userDAL, GetUserIdFromSession(), sProvidedId, sProviderId))
+            if (GetUserIdFromSession() != sProviderId && AppUser.AskForAService(_userDAL, GetUserIdFromSession(), sProvidedId, sProviderId))
             {
                 TempData["Success"] = "Service Asked";
             }
             else
             {
-                TempData["Sucess"] = "Unable to Ask a service";
+                TempData["Success"] = "Unable to Ask a service";
             }
 
             return RedirectToAction(nameof(Index));

@@ -1,0 +1,40 @@
+﻿@using OfferVerse.Models
+@model List<ServiceDemanded>
+
+@{
+    ViewDataDictionary vd = new(ViewData);
+    vd["message"] = TempData["message"];
+}
+
+<partial name="../Home/_displayAlertMessage.cshtml" view-data="@vd"/>
+
+<h1>My services demand</h1>
+
+<table class="table table-striped table-bordered table-hover">
+    <tr>
+        <th>
+            Name of service
+        </th>
+        <th>
+            Demander
+        </th>
+    </tr>
+    @foreach (var sd in Model)
+    {
+        <tr>
+            <td>
+                @sd.ServiceProvided.Title
+            </td>
+            <td>
+                @sd.ServiceDemander.LastName 
+                @sd.ServiceDemander.FirstName
+             </td>
+             <td>
+                 <a asp-action="Accept" asp-route-demandId="@sd.ServiceId">Accept</a>
+             </td>
+             <td>
+                 <a asp-action="Refuse" asp-route-demandId="@sd.ServiceId">Refuse</a>
+             </td>
+        </tr>
+    }
+</table>
