@@ -11,9 +11,9 @@ html {
 }
 
 body {
+    font-family: 'Arial', sans-serif;
     background: #fefefe;
     margin-bottom: 60px;
-    font-family: 'Arial', sans-serif;
 }
 
 .fixed-size-img {

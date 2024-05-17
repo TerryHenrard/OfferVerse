@@ -1,5 +1,6 @@
 ﻿using OfferVerse.DAL.Interfaces;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Linq;
 
 namespace OfferVerse.Models
@@ -88,6 +89,11 @@ namespace OfferVerse.Models
             Description = description;
             Priority = priority;
             DatePriority = datePriority;
+        }
+        public ServiceProvided(int servicePId, string title, string description, bool priority, DateTime? datePriority, int userId, string userFN, string userLN)
+            :this(servicePId, title, description, priority, datePriority)
+        {
+            Own = new(userId, userFN, userLN);
         }
         public ServiceProvided(int servicePId, string title, string description, bool priority, DateTime? datePriority, int userId, int categoryId, string categoryName, string imagePath)
             :this(servicePId, title, description, priority, datePriority)
