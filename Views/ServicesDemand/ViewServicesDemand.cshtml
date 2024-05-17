@@ -6,36 +6,38 @@
     vd["message"] = TempData["message"];
 }
 
-<partial name="../Home/_displayAlertMessage.cshtml" view-data="@vd"/>
+<partial name="../Home/_displayAlertMessage.cshtml" view-data="@vd" />
 
-<h1>My services demand</h1>
+<h1 class="my-5">My Services Demanded</h1>
 
-<table class="table table-striped table-bordered table-hover">
-    <tr>
-        <th>
-            Name of service
-        </th>
-        <th>
-            Demander
-        </th>
-    </tr>
-    @foreach (var sd in Model)
-    {
-        <tr>
-            <td>
-                @sd.ServiceProvided.Title
-            </td>
-            <td>
-                @sd.ServiceDemander.LastName 
-                @sd.ServiceDemander.FirstName
-             </td>
-             <td>
-                 <a asp-action="Accept" asp-route-demandId="@sd.ServiceId">Accept</a>
-             </td>
-             <td>
-                 <a asp-action="Refuse" asp-route-demandId="@sd.ServiceId">Refuse</a>
-             </td>
-        </tr>
-    }
-</table>
-<a asp-controller="Home" asp-action="Index">Back</a>
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th style="width: 2.5%;">#</th>
+                <th>Title</th>
+                <th>Demander</th>
+                <th colspan="2">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int index = 1;
+                foreach (var sd in Model)
+                {
+                    <tr>
+                        <td class="fw-bold">@(index++)</td>
+                        <td>@sd.ServiceProvided.Title</td>
+                        <td>@sd.ServiceDemander.GetFullName()</td>
+                        <td>
+                            <a asp-action="Accept" asp-route-demandId="@sd.ServiceId" class="btn btn-success">Accept</a>
+                            <a asp-action="Refuse" asp-route-demandId="@sd.ServiceId" class="btn btn-danger">Refuse</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<a asp-controller="Home" asp-action="Index" class="btn btn-secondary w-25">Back</a>
