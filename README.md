@@ -4,15 +4,18 @@
 La première plateforme d'échange de services entre particuliers.
 
 ## Table des Matières
-- [Langages Utilisés](#langages-utilisés)
+- [Technologies](#Technologies)
 - [Auteurs](#auteurs)
 - [Utilisation](#utilisation)
 - [Licence](#licence)
 
-## Langages Utilisés
+## Technologies
 - C# 6.0
 - ASP.NET
 - JavaScript
+- Bootstrap
+- SQL
+- CSS
 
 ## Auteurs
 - Terry Henrard

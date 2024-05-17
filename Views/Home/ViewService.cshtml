@@ -52,20 +52,20 @@
 
                 </div>
             </div>
-            <div class=" my-3 d-flex align-items-center justify-content-start gap-3">
-                <a asp-action="Index" class="btn btn-dark">Back</a>
+            <div class="d-flex gap-xl-5 justify-content-between">
+                <a asp-action="Index" class="btn btn-secondary my-2 p-2 px-4 w-25">Back</a>
                 @{
                     if(Model.Favorites.Count > 0 &&
                        Model.Favorites.Contains(Model.ServiceProvided))
                     {
-                        <a asp-action="DeleteFavorite" asp-route-servicePId="@Model.ServiceProvided.ServiceProvidedId" class="btn btn-danger">Delete from favorite</a>
+                        <a asp-action="DeleteFavorite" asp-route-servicePId="@Model.ServiceProvided.ServiceProvidedId" class="btn btn-danger my-2 p-2 px-4s w-25">Delete from favorite</a>
                     }
                     else
                     {
-                        <a asp-action="PutInFavorite" asp-route-servicePId="@Model.ServiceProvided.ServiceProvidedId" class="btn btn-warning">Add to favorite</a>
+                        <a asp-action="PutInFavorite" asp-route-servicePId="@Model.ServiceProvided.ServiceProvidedId" class="btn btn-warning my-2 p-2 px-4s w-25">Add to favorite</a>
                     }
                 }
-                <a class="btn btn-primary" asp-action="AskForAService" asp-route-sProvidedId="@Model.ServiceProvided.ServiceProvidedId" asp-route-sProviderId="@Model.ServiceProvided.Own.MemberId">Ask</a>
+                <a class="btn btn-primary my-2 p-2 w-25" asp-action="AskForAService" asp-route-sProvidedId="@Model.ServiceProvided.ServiceProvidedId" asp-route-sProviderId="@Model.ServiceProvided.Own.MemberId">Ask</a>
             </div>
 
             <div class="comment-section">

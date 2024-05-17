@@ -1,8 +1,17 @@
-﻿<h1>Are you sure you want to delete this service ?</h1>
+﻿@{
+    ViewData["Title"] = "Delete Service Confirmation";
+}
 
-<form asp-action="Confirm" asp-controller="MyServices" method="post">
-    <input type="hidden" value="@ViewData["sId"]" name="sId" />
-    <input type="submit" value="Yes" />
-</form>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <h1 class="mb-4" style="font-family: Arialn serif, sans-serif;">Are you sure you want to delete this service?</h1>
 
-<a asp-action="MyServices">No</a>
+            <form asp-action="Confirm" asp-controller="MyServices" method="post" class="mb-3">
+                <input type="hidden" value="@ViewData["sId"]" name="sId" />
+                <input type="submit" value="Yes" class="btn btn-danger me-2 w-25" />
+                <a href="MyServices" class="btn btn-secondary w-25">No</a>
+            </form>
+        </div>
+    </div>
+</div>
