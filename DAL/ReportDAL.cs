@@ -99,7 +99,7 @@ namespace OfferVerse.DAL
                 using (SqlConnection connection = new(connectionString))
                 {
                     SqlCommand cmd = new(
-                        "SELECT * FROM OfferVerse.dbo.Users " +
+                        "SELECT * FROM Users " +
                         "WHERE userId = @userId",
                         connection);
                     cmd.Parameters.AddWithValue("@userId", userId);
@@ -151,7 +151,7 @@ namespace OfferVerse.DAL
             {
                 using (SqlConnection connection = new (connectionString))
                 {
-                    string query = @"UPDATE OfferVerse.dbo.Users 
+                    string query = @"UPDATE Users 
                                  SET timeCredits = timeCredits - @credits 
                                  WHERE userId = @userId";
 

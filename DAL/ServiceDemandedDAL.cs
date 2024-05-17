@@ -61,7 +61,7 @@ namespace OfferVerse.DAL
                         "SELECT sd.serviceDId, sd.startService, sd.endService, sd.nbHours, sd.serviceProvidedId, " +
                         " sp.title, sd.serviceDemander_userId, d.lastName AS 'dLN', d.firstName AS 'dFN', " +
                         " sd.serviceProvider_userId, " +
-                        " u.lastName AS 'uLN', u.firstName AS 'uFN'FROM ServicesDemanded sd" +
+                        " u.lastName AS 'uLN', u.firstName AS 'uFN' FROM ServicesDemanded sd" +
                         " INNER JOIN Users u ON u.userId = sd.serviceProvider_userId " +
                         " INNER JOIN ServicesProvided sp ON sp.servicePId = sd.serviceProvidedId " +
                         " INNER JOIN Users d ON d.userId = sd.serviceDemander_userId " +
