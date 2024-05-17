@@ -2,7 +2,7 @@
 
 <tr>
     <th>@ViewData["index"]</th>
-    <td>@Model.StartService.ToString("dd/MM/yyyy")</td>
+    <td>@Model.StartService.Value.ToString("dd/MM/yyyy")</td>
     <td>
         @Model.ServiceProvider.LastName.ToUpper()
         @Model.ServiceProvider.FirstName[0].ToString().ToUpper()@Model.ServiceProvider.FirstName.Substring(1)

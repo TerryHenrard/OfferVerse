@@ -239,6 +239,16 @@ namespace OfferVerse.Models
                 dal.AskForAService(sProvidedId, sDemanderId, sProviderId);
         }
 
+        public static bool AcceptDemand(IUserDAL dal, int demandId)
+        {
+            return dal.AcceptDemand(demandId);
+        }
+
+        public static bool RefuseDemand(IUserDAL dal, int demandId)
+        {
+            return dal.RefuseDemand(demandId);
+        }
+
         /******Existant methods overrided*******/
         public override string ToString()
         {
