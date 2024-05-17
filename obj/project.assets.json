@@ -515,24 +515,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\gigiu\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\albre\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\OfferVerse\\OfferVerse.csproj",
+      "projectUniqueName": "C:\\Bac 2\\Q2\\Projet\\Nouveau dossier\\OfferVerse\\OfferVerse.csproj",
       "projectName": "OfferVerse",
-      "projectPath": "D:\\OfferVerse\\OfferVerse.csproj",
-      "packagesPath": "C:\\Users\\gigiu\\.nuget\\packages\\",
-      "outputPath": "D:\\OfferVerse\\obj\\",
+      "projectPath": "C:\\Bac 2\\Q2\\Projet\\Nouveau dossier\\OfferVerse\\OfferVerse.csproj",
+      "packagesPath": "C:\\Users\\albre\\.nuget\\packages\\",
+      "outputPath": "C:\\Bac 2\\Q2\\Projet\\Nouveau dossier\\OfferVerse\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\gigiu\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\albre\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -586,7 +581,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }
