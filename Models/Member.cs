@@ -44,22 +44,26 @@ namespace OfferVerse.Models
         [MinLength(2, ErrorMessage = "2 characters minimum")]
         [DataType(DataType.Text)]
         [Required(AllowEmptyStrings = false, ErrorMessage = "First name field required")]
+        [RegularExpression("^[a-zA-Z]+$", ErrorMessage = "First name must contain only letters")]
         public string FirstName
         {
             get { return firstName; }
             set { firstName = value; }
         }
 
+
         [Display(Name = "Last name")]
         [MaxLength(50, ErrorMessage = "50 characters maximum")]
         [MinLength(2, ErrorMessage = "2 characters minimum")]
         [DataType(DataType.Text)]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Last name field required")]
+        [RegularExpression("^[a-zA-Z]+$", ErrorMessage = "Last name must contain only letters")]
         public string LastName
         {
             get { return lastName; }
             set { lastName = value; }
         }
+
 
         [Display(Name = "Confirm Password")]
         [DataType(DataType.Password)]

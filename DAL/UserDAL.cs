@@ -550,19 +550,22 @@ namespace OfferVerse.DAL
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     SqlCommand cmd = new(
-                        "SELECT userId " +
+                        "SELECT userId, password " +
                         "FROM Users " +
-                        "WHERE email = @mail AND password = @password", connection);
+                        "WHERE email = @mail", connection);
                     cmd.Parameters.AddWithValue("@mail", mail);
-                    cmd.Parameters.AddWithValue("@password", password);
 
                     connection.Open();
 
-                    using(SqlDataReader reader = cmd.ExecuteReader())
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        if(reader.Read())
+                        if (reader.Read())
                         {
-                            userId = reader.GetInt32("userId");
+                            string hashedPasswordFromDB = reader.GetString(reader.GetOrdinal("password"));
+                            if (BCrypt.Net.BCrypt.EnhancedVerify(password, hashedPasswordFromDB))
+                            {
+                                userId = reader.GetInt32(reader.GetOrdinal("userId"));
+                            }
                         }
                     }
                 }
@@ -575,6 +578,8 @@ namespace OfferVerse.DAL
 
             return userId;
         }
+
+
 
         public bool AskForAService(int sProvidedId, int sDemanderId, int sProviderId)
         {
@@ -695,6 +700,51 @@ namespace OfferVerse.DAL
 
             return favorites;
         }
+
+        public int Register(string firstName, string lastName, string mail, string city, string postCode, string streetName, string streetNumber, string password, string confirmPassword, string phoneNumber)
+        {
+            int userId;
+            if (password != confirmPassword)
+            {
+                return -2;  // means password isn't the same
+            }
+
+            try
+            {
+                string hashedPassword = BCrypt.Net.BCrypt.EnhancedHashPassword(password, 13);
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand cmd = new SqlCommand(
+                        "INSERT INTO Users (firstName, lastName, email, city, postCode, streetName, streetNumber, password, phoneNumber) " +
+                        "VALUES (@firstName, @lastName, @mail, @city, @postCode, @streetName, @streetNumber, @hashedPassword, @phoneNumber);" +
+                        "SELECT SCOPE_IDENTITY();", connection);
+
+                    cmd.Parameters.AddWithValue("@firstName", firstName);
+                    cmd.Parameters.AddWithValue("@lastName", lastName);
+                    cmd.Parameters.AddWithValue("@mail", mail);
+                    cmd.Parameters.AddWithValue("@city", city);
+                    cmd.Parameters.AddWithValue("@postCode", postCode);
+                    cmd.Parameters.AddWithValue("@streetName", streetName);
+                    cmd.Parameters.AddWithValue("@streetNumber", streetNumber);
+                    cmd.Parameters.AddWithValue("@hashedPassword", hashedPassword);
+                    cmd.Parameters.AddWithValue("@phoneNumber", phoneNumber);
+
+                    connection.Open();
+
+                    // get the id to connect the user after the creation
+                    userId = Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred: " + ex.Message);
+                return -1;
+            }
+
+            return userId;
+        }
+
 
         public bool AcceptDemand(int demandId)
         {

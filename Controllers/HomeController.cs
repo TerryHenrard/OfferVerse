@@ -55,7 +55,7 @@ namespace OfferVerse.Controllers
         {
             if (GetUserIdFromSession() == 0)
             {
-                return RedirectToAction("Connect", "Home");
+                return RedirectToAction(nameof(Connect));
             }
 
             if (AppUser.AskForAService(_userDAL, GetUserIdFromSession(), sProvidedId, sProviderId))
@@ -107,7 +107,7 @@ namespace OfferVerse.Controllers
                 {
                     TempData["message"] = "Successfully connected.";
                     HttpContext.Session.SetInt32("userId", userId);
-                    return RedirectToAction("Index");
+                    return RedirectToAction(nameof(Index));
                 }
                 else
                 {
@@ -126,7 +126,7 @@ namespace OfferVerse.Controllers
             if (GetUserIdFromSession() == 0)
             {
                 TempData["message"] = "must be logged in to put in favorite";
-                return RedirectToAction("Connect", "Home");
+                return RedirectToAction(nameof(Connect));
             }
 
             if (ServiceProvided.PutInFavorite(_serviceProvidedDAL, servicePId, GetUserIdFromSession()))
@@ -137,7 +137,73 @@ namespace OfferVerse.Controllers
             {
                 TempData["message"] = "Not added to your favorite";
             }
-            return RedirectToAction("ViewService", new { servicePId });
+            return RedirectToAction(nameof(ViewService), new { servicePId });
+        }
+
+        public IActionResult DeleteFavorite(int servicePId)
+        {
+            if (GetUserIdFromSession() == 0)
+            {
+                return RedirectToAction(nameof(Connect));
+            }
+
+            if (ServiceProvided.DeleteInFavorite(_serviceProvidedDAL, servicePId, GetUserIdFromSession()))
+            {
+                TempData["message"] = "Deleted from your favorites";
+            }
+            else
+            {
+                TempData["message"] = "Not deleted from your favorites";
+            }
+            return RedirectToAction(nameof(ViewService), new { servicePId });
+        }
+
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public IActionResult Register(User user)
+        {
+            if(ModelState.IsValid)
+            {
+                int result = _userDAL.Register(user.FirstName, user.LastName, user.Email, user.City, user.PostCode, user.StreetName, user.StreetNumber, user.Password, user.ConfirmPassword, user.PhoneNumber);
+                if(result == -2) // password don't match
+                {
+                    TempData["message"] = "The password don't match.";
+                }
+                else if(result == -1)
+                {
+                    TempData["message"] = "An error has occured.";
+                }
+                else
+                {
+                    HttpContext.Session.SetInt32("userId", result);
+                    TempData["message"] = "The account has been created";
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            else
+            {
+                TempData["message"] = "Wrong informations. Please, try again.";
+            }
+            return View(user);
+        }
+
+        public IActionResult Logout()
+        {
+            if(GetUserIdFromSession() != 0)
+            {
+                HttpContext.Session.SetInt32("userId", 0);
+                TempData["message"] = "Successfully disconnected.";
+            }
+            else
+            {
+                TempData["message"] = "You are not logged in.";
+            }
+            return RedirectToAction("Index");
         }
     }
 }

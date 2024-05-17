@@ -26,5 +26,7 @@ namespace OfferVerse.DAL.Interfaces
         public bool AcceptDemand(int demandId);
 
         public bool RefuseDemand(int demandId);
+
+        public int Register(string firstName, string lastName, string mail, string city, string postCode, string streetName, string streetNumber, string password, string confirmPassword, string phoneNumber);
     }
 }
