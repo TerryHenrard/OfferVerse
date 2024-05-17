@@ -208,7 +208,7 @@ namespace OfferVerse.DAL
                     while (reader.Read())
                     {
                         int serviceDId = reader.GetInt32("ServiceDId");
-                        DateTime startService = reader.GetDateTime("Start date");
+                        DateTime? startService = !reader.IsDBNull("Start date") ? reader.GetDateTime("Start date") : null;
                         DateTime? endService = !reader.IsDBNull("End date") ? reader.GetDateTime("End date") : null;
                         int DId = reader.GetInt32("Demander Id");
                         string DFirstName = reader.GetString("Demander first name");
